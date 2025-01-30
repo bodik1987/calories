@@ -29,6 +29,18 @@
   @apply font-myFont min-h-screen text-[#1B0C1B];
 }
 
+input {
+  @apply rounded-full w-full px-5 h-12 text-xl outline-none bg-white transition-all focus:ring focus:ring-accent;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
 .button {
   @apply rounded-full h-11 flex items-center justify-center cursor-pointer text-xl;
+}
+
+.list-modal {
+  @apply h-14 px-4 flex items-center gap-4 text-lg bg-white border-b border-panel last:border-b-0;
 }
