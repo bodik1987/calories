@@ -48,10 +48,7 @@ export default function AddWeight({
           </p>
         </div>
 
-        <button
-          onClick={() => setContentKey("editProduct")}
-          className="h-8 w-8"
-        >
+        <button onClick={() => setContentKey("editItem")} className="h-8 w-8">
           <DotsIcon />
         </button>
       </div>

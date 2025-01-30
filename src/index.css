@@ -45,7 +45,7 @@ button {
 }
 
 input {
-  @apply rounded-full w-full px-5 h-11 text-xl outline-none bg-white transition-all focus:ring focus:ring-accent;
+  @apply rounded-full w-full px-5 h-11 text-xl outline-none bg-white;
 }
 
 h2 {

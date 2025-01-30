@@ -100,7 +100,7 @@ export default function Main() {
         setContentKey={setContentKey}
       />
     ),
-    editProduct: (
+    editItem: (
       <Product
         item={selectedItem}
         onUpdateItem={handleUpdateItem}
