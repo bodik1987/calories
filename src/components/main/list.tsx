@@ -45,7 +45,7 @@ export default function List({
               className="list"
             >
               <p className="w-full flex items-center gap-3">
-                  {item.isFavorite && <FavoriteIcon active />}
+                {item.isFavorite && <FavoriteIcon active />}
                 {item.title}
               </p>
               <span>{item.calories}</span>

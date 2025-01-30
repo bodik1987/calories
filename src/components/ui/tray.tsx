@@ -11,6 +11,7 @@ type TrayProps = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   trayContent: Record<string, ReactNode>;
   contentKey: string;
+  setContentKey: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export default function Tray({
@@ -18,6 +19,7 @@ export default function Tray({
   setOpen,
   trayContent,
   contentKey,
+  setContentKey,
 }: TrayProps) {
   const controls = useDragControls();
   const dragY = useMotionValue(0);
@@ -33,6 +35,11 @@ export default function Tray({
     };
   }, [open]);
 
+  const handleClose = () => {
+    setOpen(false);
+    setContentKey("list");
+  };
+
   return (
     <AnimatePresence>
       {open && (
@@ -41,7 +48,15 @@ export default function Tray({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={() => setOpen(false)}
+          transition={{
+            duration: 0.05,
+            ease: "easeInOut",
+            type: "spring",
+            mass: 0.2,
+            damping: 10,
+            stiffness: 100,
+          }}
+          onClick={handleClose}
         >
           <motion.div
             onClick={(e) => e.stopPropagation()}
@@ -72,15 +87,13 @@ export default function Tray({
             }}
             dragElastic={{ top: 0, bottom: 0.5 }}
             onDragEnd={() => {
-              if (dragY.get() >= 50) {
-                setOpen(false);
+              if (dragY.get() >= 30) {
+                handleClose();
               }
             }}
           >
             <motion.div
-              onPointerDown={(e) => {
-                controls.start(e);
-              }}
+              onPointerDown={(e) => controls.start(e)}
               key="drag-bar"
               layout
               className="py-3 flex justify-center active:cursor-grabbing touch-none"
@@ -96,14 +109,6 @@ export default function Tray({
               layout="position"
               initial={{ opacity: 0.5 }}
               animate={{ opacity: 1 }}
-              transition={{
-                duration: 0.05,
-                ease: "easeInOut",
-                type: "spring",
-                mass: 0.2,
-                damping: 10,
-                stiffness: 100,
-              }}
             >
               {trayContent[contentKey]}
             </motion.div>

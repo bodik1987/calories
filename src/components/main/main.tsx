@@ -9,6 +9,7 @@ import List from "./list";
 import AddWeight from "./add-weight";
 import { useSelectedDayStore } from "../../store/selectedDayStore";
 import Product from "./product";
+import Modal from "../ui/modal";
 
 export default function Main() {
   const [open, setOpen] = useState(false);
@@ -17,8 +18,6 @@ export default function Main() {
   const [day, setDay] = useLocalStorage<IDay>("day", {
     productsToEat: [],
   });
-
-  console.log(day);
 
   const [contentKey, setContentKey] = useState("list");
 
@@ -124,11 +123,12 @@ export default function Main() {
 
   return (
     <>
-      <Tray
+      <Modal
         open={open}
         setOpen={setOpen}
         trayContent={trayContent}
         contentKey={contentKey}
+        setContentKey={setContentKey}
       />
       <section className="pb-16 w-full overflow-y-auto max-w-md mx-auto relative">
         {day.productsToEat
