@@ -23,7 +23,7 @@ export default function List({
 }: ListProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   return (
-    <div className="px-3 pb-3">
+    <div className="px-3">
       <div className={`max-h-[391px] rounded-xl overflow-y-auto`}>
         {items
           .filter((item) =>
@@ -44,10 +44,12 @@ export default function List({
               key={item.id}
               className="list-modal"
             >
-              <span className="w-full flex items-center gap-3">
-                {item.isFavorite && <FavoriteIcon active />}
+              <p className="w-full flex items-center gap-3">
+                <span className="font-medium">
+                  {item.isFavorite && <FavoriteIcon active />}
+                </span>
                 {item.title}
-              </span>
+              </p>
               <span>{item.calories}</span>
             </div>
           ))}

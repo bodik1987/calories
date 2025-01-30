@@ -45,7 +45,7 @@ export default function Tray({
         >
           <motion.div
             onClick={(e) => e.stopPropagation()}
-            className="fixed bottom-0 inset-x-0 max-w-md mx-auto min-h-10 bg-panel pb-6 overflow-hidden z-30"
+            className="fixed bottom-0 inset-x-0 max-w-md mx-auto min-h-10 bg-panel pb-3 overflow-hidden z-30"
             style={{
               borderTopLeftRadius: 20,
               borderTopRightRadius: 20,

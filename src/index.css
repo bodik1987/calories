@@ -25,12 +25,27 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+button {
+  @apply cursor-pointer;
+}
+
 #root {
   @apply font-myFont min-h-screen text-[#1B0C1B];
 }
 
 input {
-  @apply rounded-full w-full px-5 h-12 text-xl outline-none bg-white transition-all focus:ring focus:ring-accent;
+  @apply rounded-full w-full px-5 h-11 text-xl outline-none bg-white transition-all focus:ring focus:ring-accent;
 }
 
 h2 {
@@ -38,7 +53,7 @@ h2 {
 }
 
 .button {
-  @apply rounded-full h-11 flex items-center justify-center cursor-pointer text-xl;
+  @apply rounded-full h-11 flex items-center justify-center text-xl;
 }
 
 .list-modal {

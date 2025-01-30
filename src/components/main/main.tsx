@@ -8,6 +8,7 @@ import { SEEDS } from "../../seeds";
 import List from "./list";
 import AddWeight from "./add-weight";
 import { useSelectedDayStore } from "../../store/selectedDayStore";
+import Product from "./product";
 
 export default function Main() {
   const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ export default function Main() {
   const [contentKey, setContentKey] = useState("list");
 
   // List
-  const [items] = useLocalStorage<Item[]>("items", SEEDS);
+  const [items, setItems] = useLocalStorage<Item[]>("items", SEEDS);
   const [searchQuery, setSearchQuery] = useState("");
   const [showFavorites, setShowFavorites] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Item | undefined>(undefined);
@@ -56,6 +57,21 @@ export default function Main() {
     [selectedItem, productWeight, selectedDay, setDay]
   );
 
+  const handleUpdateItem = useCallback(
+    (updatedItem: Item) => {
+      setItems((prev) =>
+        prev.map((item) => (item.id === updatedItem.id ? updatedItem : item))
+      );
+      setContentKey("list");
+    },
+    [setItems]
+  );
+
+  const handleDeleteItem = useCallback(
+    (id: string) => setItems((prev) => prev.filter((item) => item.id !== id)),
+    [setItems]
+  );
+
   const trayContent: Record<string, ReactNode> = {
     list: (
       <List
@@ -75,6 +91,13 @@ export default function Main() {
         productWeight={productWeight}
         setProductWeight={setProductWeight}
         setContentKey={setContentKey}
+      />
+    ),
+    editProduct: (
+      <Product
+        item={selectedItem}
+        onUpdateItem={handleUpdateItem}
+        onDeleteItem={handleDeleteItem}
       />
     ),
     editSelectedProduct: (

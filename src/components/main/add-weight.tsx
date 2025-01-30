@@ -49,7 +49,7 @@ export default function AddWeight({
         </div>
 
         <button
-          onClick={() => setContentKey("editSelectedProduct")}
+          onClick={() => setContentKey("editProduct")}
           className="h-8 w-8"
         >
           <DotsIcon />
@@ -64,6 +64,7 @@ export default function AddWeight({
           type="number"
           autoComplete="off"
           spellCheck="false"
+          className="!w-24"
           autoFocus
         />
         <button
