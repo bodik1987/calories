@@ -1,15 +1,14 @@
 import { ReactNode, useCallback, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { PlusIcon } from "../ui/icons";
-import Tray from "../ui/tray";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { useSelectedDayStore } from "../../store/selectedDayStore";
 import { IDay, Item } from "../../types";
 import { SEEDS } from "../../seeds";
 import List from "./list";
 import AddWeight from "./add-weight";
-import { useSelectedDayStore } from "../../store/selectedDayStore";
 import Product from "./product";
 import Modal from "../ui/modal";
+import { PlusIcon } from "../ui/icons";
 
 export default function Main() {
   const [open, setOpen] = useState(false);
