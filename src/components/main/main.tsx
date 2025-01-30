@@ -137,7 +137,7 @@ export default function Main() {
             <div
               key={item.id}
               //onClick={() => handleEditProduct(item)}
-              className="list-modal"
+              className="list"
             >
               <p className="w-full">{item.product.title}</p>
 
