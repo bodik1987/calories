@@ -130,7 +130,7 @@ export default function Main() {
         trayContent={trayContent}
         contentKey={contentKey}
       />
-      <section className="mt-[104px] mb-[64px] w-full max-w-md mx-auto relative">
+      <section className="mt-2 mb-[64px] w-full max-w-md mx-auto relative">
         {day.productsToEat
           .filter((el) => el.day === selectedDay)
           .map((item) => (
