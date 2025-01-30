@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "myFont";
+  src: url("/fonts/font-regular.woff2") format("woff2");
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "myFont";
+  src: url("/fonts/font-medium.woff2") format("woff2");
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+@theme {
+  --color-accent: #79517f;
+  --color-accent-2: #f3dbf4;
+  --color-panel: #f7eef7;
+  --font-myFont: "myFont", sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  @apply font-myFont min-h-screen text-[#1B0C1B];
+}
+
+.button {
+  @apply rounded-full h-11 flex items-center justify-center cursor-pointer text-xl;
+}
