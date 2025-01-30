@@ -64,7 +64,7 @@ export default function AddWeight({
           type="number"
           autoComplete="off"
           spellCheck="false"
-          className="!w-24"
+          className="!w-24 text-center"
           autoFocus
         />
         <button
