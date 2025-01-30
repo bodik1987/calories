@@ -26,9 +26,7 @@ export default function Main() {
       />
       <section className="row-start-2">
         <button
-          onClick={() => {
-            setOpen(true);
-          }}
+          onClick={() => setOpen(true)}
           className="fixed w-14 !h-14 bottom-20 button right-4 bg-accent text-white"
           aria-label="Добавить"
         >
