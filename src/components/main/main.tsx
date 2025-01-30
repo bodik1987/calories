@@ -131,6 +131,29 @@ export default function Main() {
         contentKey={contentKey}
       />
       <section className="mt-[104px] mb-[64px] w-full max-w-md mx-auto relative">
+        {day.productsToEat
+          .filter((el) => el.day === selectedDay)
+          .map((item) => (
+            <div
+              key={item.id}
+              onClick={() => handleEditProduct(item)}
+              className="list"
+            >
+              <p className="w-full">{item.product.title}</p>
+
+              <div className="flex gap-3">
+                <span className="w-12 text-right whitespace-nowrap text-neutral-500">
+                  {item.weight} г.
+                </span>
+                <span className="w-12 text-right whitespace-nowrap">
+                  {(
+                    (Number(item.weight) / 100) *
+                    Number(item.product.calories)
+                  ).toFixed(0)}
+                </span>
+              </div>
+            </div>
+          ))}
         <button
           onClick={() => setOpen(true)}
           className="absolute button w-14 !h-14 bottom-4 right-4 bg-accent text-white z-10"
