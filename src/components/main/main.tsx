@@ -2,18 +2,18 @@ import { ReactNode, useState } from "react";
 import { PlusIcon } from "../ui/icons";
 import Tray from "../ui/tray";
 
-type MainProps = {};
-
-export default function Main({}: MainProps) {
+export default function Main() {
   const [open, setOpen] = useState(false);
 
-  const [contentKey, setContentKey] = useState("options");
+  const [contentKey, setContentKey] = useState("content1");
 
   const trayContent: Record<string, ReactNode> = {
-    // options: <div setContent={setContent} />,
-    // privateKey: <PrivateKey setContent={setContent} />,
-    // recovery: <RecoveryPhrase setContent={setContent} />,
-    // remove: <RemoveWallet setContent={setContent} />,
+    content1: <div onClick={() => setContentKey("content2")}>Content 1</div>,
+    content2: (
+      <div className="h-12" onClick={() => setContentKey("content1")}>
+        Content 2
+      </div>
+    ),
   };
 
   return (
