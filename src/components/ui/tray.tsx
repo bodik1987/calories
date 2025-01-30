@@ -87,7 +87,7 @@ export default function Tray({
             >
               <div
                 style={{ borderRadius: 50 }}
-                className="h-2 w-16 bg-accent/30"
+                className="h-1.5 w-16 bg-accent/30"
               />
             </motion.div>
 
