@@ -136,7 +136,7 @@ export default function Main() {
           .map((item) => (
             <div
               key={item.id}
-              onClick={() => handleEditProduct(item)}
+              //onClick={() => handleEditProduct(item)}
               className="list"
             >
               <p className="w-full">{item.product.title}</p>
