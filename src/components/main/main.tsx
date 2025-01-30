@@ -130,7 +130,7 @@ export default function Main() {
         trayContent={trayContent}
         contentKey={contentKey}
       />
-      <section className="pt-[128px] pb-16 w-full overflow-y-auto max-w-md mx-auto relative">
+      <section className="pb-16 w-full overflow-y-auto max-w-md mx-auto relative">
         {day.productsToEat
           .filter((el) => el.day === selectedDay)
           .map((item) => (
