@@ -19,7 +19,7 @@ export default function Header({}: HeaderProps) {
   const [day] = useLocalStorage<IDay>("day", { productsToEat: [] });
 
   return (
-    <header className="row-start-1 bg-panel p-3 select-none">
+    <header className="sticky top-0 inset-x-0 row-start-1 bg-panel p-3 select-none">
       <div className="max-w-md mx-auto">
         <div className="flex items-center gap-3">
           <button

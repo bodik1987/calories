@@ -94,7 +94,7 @@ export default function Tray({
             <motion.div
               key={contentKey}
               layout="position"
-              initial={{ opacity: 0.3 }}
+              initial={{ opacity: 0.5 }}
               animate={{ opacity: 1 }}
               transition={{
                 duration: 0.05,

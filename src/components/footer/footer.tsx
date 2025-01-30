@@ -7,7 +7,7 @@ export default function Footer({}: FooterProps) {
   const today = date.getDate();
   const { selectedDay, setSelectedDay } = useSelectedDayStore();
   return (
-    <footer className="row-start-3 h-16 bg-panel">
+    <footer className="fixed bottom-0 inset-x-0 h-16 bg-panel">
       <div className="h-full max-w-md mx-auto flex items-center justify-around">
         <button
           onClick={() => setSelectedDay(1)}

@@ -24,7 +24,7 @@ export default function Main() {
         trayContent={trayContent}
         contentKey={contentKey}
       />
-      <section className="row-start-2">
+      <section className="mt-[104px] mb-[64px]">
         <button
           onClick={() => setOpen(true)}
           className="fixed w-14 !h-14 bottom-20 button right-4 bg-accent text-white"
