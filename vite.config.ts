@@ -13,7 +13,7 @@ export default defineConfig({
         name: "Калории",
         short_name: "Калории",
         description: "Калории",
-        theme_color: "#E5E5E5",
+        theme_color: "#f7eef7",
         orientation: "portrait",
         icons: [
           {
