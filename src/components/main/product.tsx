@@ -52,7 +52,7 @@ export default function Product({
 
   return (
     <div className="px-4">
-      <div className="flex justify-between items-start">
+      <div className="flex justify-between items-center">
         <h2>{item ? "Изменить" : "Добавить продукт"}</h2>
         <button type="button" onClick={toggleFavorite} className="">
           <FavoriteIcon active={isFavorite} />

@@ -72,6 +72,14 @@ export default function Main() {
     [setItems]
   );
 
+  const handleAddItem = useCallback(
+    (newItem: Item) => {
+      setItems((prev) => [...prev, newItem]);
+      setSearchQuery(newItem.title);
+    },
+    [setItems]
+  );
+
   const trayContent: Record<string, ReactNode> = {
     list: (
       <List
@@ -111,15 +119,7 @@ export default function Main() {
         setOpen={setOpen}
       />
     ),
-    addNewProduct: (
-      <AddWeight
-        handleSubmit={handleSubmit}
-        selectedItem={selectedItem}
-        productWeight={productWeight}
-        setProductWeight={setProductWeight}
-        setContentKey={setContentKey}
-      />
-    ),
+    addNewProduct: <Product onAddItem={handleAddItem} />,
   };
 
   return (
