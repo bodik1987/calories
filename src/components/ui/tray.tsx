@@ -80,14 +80,19 @@ export default function Tray({
                 }
               }}
             >
-              <div
+              <motion.div
                 onPointerDown={(e) => {
                   controls.start(e);
                 }}
+                key="drag-bar"
+                layout
                 className="py-3 flex justify-center active:cursor-grabbing touch-none"
               >
-                <div className="h-2 w-16 rounded-full bg-accent/30" />
-              </div>
+                <div
+                  style={{ borderRadius: 50 }}
+                  className="h-2 w-16 bg-accent/30"
+                />
+              </motion.div>
 
               <motion.div
                 key={contentKey}

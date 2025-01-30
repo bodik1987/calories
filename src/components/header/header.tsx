@@ -8,13 +8,15 @@ type HeaderProps = {};
 
 export default function Header({}: HeaderProps) {
   const isOnline = useCheckConnection();
-  const [userMeasurements, setUserMeasurements] =
-    useLocalStorage<IUserMeasurements>("userMeasurements", {
+  const [userMeasurements] = useLocalStorage<IUserMeasurements>(
+    "userMeasurements",
+    {
       weight: "80",
       age: "37",
-    });
+    }
+  );
 
-  const [day, setDay] = useLocalStorage<IDay>("day", { productsToEat: [] });
+  const [day] = useLocalStorage<IDay>("day", { productsToEat: [] });
 
   return (
     <header className="row-start-1 bg-panel p-3 select-none">
