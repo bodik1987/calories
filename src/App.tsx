@@ -4,7 +4,7 @@ import Footer from "./components/footer/footer";
 
 export default function App() {
   return (
-    <main className="min-h-screen grid grid-rows-[auto_1fr_auto]">
+    <main className="min-h-dvh grid grid-rows-[auto_1fr_auto]">
       <Header />
       <Main />
       <Footer />
