@@ -156,7 +156,7 @@ export default function Main() {
           ))}
         <button
           onClick={() => setOpen(true)}
-          className="absolute button w-14 !h-14 bottom-4 right-4 bg-accent text-white z-10"
+          className="fixed button w-14 !h-14 bottom-20 right-4 bg-accent text-white z-10"
           aria-label="Добавить"
         >
           <PlusIcon />
