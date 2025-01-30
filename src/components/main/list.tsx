@@ -42,7 +42,7 @@ export default function List({
                 setContentKey("addWeight");
               }}
               key={item.id}
-              className="list-modal"
+              className="list"
             >
               <p className="w-full flex items-center gap-3">
                 <span className="font-medium">
