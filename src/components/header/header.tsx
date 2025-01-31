@@ -1,23 +1,18 @@
-import { ReactNode, useCallback, useState } from "react";
+import { ReactNode, useState } from "react";
 import useCheckConnection from "../../hooks/useCheckConnection";
-import useLocalStorage from "../../hooks/useLocalStorage";
-import { IDay, IUserMeasurements } from "../../types";
+import { IUserMeasurements } from "../../types";
 import { MeasurementsIcon, NetworkOffIcon, NetworkOnIcon } from "../ui/icons";
 import Totals from "./totals";
-import { useSelectedDayStore } from "../../store/selectedDayStore";
 import Sync from "./sync/sync";
 import UserMeasurements from "./user-measurements";
 import Modal from "../ui/modal";
+import { useAppStore } from "../../store/useAppStore";
+import { useSelectedDayStore } from "../../store/selectedDayStore";
 
 export default function Header() {
+  const { day, setDay, userMeasurements, setUserMeasurements } = useAppStore();
   const { selectedDay } = useSelectedDayStore();
   const isOnline = useCheckConnection();
-
-  const [userMeasurements, setUserMeasurements] =
-    useLocalStorage<IUserMeasurements>("userMeasurements", {
-      weight: "80",
-      age: "37",
-    });
 
   const [open, setOpen] = useState(false);
   const [contentKey, setContentKey] = useState("userMeasurements");
@@ -27,12 +22,12 @@ export default function Header() {
     setContentKey("userMeasurements");
   };
 
-  const handleUserMeasurementsChange = useCallback(
-    (field: keyof typeof userMeasurements, value: string) => {
-      setUserMeasurements((prev) => ({ ...prev, [field]: value }));
-    },
-    [setUserMeasurements]
-  );
+  const handleUserMeasurementsChange = (
+    field: keyof IUserMeasurements,
+    value: string
+  ) => {
+    setUserMeasurements({ ...userMeasurements, [field]: value });
+  };
 
   const modalContent: Record<string, ReactNode> = {
     userMeasurements: (
@@ -44,14 +39,12 @@ export default function Header() {
     sync: <Sync />,
   };
 
-  const [day, setDay] = useLocalStorage<IDay>("day", { productsToEat: [] });
-
   const cleanDay = () => {
     setDay({
       productsToEat: day.productsToEat.filter((el) => el.day !== selectedDay),
     });
-    window.location.reload();
   };
+
   return (
     <>
       <Modal

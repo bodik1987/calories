@@ -2,7 +2,7 @@ import { ReactNode, useCallback, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { useSelectedDayStore } from "../../store/selectedDayStore";
-import { IDay, ISelectedProduct, Item } from "../../types";
+import { ISelectedProduct, Item } from "../../types";
 import { SEEDS } from "../../seeds";
 import List from "./list";
 import AddWeight from "./add-weight";
@@ -10,16 +10,14 @@ import Product from "./product";
 import Modal from "../ui/modal";
 import { PlusIcon } from "../ui/icons";
 import EditSelectedProduct from "./edit-selected-product";
+import { useAppStore } from "../../store/useAppStore";
 
 export default function Main() {
+  const { day, setDay } = useAppStore();
   const { selectedDay } = useSelectedDayStore();
 
   const [open, setOpen] = useState(false);
   const [contentKey, setContentKey] = useState("list");
-
-  const [day, setDay] = useLocalStorage<IDay>("day", {
-    productsToEat: [],
-  });
 
   const handleClose = () => {
     setOpen(false);
@@ -40,32 +38,29 @@ export default function Main() {
     selectedProduct ? selectedProduct.weight : ""
   );
 
-  const handleSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-      if (selectedItem && productWeight) {
-        const newProduct = {
-          id: uuidv4(),
-          day: selectedDay,
-          product: selectedItem,
-          weight: productWeight,
-        };
+    if (selectedItem && productWeight) {
+      const newProduct = {
+        id: uuidv4(),
+        day: selectedDay,
+        product: selectedItem,
+        weight: productWeight,
+      };
 
-        setDay((prevDay) => ({
-          ...prevDay,
-          productsToEat: [...prevDay.productsToEat, newProduct],
-        }));
+      setDay({
+        ...day,
+        productsToEat: [...day.productsToEat, newProduct],
+      });
 
-        setProductWeight("");
-        setSelectedProduct(null);
-        setSearchQuery("");
-        setShowFavorites(false);
-        handleClose();
-      }
-    },
-    [selectedItem, productWeight, selectedDay, setDay]
-  );
+      setProductWeight("");
+      setSelectedProduct(null);
+      setSearchQuery("");
+      setShowFavorites(false);
+      handleClose();
+    }
+  };
 
   const handleUpdateItem = useCallback(
     (updatedItem: Item) => {
@@ -94,14 +89,15 @@ export default function Main() {
   // Edit delected product
   const handleUpdateSelectedProduct = useCallback(() => {
     if (selectedProduct) {
-      setDay((prevDay) => ({
-        ...prevDay,
-        productsToEat: prevDay.productsToEat.map((item) =>
+      setDay({
+        ...day,
+        productsToEat: day.productsToEat.map((item) =>
           item.id === selectedProduct.id
             ? { ...item, weight: selectedProductWeight }
             : item
         ),
-      }));
+      });
+
       handleClose();
       setSelectedProductWeight("");
     }
@@ -109,10 +105,11 @@ export default function Main() {
 
   const handleDeleteSelectedProduct = useCallback(
     (id: string) => {
-      setDay((prevDay) => ({
-        ...prevDay,
-        productsToEat: prevDay.productsToEat.filter((item) => item.id !== id),
-      }));
+      setDay({
+        ...day,
+        productsToEat: day.productsToEat.filter((item) => item.id !== id),
+      });
+
       handleClose();
       setSelectedProduct(null);
     },
@@ -167,7 +164,10 @@ export default function Main() {
         modalContent={modalContent}
         contentKey={contentKey}
       />
-      <section className="pb-16 w-full overflow-y-auto max-w-md mx-auto relative">
+      <section
+        key={JSON.stringify(day)}
+        className="pb-16 w-full overflow-y-auto max-w-md mx-auto relative"
+      >
         {day.productsToEat
           .filter((el) => el.day === selectedDay)
           .map((item) => (
