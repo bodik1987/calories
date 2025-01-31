@@ -183,7 +183,7 @@ export default function Main() {
               <p className="w-full">{item.product.title}</p>
 
               <div className="flex gap-3">
-                <span className="w-12 text-right whitespace-nowrap text-neutral-500">
+                <span className="w-12 text-right whitespace-nowrap opacity-50">
                   {item.weight} г.
                 </span>
                 <span className="w-12 text-right whitespace-nowrap">
