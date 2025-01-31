@@ -18,7 +18,7 @@
 
 @theme {
   --color-accent: #79517f;
-  /* --color-accent: #114971; */
+  --color-dark-accent: #114971;
   --color-panel: #f7eef7;
   --color-dark-panel: #161616;
   --font-myFont: "myFont", sans-serif;
@@ -68,7 +68,7 @@ h2 {
 }
 
 .primary-button {
-  @apply bg-accent disabled:bg-accent/50 text-white w-full;
+  @apply bg-accent dark:bg-dark-accent disabled:bg-accent/50  dark:disabled:bg-dark-accent/50 text-white w-full;
 }
 
 .rounded-button {

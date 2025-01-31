@@ -30,7 +30,7 @@ export default function AddWeight({
       <div className="flex items-start justify-between gap-3">
         <div>
           <h2>{selectedItem?.title}</h2>
-          <p className="mt-1 text-accent">
+          <p className="mt-1">
             <span>{selectedItem?.calories} </span>
             <span className="text-sm">кКал / 100г</span>
 

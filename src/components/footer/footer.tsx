@@ -15,7 +15,7 @@ export default function Footer({}: FooterProps) {
           className={`w-1/3 button ${
             selectedDay === 1 &&
             location.pathname === "/" &&
-            "bg-accent text-white"
+            "bg-accent dark:bg-dark-accent text-white"
           } text-accent dark:text-neutral-50`}
         >
           {today % 2 !== 0 ? "Сегодня" : "Завтра"}
@@ -27,7 +27,7 @@ export default function Footer({}: FooterProps) {
           className={`w-1/3 button ${
             selectedDay === 2 &&
             location.pathname === "/" &&
-            "bg-accent text-white"
+            "bg-accent dark:bg-dark-accent text-white"
           } text-accent dark:text-neutral-50`}
         >
           {today % 2 === 0 ? "Сегодня" : "Завтра"}
