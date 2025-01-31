@@ -1,6 +1,5 @@
 import { useCallback, useMemo } from "react";
 import { IDay, Item, IUserMeasurements } from "../../types";
-import { useSelectedDayStore } from "../../store/selectedDayStore";
 
 type TotalsProps = {
   userMeasurements: IUserMeasurements;

@@ -4,14 +4,14 @@ import { ReactNode, useEffect } from "react";
 type TrayProps = {
   open: boolean;
   handleClose: () => void;
-  trayContent: Record<string, ReactNode>;
+  modalContent: Record<string, ReactNode>;
   contentKey: string;
 };
 
 export default function Modal({
   open,
   handleClose,
-  trayContent,
+  modalContent,
   contentKey,
 }: TrayProps) {
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function Modal({
             onClick={(e) => e.stopPropagation()}
             className="fixed bottom-0 inset-x-0 max-w-md mx-auto min-h-10 bg-panel py-3 overflow-hidden rounded-t-2xl z-30"
           >
-            {trayContent[contentKey]}
+            {modalContent[contentKey]}
           </motion.div>
         </motion.div>
       )}

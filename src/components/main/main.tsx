@@ -119,7 +119,7 @@ export default function Main() {
     [setDay]
   );
 
-  const trayContent: Record<string, ReactNode> = {
+  const modalContent: Record<string, ReactNode> = {
     list: (
       <List
         items={items}
@@ -164,7 +164,7 @@ export default function Main() {
       <Modal
         open={open}
         handleClose={handleClose}
-        trayContent={trayContent}
+        modalContent={modalContent}
         contentKey={contentKey}
       />
       <section className="pb-16 w-full overflow-y-auto max-w-md mx-auto relative">
