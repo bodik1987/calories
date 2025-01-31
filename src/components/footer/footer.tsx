@@ -16,7 +16,7 @@ export default function Footer({}: FooterProps) {
             selectedDay === 1 &&
             location.pathname === "/" &&
             "bg-accent text-white"
-          }`}
+          } text-accent`}
         >
           {today % 2 !== 0 ? "Сегодня" : "Завтра"}
         </button>
@@ -30,7 +30,7 @@ export default function Footer({}: FooterProps) {
             selectedDay === 2 &&
             location.pathname === "/" &&
             "bg-accent text-white"
-          }`}
+          } text-accent`}
         >
           {today % 2 === 0 ? "Сегодня" : "Завтра"}
         </button>

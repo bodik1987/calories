@@ -16,8 +16,9 @@
 
 @theme {
   --color-accent: #79517f;
+  /* --color-accent: #114971; */
   --color-accent-2: #f3dbf4;
-  --color-panel: #f7eef7;
+  --color-panel: #f1e8f1;
   --font-myFont: "myFont", sans-serif;
 }
 
@@ -45,7 +46,7 @@ button {
 }
 
 input {
-  @apply rounded-lg w-full px-5 h-11 text-xl outline-none bg-white;
+  @apply rounded-full w-full px-5 h-12 text-xl outline-none bg-white;
 }
 
 h2 {
@@ -53,7 +54,7 @@ h2 {
 }
 
 .button {
-  @apply rounded-full h-11 flex items-center justify-center text-xl;
+  @apply rounded-full h-12 flex items-center justify-center text-xl;
 }
 
 .list {

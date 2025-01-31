@@ -73,7 +73,10 @@ export default function Main() {
   );
 
   const handleDeleteItem = useCallback(
-    (id: string) => setItems((prev) => prev.filter((item) => item.id !== id)),
+    (id: string) => {
+      setItems((prev) => prev.filter((item) => item.id !== id));
+      handleClose();
+    },
     [setItems]
   );
 

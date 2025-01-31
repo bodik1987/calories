@@ -77,14 +77,14 @@ export default function List({
                 setOpen(false);
               }
             }}
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-accent w-11 h-11 rounded-full flex items-center justify-center"
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-accent w-12 h-11 rounded-full flex items-center justify-center"
           >
             {searchQuery.length > 0 ? <BackspaceIcon /> : <DownIcon />}
           </button>
         </div>
         <button
           onClick={() => setContentKey("addNewProduct")}
-          className="button bg-white w-11 aspect-square text-accent"
+          className="button bg-white w-12 aspect-square text-accent"
         >
           <PlusIcon />
         </button>

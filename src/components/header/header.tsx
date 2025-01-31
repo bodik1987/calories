@@ -8,11 +8,14 @@ import UserMeasurements from "./user-measurements";
 import Modal from "../ui/modal";
 import { useAppStore } from "../../store/useAppStore";
 import { useSelectedDayStore } from "../../store/selectedDayStore";
+import Alert from "../ui/alert";
 
 export default function Header() {
   const { day, setDay, userMeasurements, setUserMeasurements } = useAppStore();
   const { selectedDay } = useSelectedDayStore();
   const isOnline = useCheckConnection();
+
+  const [showAlert, setShowAlert] = useState(false);
 
   const [open, setOpen] = useState(false);
   const [contentKey, setContentKey] = useState("userMeasurements");
@@ -47,6 +50,14 @@ export default function Header() {
 
   return (
     <>
+      <Alert
+        open={showAlert}
+        handleClose={() => setShowAlert(false)}
+        alertText="Очистить список продуктов в этот день?"
+        onConfirm={cleanDay}
+        onCancel={() => setShowAlert(false)}
+        confirmButtonText="Очистить"
+      />
       <Modal
         open={open}
         handleClose={handleClose}
@@ -62,7 +73,7 @@ export default function Header() {
                 setContentKey("userMeasurements");
                 setOpen(true);
               }}
-              className="button w-11 bg-accent-2"
+              className="button w-12 bg-accent-2 text-accent"
               aria-label="Замеры"
             >
               <MeasurementsIcon />
@@ -72,19 +83,21 @@ export default function Header() {
                 setContentKey("sync");
                 setOpen(true);
               }}
-              className="button w-11 bg-accent-2"
+              className="button w-12 bg-accent-2 text-accent"
               aria-label="Синхронизация"
             >
               {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
             </button>
 
-            <button
-              onClick={cleanDay}
-              className="button px-5 ml-auto bg-accent-2"
-              aria-label="Очистить"
-            >
-              Очистить
-            </button>
+            {day.productsToEat.length > 0 && (
+              <button
+                onClick={() => setShowAlert(true)}
+                className="button px-5 ml-auto bg-accent-2"
+                aria-label="Очистить"
+              >
+                Очистить
+              </button>
+            )}
           </div>
 
           <Totals

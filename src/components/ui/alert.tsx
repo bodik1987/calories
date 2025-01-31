@@ -1,19 +1,33 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 
-type ModalProps = {
+type AlertProps = {
   open: boolean;
   handleClose: () => void;
-  modalContent: Record<string, ReactNode>;
-  contentKey: string;
+  alertText: string;
+  onConfirm: () => void;
+  onCancel: () => void;
+  confirmButtonText: string;
 };
 
-export default function Modal({
+export default function Alert({
   open,
   handleClose,
-  modalContent,
-  contentKey,
-}: ModalProps) {
+  alertText,
+  onConfirm,
+  onCancel,
+  confirmButtonText,
+}: AlertProps) {
+  const handleConfirm = () => {
+    onConfirm();
+    handleClose();
+  };
+
+  const handleCancel = () => {
+    onCancel();
+    handleClose();
+  };
+
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -40,7 +54,7 @@ export default function Modal({
             damping: 10,
             stiffness: 100,
           }}
-          className="fixed inset-0 bg-black/20 z-20 select-none"
+          className="fixed inset-0 flex items-center justify-center bg-black/20 z-20 select-none"
           onClick={handleClose}
         >
           <motion.div
@@ -56,9 +70,26 @@ export default function Modal({
               stiffness: 100,
             }}
             onClick={(e) => e.stopPropagation()}
-            className="fixed bottom-0 inset-x-0 max-w-md mx-auto min-h-10 bg-panel py-3 overflow-hidden rounded-t-2xl z-30"
+            className="p-5 max-w-xs mx-auto min-h-10 bg-panel overflow-hidden rounded-4xl z-30"
           >
-            {modalContent[contentKey]}
+            <p className="text-xl p-1">{alertText}</p>
+
+            <div className="mt-6 flex gap-3 text-accent">
+              <button
+                type="button"
+                className="button w-full"
+                onClick={handleCancel}
+              >
+                Отмена
+              </button>
+              <button
+                type="button"
+                className="button w-full bg-accent-2"
+                onClick={handleConfirm}
+              >
+                {confirmButtonText}
+              </button>
+            </div>
           </motion.div>
         </motion.div>
       )}
