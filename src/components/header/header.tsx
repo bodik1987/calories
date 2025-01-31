@@ -46,14 +46,12 @@ export default function Header() {
 
   const [day, setDay] = useLocalStorage<IDay>("day", { productsToEat: [] });
 
-  const cleanDay = useCallback(
-    () =>
-      setDay({
-        productsToEat: day.productsToEat.filter((el) => el.day !== selectedDay),
-      }),
-    [day.productsToEat, selectedDay, setDay]
-  );
-
+  const cleanDay = () => {
+    setDay({
+      productsToEat: day.productsToEat.filter((el) => el.day !== selectedDay),
+    });
+    window.location.reload();
+  };
   return (
     <>
       <Modal
