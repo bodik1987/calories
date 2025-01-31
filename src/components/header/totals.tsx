@@ -2,11 +2,17 @@ import { useCallback, useMemo } from "react";
 import { IDay, Item, IUserMeasurements } from "../../types";
 import { useSelectedDayStore } from "../../store/selectedDayStore";
 
-type TotalsProps = { userMeasurements: IUserMeasurements; day: IDay };
+type TotalsProps = {
+  userMeasurements: IUserMeasurements;
+  day: IDay;
+  selectedDay: number;
+};
 
-export default function Totals({ userMeasurements, day }: TotalsProps) {
-  const { selectedDay } = useSelectedDayStore();
-
+export default function Totals({
+  userMeasurements,
+  day,
+  selectedDay,
+}: TotalsProps) {
   const calculateTotalCalories = useCallback(
     (productsToEat: { product: Item; weight: string }[]) => {
       return productsToEat.reduce((total, item) => {
@@ -41,17 +47,11 @@ export default function Totals({ userMeasurements, day }: TotalsProps) {
   );
 
   return (
-    <div className="mt-2 px-1 flex justify-between items-center">
-      <p className="">
-        {`${totalCalories.toFixed(0)} / ${target.toFixed(0)}`} ккал
-      </p>
+    <div className="mt-3 px-1 flex justify-between items-center">
+      <span>{`${totalCalories.toFixed(0)} / ${target.toFixed(0)}`} ккал</span>
       <p className="">
         {remainingCalories > 0 ? "Осталось " : "Превышено "}
-        <span
-          className={`font-medium text-lg ${
-            remainingCalories < 0 && "text-red-500"
-          }`}
-        >
+        <span className={`text-lg ${remainingCalories < 0 && "text-red-500"}`}>
           {remainingCalories}
         </span>
       </p>

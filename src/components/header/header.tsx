@@ -1,12 +1,13 @@
+import { useCallback } from "react";
 import useCheckConnection from "../../hooks/useCheckConnection";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { IDay, IUserMeasurements } from "../../types";
 import { MeasurementsIcon, NetworkOffIcon, NetworkOnIcon } from "../ui/icons";
 import Totals from "./totals";
+import { useSelectedDayStore } from "../../store/selectedDayStore";
 
-type HeaderProps = {};
-
-export default function Header({}: HeaderProps) {
+export default function Header() {
+  const { selectedDay } = useSelectedDayStore();
   const isOnline = useCheckConnection();
   const [userMeasurements] = useLocalStorage<IUserMeasurements>(
     "userMeasurements",
@@ -16,7 +17,15 @@ export default function Header({}: HeaderProps) {
     }
   );
 
-  const [day] = useLocalStorage<IDay>("day", { productsToEat: [] });
+  const [day, setDay] = useLocalStorage<IDay>("day", { productsToEat: [] });
+
+  const cleanDay = useCallback(
+    () =>
+      setDay({
+        productsToEat: day.productsToEat.filter((el) => el.day !== selectedDay),
+      }),
+    [day.productsToEat, selectedDay, setDay]
+  );
 
   return (
     <header className="sticky z-10 top-0 inset-x-0 row-start-1 bg-panel p-3 select-none">
@@ -38,7 +47,7 @@ export default function Header({}: HeaderProps) {
           </button>
 
           <button
-            // onClick={cleanDay}
+            onClick={cleanDay}
             className="button px-5 ml-auto bg-accent-2"
             aria-label="Очистить"
           >
@@ -46,7 +55,11 @@ export default function Header({}: HeaderProps) {
           </button>
         </div>
 
-        <Totals day={day} userMeasurements={userMeasurements} />
+        <Totals
+          day={day}
+          selectedDay={selectedDay}
+          userMeasurements={userMeasurements}
+        />
       </div>
     </header>
   );

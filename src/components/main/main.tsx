@@ -2,32 +2,43 @@ import { ReactNode, useCallback, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { useSelectedDayStore } from "../../store/selectedDayStore";
-import { IDay, Item } from "../../types";
+import { IDay, ISelectedProduct, Item } from "../../types";
 import { SEEDS } from "../../seeds";
 import List from "./list";
 import AddWeight from "./add-weight";
 import Product from "./product";
 import Modal from "../ui/modal";
 import { PlusIcon } from "../ui/icons";
+import EditSelectedProduct from "./edit-selected-product";
 
 export default function Main() {
-  const [open, setOpen] = useState(false);
   const { selectedDay } = useSelectedDayStore();
+
+  const [open, setOpen] = useState(false);
+  const [contentKey, setContentKey] = useState("list");
 
   const [day, setDay] = useLocalStorage<IDay>("day", {
     productsToEat: [],
   });
 
-  const [contentKey, setContentKey] = useState("list");
+  const handleClose = () => {
+    setOpen(false);
+    setContentKey("list");
+  };
 
   // List
   const [items, setItems] = useLocalStorage<Item[]>("items", SEEDS);
   const [searchQuery, setSearchQuery] = useState("");
   const [showFavorites, setShowFavorites] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Item | undefined>(undefined);
+  const [selectedProduct, setSelectedProduct] =
+    useState<ISelectedProduct | null>(null);
 
   // AddWeight
   const [productWeight, setProductWeight] = useState("");
+  const [selectedProductWeight, setSelectedProductWeight] = useState(
+    selectedProduct ? selectedProduct.weight : ""
+  );
 
   const handleSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,9 +58,10 @@ export default function Main() {
         }));
 
         setProductWeight("");
+        setSelectedProduct(null);
         setSearchQuery("");
         setShowFavorites(false);
-        setOpen(false);
+        handleClose();
       }
     },
     [selectedItem, productWeight, selectedDay, setDay]
@@ -60,7 +72,7 @@ export default function Main() {
       setItems((prev) =>
         prev.map((item) => (item.id === updatedItem.id ? updatedItem : item))
       );
-      setContentKey("list");
+      handleClose();
     },
     [setItems]
   );
@@ -74,8 +86,37 @@ export default function Main() {
     (newItem: Item) => {
       setItems((prev) => [...prev, newItem]);
       setSearchQuery(newItem.title);
+      handleClose();
     },
     [setItems]
+  );
+
+  // Edit delected product
+  const handleUpdateSelectedProduct = useCallback(() => {
+    if (selectedProduct) {
+      setDay((prevDay) => ({
+        ...prevDay,
+        productsToEat: prevDay.productsToEat.map((item) =>
+          item.id === selectedProduct.id
+            ? { ...item, weight: selectedProductWeight }
+            : item
+        ),
+      }));
+      handleClose();
+      setSelectedProductWeight("");
+    }
+  }, [selectedProduct, productWeight, setDay]);
+
+  const handleDeleteSelectedProduct = useCallback(
+    (id: string) => {
+      setDay((prevDay) => ({
+        ...prevDay,
+        productsToEat: prevDay.productsToEat.filter((item) => item.id !== id),
+      }));
+      handleClose();
+      setSelectedProduct(null);
+    },
+    [setDay]
   );
 
   const trayContent: Record<string, ReactNode> = {
@@ -107,14 +148,12 @@ export default function Main() {
       />
     ),
     editSelectedProduct: (
-      <List
-        items={items}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        showFavorites={showFavorites}
-        setContentKey={setContentKey}
-        setSelectedItem={setSelectedItem}
-        setOpen={setOpen}
+      <EditSelectedProduct
+        selectedProduct={selectedProduct}
+        selectedProductWeight={selectedProductWeight}
+        setSelectedProductWeight={setSelectedProductWeight}
+        handleDeleteSelectedProduct={handleDeleteSelectedProduct}
+        handleUpdateSelectedProduct={handleUpdateSelectedProduct}
       />
     ),
     addNewProduct: <Product onAddItem={handleAddItem} />,
@@ -124,10 +163,9 @@ export default function Main() {
     <>
       <Modal
         open={open}
-        setOpen={setOpen}
+        handleClose={handleClose}
         trayContent={trayContent}
         contentKey={contentKey}
-        setContentKey={setContentKey}
       />
       <section className="pb-16 w-full overflow-y-auto max-w-md mx-auto relative">
         {day.productsToEat
@@ -135,7 +173,11 @@ export default function Main() {
           .map((item) => (
             <div
               key={item.id}
-              //onClick={() => handleEditProduct(item)}
+              onClick={() => {
+                setContentKey("editSelectedProduct");
+                setSelectedProduct(item);
+                setOpen(true);
+              }}
               className="list"
             >
               <p className="w-full">{item.product.title}</p>

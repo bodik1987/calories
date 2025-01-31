@@ -3,18 +3,16 @@ import { ReactNode, useEffect } from "react";
 
 type TrayProps = {
   open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  handleClose: () => void;
   trayContent: Record<string, ReactNode>;
   contentKey: string;
-  setContentKey: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export default function Modal({
   open,
-  setOpen,
+  handleClose,
   trayContent,
   contentKey,
-  setContentKey,
 }: TrayProps) {
   useEffect(() => {
     if (open) {
@@ -26,11 +24,6 @@ export default function Modal({
       document.body.style.overflow = "";
     };
   }, [open]);
-
-  const handleClose = () => {
-    setOpen(false);
-    setContentKey("list");
-  };
 
   return (
     <AnimatePresence>

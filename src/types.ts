@@ -25,3 +25,9 @@ export interface IUserMeasurements {
   weight: string;
   age: string;
 }
+
+export interface ISelectedProduct {
+  id: string;
+  product: Item;
+  weight: string;
+}
