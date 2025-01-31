@@ -7,7 +7,7 @@ export default function Footer({}: FooterProps) {
   const today = date.getDate();
   const { selectedDay, setSelectedDay } = useSelectedDayStore();
   return (
-    <footer className="fixed bottom-0 inset-x-0 h-16 bg-panel">
+    <footer className="fixed bottom-0 inset-x-0 h-16 bg-panel dark:bg-dark-panel select-none">
       <div className="container h-full font-medium flex items-center justify-around">
         <button
           onClick={() => setSelectedDay(1)}
@@ -16,7 +16,7 @@ export default function Footer({}: FooterProps) {
             selectedDay === 1 &&
             location.pathname === "/" &&
             "bg-accent text-white"
-          } text-accent`}
+          } text-accent dark:text-neutral-50`}
         >
           {today % 2 !== 0 ? "Сегодня" : "Завтра"}
         </button>
@@ -28,7 +28,7 @@ export default function Footer({}: FooterProps) {
             selectedDay === 2 &&
             location.pathname === "/" &&
             "bg-accent text-white"
-          } text-accent`}
+          } text-accent dark:text-neutral-50`}
         >
           {today % 2 === 0 ? "Сегодня" : "Завтра"}
         </button>

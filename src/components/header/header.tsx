@@ -9,6 +9,7 @@ import Modal from "../ui/modal";
 import { useAppStore } from "../../store/useAppStore";
 import { useSelectedDayStore } from "../../store/selectedDayStore";
 import Alert from "../ui/alert";
+import ThemeToggle from "../ui/theme-toggle";
 
 export default function Header() {
   const { day, setDay, userMeasurements, setUserMeasurements } = useAppStore();
@@ -65,7 +66,7 @@ export default function Header() {
         contentKey={contentKey}
       />
 
-      <header className="sticky z-10 top-0 inset-x-0 bg-panel px-4 py-3 select-none">
+      <header className="sticky z-10 top-0 inset-x-0 bg-panel dark:bg-dark-panel px-4 py-3 select-none">
         <div className="container">
           <div className="flex items-center gap-3 text-accent">
             <button
@@ -89,10 +90,12 @@ export default function Header() {
               {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
             </button>
 
+            <ThemeToggle />
+
             {day.productsToEat.length > 0 && (
               <button
                 onClick={() => setShowAlert(true)}
-                className="button px-5 ml-auto bg-white"
+                className="button px-5 ml-auto bg-white dark:bg-[#282828] dark:text-neutral-50"
                 aria-label="Очистить"
               >
                 Очистить

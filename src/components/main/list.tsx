@@ -84,7 +84,7 @@ export default function List({
                 setOpen(false);
               }
             }}
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-accent w-12 h-11 rounded-full flex items-center justify-center"
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-accent dark:text-neutral-50 w-12 h-12 rounded-full flex items-center justify-center"
           >
             {searchQuery.length > 0 ? <BackspaceIcon /> : <DownIcon />}
           </button>

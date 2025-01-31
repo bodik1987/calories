@@ -46,7 +46,7 @@ export default function Totals({
   );
 
   return (
-    <div className="mt-3 flex justify-between items-center text-accent">
+    <div className="mt-3 flex justify-between items-center text-accent dark:text-neutral-100">
       <span>{`${totalCalories.toFixed(0)} / ${target.toFixed(0)}`} ккал</span>
       <p>
         {remainingCalories > 0 ? "Осталось " : "Превышено "}

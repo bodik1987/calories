@@ -45,7 +45,7 @@ export default function EditSelectedProduct({
 
       <div className="p-4">
         <h2>{selectedProduct?.product.title}</h2>
-        <p className="mt-1 text-base text-neutral-700">
+        <p className="mt-1 text-base text-neutral-700 dark:text-[#5C5C5C]">
           <span>{selectedProduct?.product.calories} </span>
           <span className="text-sm">кКал / 100г</span>
 
