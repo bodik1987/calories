@@ -10,7 +10,7 @@ import AddWeight from "./add-weight";
 import Product from "./product";
 import Modal from "../ui/modal";
 import EditSelectedProduct from "./edit-selected-product";
-import { PlusIcon } from "../ui/icons";
+import { NoDataIcon, PlusIcon } from "../ui/icons";
 
 export default function Main() {
   const { day, setDay } = useAppStore();
@@ -172,6 +172,16 @@ export default function Main() {
         key={JSON.stringify(day)}
         className="container pb-16 w-full overflow-y-auto relative"
       >
+        {day.productsToEat.filter((el) => el.day === selectedDay).length ===
+          0 && (
+          <div className="flex flex-col justify-center items-center h-full">
+            <NoDataIcon />
+            <p className="mt-6 text-accent dark:text-neutral-50">
+              Здесь пока ничего нет
+            </p>
+          </div>
+        )}
+
         {day.productsToEat
           .filter((el) => el.day === selectedDay)
           .map((item) => (
