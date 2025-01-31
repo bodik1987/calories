@@ -73,7 +73,7 @@ export default function Header() {
                 setContentKey("userMeasurements");
                 setOpen(true);
               }}
-              className="button w-12 bg-accent-2 text-accent"
+              className="button w-12 border border-accent text-accent"
               aria-label="Замеры"
             >
               <MeasurementsIcon />
@@ -83,7 +83,7 @@ export default function Header() {
                 setContentKey("sync");
                 setOpen(true);
               }}
-              className="button w-12 bg-accent-2 text-accent"
+              className="button w-12 border border-accent text-accent"
               aria-label="Синхронизация"
             >
               {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
@@ -92,7 +92,7 @@ export default function Header() {
             {day.productsToEat.length > 0 && (
               <button
                 onClick={() => setShowAlert(true)}
-                className="button px-5 ml-auto bg-accent-2"
+                className="button px-5 ml-auto border border-accent"
                 aria-label="Очистить"
               >
                 Очистить

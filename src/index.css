@@ -18,7 +18,7 @@
   --color-accent: #79517f;
   /* --color-accent: #114971; */
   --color-accent-2: #f3dbf4;
-  --color-panel: #f1e8f1;
+  --color-panel: #f7eef7;
   --font-myFont: "myFont", sans-serif;
 }
 
@@ -38,7 +38,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 button {
-  @apply cursor-pointer;
+  @apply cursor-pointer transition-all active:scale-95;
 }
 
 #root {
