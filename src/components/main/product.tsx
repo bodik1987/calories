@@ -87,7 +87,7 @@ export default function Product({
               onChange={(e) => setCalories(e.target.value)}
               placeholder="ккал"
               autoComplete="off"
-              className="!w-24 !rounded-l-none text-center"
+              className="input-number !rounded-l-none"
               spellCheck="false"
               type="number"
             />

@@ -52,7 +52,7 @@ input {
 }
 
 .input-number {
-  @apply !w-24 text-center text-2xl;
+  @apply !w-24 text-center;
 }
 
 h2 {
