@@ -97,15 +97,15 @@ export default function Main() {
         ...day,
         productsToEat: day.productsToEat.map((item) =>
           item.id === selectedProduct.id
-            ? { ...item, weight: selectedProductWeight }
+            ? { ...item, weight: selectedProductWeight } // Обновление веса только для редактируемого продукта
             : item
         ),
       });
 
-      handleClose();
-      setSelectedProductWeight("");
+      setSelectedProductWeight(""); // Очистка веса после обновления
+      handleClose(); // Закрытие модального окна
     }
-  }, [selectedProduct, productWeight, setDay]);
+  }, [selectedProduct, selectedProductWeight, setDay, day]);
 
   const handleDeleteSelectedProduct = useCallback(
     (id: string) => {
