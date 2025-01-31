@@ -132,25 +132,19 @@ export default function SyncPanel({
           Удалить все
         </button>
 
-        <button
-          onClick={deleteLocalUser}
-          className="button bg-accent disabled:bg-accent/50 text-white w-full"
-        >
+        <button onClick={deleteLocalUser} className="button primary-button">
           Выйти
         </button>
       </div>
 
       <button
         onClick={downloadFromDatabase}
-        className="mt-4 button bg-accent-2 disabled:bg-accent/50 w-full"
+        className="mt-4 button primary-button"
       >
         Восстановить
       </button>
 
-      <button
-        onClick={uploadToDatabase}
-        className="mt-4 button bg-accent disabled:bg-accent/50 text-white w-full"
-      >
+      <button onClick={uploadToDatabase} className="mt-4 button primary-button">
         Сделать резервную копию
       </button>
     </div>

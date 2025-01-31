@@ -17,7 +17,6 @@
 @theme {
   --color-accent: #79517f;
   /* --color-accent: #114971; */
-  --color-accent-2: #f3dbf4;
   --color-panel: #f7eef7;
   --font-myFont: "myFont", sans-serif;
 }
@@ -38,7 +37,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 button {
-  @apply cursor-pointer transition-all active:scale-95;
+  @apply cursor-pointer;
 }
 
 #root {
@@ -49,12 +48,28 @@ input {
   @apply rounded-full w-full px-5 h-12 text-xl outline-none bg-white;
 }
 
+.input-number {
+  @apply !w-24 text-center;
+}
+
 h2 {
   @apply text-2xl;
 }
 
+.container {
+  @apply max-w-md mx-auto;
+}
+
 .button {
   @apply rounded-full h-12 flex items-center justify-center text-xl;
+}
+
+.primary-button {
+  @apply bg-accent disabled:bg-accent/50 text-white w-full;
+}
+
+.rounded-button {
+  @apply bg-white w-12 aspect-square text-accent;
 }
 
 .list {

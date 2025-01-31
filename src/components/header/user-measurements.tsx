@@ -16,12 +16,12 @@ export default function UserMeasurements({
     <div className="p-4">
       <h2>Возраст и вес</h2>
 
-      <div className="mt-6 w-full flex gap-4">
+      <div className="mt-4 w-full flex gap-3">
         <input
           type="number"
           value={userMeasurements.age}
           onChange={(e) => handleUserMeasurementsChange("age", e.target.value)}
-          placeholder="Возраст (лет)"
+          placeholder="Возраст"
           className="text-center"
         />
         <input

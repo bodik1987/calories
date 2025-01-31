@@ -97,7 +97,7 @@ export default function UserForm({
       <button
         type="submit"
         disabled={!name || !password}
-        className="mt-4 button bg-accent disabled:bg-accent/50 text-white w-full"
+        className="mt-4 button primary-button"
       >
         Войти
       </button>

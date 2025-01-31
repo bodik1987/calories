@@ -25,7 +25,7 @@ export default function List({
 
   const [maxHeight, setMaxHeight] = useState(true);
   return (
-    <div className="px-3">
+    <div className="p-3 pb-4">
       <div
         className={`${
           maxHeight ? "max-h-[75vh]" : "max-h-[391px]"
@@ -59,7 +59,7 @@ export default function List({
           ))}
       </div>
 
-      <div className="mt-3 flex gap-2.5">
+      <div className="mt-4 flex gap-3">
         <div className="relative w-full">
           <input
             type="search"
@@ -91,7 +91,7 @@ export default function List({
         </div>
         <button
           onClick={() => setContentKey("addNewProduct")}
-          className="button bg-white w-12 aspect-square text-accent"
+          className="button rounded-button"
         >
           <PlusIcon />
         </button>

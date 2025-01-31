@@ -70,11 +70,11 @@ export default function Alert({
               stiffness: 100,
             }}
             onClick={(e) => e.stopPropagation()}
-            className="p-5 max-w-xs mx-auto min-h-10 bg-panel overflow-hidden rounded-4xl z-30"
+            className="max-w-xs p-5 bg-panel rounded-4xl z-30"
           >
             <p className="text-xl p-1">{alertText}</p>
 
-            <div className="mt-6 flex gap-3 text-accent">
+            <div className="mt-4 flex gap-3 text-accent">
               <button
                 type="button"
                 className="button w-full"
@@ -84,7 +84,7 @@ export default function Alert({
               </button>
               <button
                 type="button"
-                className="button w-full bg-accent-2"
+                className="button w-full border border-accent"
                 onClick={handleConfirm}
               >
                 {confirmButtonText}

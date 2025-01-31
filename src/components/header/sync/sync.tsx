@@ -14,7 +14,16 @@ export default function Sync() {
 
   return (
     <div className="p-4">
-      <h2>{user ? user.name : "Нет пользователя"}</h2>
+      <div className="flex justify-between gap-3">
+        <h2>{user ? user.name : "Нет пользователя"}</h2>
+        <div className="flex gap-3">
+          {loading && <div>Загрузка...</div>}
+
+          {success && <div>{success}</div>}
+
+          {error && <div className="text-red-500">{error}</div>}
+        </div>
+      </div>
 
       {user ? (
         <SyncPanel
@@ -36,7 +45,7 @@ export default function Sync() {
             <>
               <button
                 onClick={() => setUserForm(true)}
-                className="mt-6 button bg-accent disabled:bg-accent/50 text-white w-full"
+                className="mt-4 button primary-button"
               >
                 Войти
               </button>
@@ -44,11 +53,6 @@ export default function Sync() {
           )}
         </>
       )}
-      {loading && <div className="mt-4">Loading...</div>}
-
-      {success && <div className="mt-4">{success}</div>}
-
-      {error && <div className="mt-4 text-red-500">{error}</div>}
     </div>
   );
 }

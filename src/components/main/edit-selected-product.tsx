@@ -42,6 +42,7 @@ export default function EditSelectedProduct({
         onConfirm={() => handleDeleteSelectedProduct(selectedProduct!.id)}
         onCancel={() => setShowAlert(false)}
       />
+
       <div className="p-4">
         <h2>{selectedProduct?.product.title}</h2>
         <p className="mt-1 text-base text-neutral-700">
@@ -61,10 +62,10 @@ export default function EditSelectedProduct({
           )}
         </p>
 
-        <div className="mt-6 flex gap-3">
+        <div className="mt-4 flex gap-3">
           <button
             onClick={() => setShowAlert(true)}
-            className="button bg-white w-12 aspect-square text-accent"
+            className="button rounded-button"
           >
             <DeleteIcon />
           </button>
@@ -74,7 +75,7 @@ export default function EditSelectedProduct({
             onChange={(e) => setSelectedProductWeight(e.target.value)}
             placeholder="Вес"
             type="number"
-            className="!w-24 text-center"
+            className="input-number"
             autoComplete="off"
             spellCheck="false"
             autoFocus
@@ -83,7 +84,7 @@ export default function EditSelectedProduct({
           <button
             onClick={handleUpdateSelectedProduct}
             disabled={!selectedProductWeight}
-            className="button bg-accent disabled:bg-accent/50 text-white w-full"
+            className="button primary-button"
           >
             Обновить
           </button>

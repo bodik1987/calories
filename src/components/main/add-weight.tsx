@@ -26,7 +26,7 @@ export default function AddWeight({
   );
 
   return (
-    <form onSubmit={handleSubmit} className="px-4">
+    <form onSubmit={handleSubmit} className="p-4">
       <div className="flex items-start justify-between gap-3">
         <div>
           <h2>{selectedItem?.title}</h2>
@@ -53,7 +53,7 @@ export default function AddWeight({
         </button>
       </div>
 
-      <div className="mt-6 flex gap-3">
+      <div className="mt-4 flex gap-3">
         <input
           value={productWeight}
           onChange={(e) => setProductWeight(e.target.value)}
@@ -61,13 +61,13 @@ export default function AddWeight({
           type="number"
           autoComplete="off"
           spellCheck="false"
-          className="!w-24 text-center"
+          className="input-number"
           autoFocus
         />
         <button
           type="submit"
           disabled={!productWeight}
-          className="button bg-accent disabled:bg-accent/50 text-white w-full"
+          className="button primary-button"
         >
           Добавить
         </button>

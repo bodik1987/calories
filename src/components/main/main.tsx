@@ -2,15 +2,15 @@ import { ReactNode, useCallback, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { useSelectedDayStore } from "../../store/selectedDayStore";
+import { useAppStore } from "../../store/useAppStore";
 import { ISelectedProduct, Item } from "../../types";
 import { SEEDS } from "../../seeds";
 import List from "./list";
 import AddWeight from "./add-weight";
 import Product from "./product";
 import Modal from "../ui/modal";
-import { PlusIcon } from "../ui/icons";
 import EditSelectedProduct from "./edit-selected-product";
-import { useAppStore } from "../../store/useAppStore";
+import { PlusIcon } from "../ui/icons";
 
 export default function Main() {
   const { day, setDay } = useAppStore();
@@ -62,6 +62,7 @@ export default function Main() {
     }
   };
 
+  // Edit item
   const handleUpdateItem = useCallback(
     (updatedItem: Item) => {
       setItems((prev) =>
@@ -89,7 +90,7 @@ export default function Main() {
     [setItems]
   );
 
-  // Edit delected product
+  // Edit selected product
   const handleUpdateSelectedProduct = useCallback(() => {
     if (selectedProduct) {
       setDay({
@@ -169,7 +170,7 @@ export default function Main() {
       />
       <section
         key={JSON.stringify(day)}
-        className="pb-16 w-full overflow-y-auto max-w-md mx-auto relative"
+        className="container pb-16 w-full overflow-y-auto relative"
       >
         {day.productsToEat
           .filter((el) => el.day === selectedDay)

@@ -63,7 +63,7 @@ export default function Product({
         onConfirm={handleDelete}
         onCancel={() => setShowAlert(false)}
       />
-      <div className="px-4">
+      <div className="p-4">
         <div className="flex justify-between">
           <h2>{item ? "Изменить" : "Добавить продукт"}</h2>
           <button type="button" onClick={toggleFavorite}>
@@ -98,7 +98,7 @@ export default function Product({
               <button
                 type="button"
                 onClick={() => setShowAlert(true)}
-                className="button bg-white w-12 aspect-square text-accent"
+                className="button rounded-button"
               >
                 <DeleteIcon />
               </button>
@@ -107,7 +107,7 @@ export default function Product({
             <button
               type="submit"
               disabled={!title || !calories}
-              className="button bg-accent disabled:bg-accent/50 text-white w-full"
+              className="button primary-button"
             >
               Сохранить
             </button>

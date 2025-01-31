@@ -56,7 +56,7 @@ export default function Modal({
               stiffness: 100,
             }}
             onClick={(e) => e.stopPropagation()}
-            className="fixed bottom-0 inset-x-0 max-w-md mx-auto min-h-10 bg-panel py-3 overflow-hidden rounded-t-2xl z-30"
+            className="fixed bottom-0 inset-x-0 max-w-md mx-auto bg-panel rounded-t-2xl z-30"
           >
             {modalContent[contentKey]}
           </motion.div>

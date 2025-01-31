@@ -65,15 +65,15 @@ export default function Header() {
         contentKey={contentKey}
       />
 
-      <header className="sticky z-10 top-0 inset-x-0 row-start-1 bg-panel p-3 select-none">
-        <div className="max-w-md mx-auto">
-          <div className="flex items-center gap-3">
+      <header className="sticky z-10 top-0 inset-x-0 bg-panel px-4 py-3 select-none">
+        <div className="container">
+          <div className="flex items-center gap-3 text-accent">
             <button
               onClick={() => {
                 setContentKey("userMeasurements");
                 setOpen(true);
               }}
-              className="button w-12 border border-accent text-accent"
+              className="button rounded-button"
               aria-label="Замеры"
             >
               <MeasurementsIcon />
@@ -83,7 +83,7 @@ export default function Header() {
                 setContentKey("sync");
                 setOpen(true);
               }}
-              className="button w-12 border border-accent text-accent"
+              className="button rounded-button"
               aria-label="Синхронизация"
             >
               {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
@@ -92,7 +92,7 @@ export default function Header() {
             {day.productsToEat.length > 0 && (
               <button
                 onClick={() => setShowAlert(true)}
-                className="button px-5 ml-auto border border-accent"
+                className="button px-5 ml-auto bg-white"
                 aria-label="Очистить"
               >
                 Очистить
