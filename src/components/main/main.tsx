@@ -19,11 +19,6 @@ export default function Main() {
   const [open, setOpen] = useState(false);
   const [contentKey, setContentKey] = useState("list");
 
-  const handleClose = () => {
-    setOpen(false);
-    setContentKey("list");
-  };
-
   // List
   const [items, setItems] = useLocalStorage<Item[]>("items", SEEDS);
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,6 +26,12 @@ export default function Main() {
   const [selectedItem, setSelectedItem] = useState<Item | undefined>(undefined);
   const [selectedProduct, setSelectedProduct] =
     useState<ISelectedProduct | null>(null);
+
+  const handleClose = () => {
+    setOpen(false);
+    setContentKey("list");
+    setSearchQuery("");
+  };
 
   // AddWeight
   const [productWeight, setProductWeight] = useState("");
