@@ -67,11 +67,8 @@ export default function Modal({
             style={{ y }}
             drag="y"
             dragControls={controls}
-            dragConstraints={{
-              top: 0,
-              bottom: 0,
-            }}
-            dragElastic={{ top: 0, bottom: 0.5 }}
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={{ top: 0, bottom: 1 }} // Меньше растяжимости
             onDragEnd={() => {
               if (y.get() >= 50) {
                 handleClose();
