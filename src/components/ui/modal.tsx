@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion } from "framer-motion";
 
 type ModalProps = {
   open: boolean;
@@ -40,7 +40,7 @@ export default function Modal({
             damping: 10,
             stiffness: 100,
           }}
-          className="fixed inset-0 backdrop-blur z-20 select-none"
+          className="fixed inset-0 backdrop-blur bg-black/50 dark:bg-transparent z-20 select-none"
           onClick={handleClose}
         >
           <motion.div
