@@ -40,13 +40,13 @@ export default function Modal({
             damping: 10,
             stiffness: 100,
           }}
-          className="fixed inset-0 bg-black/20 z-20 select-none"
+          className="fixed inset-0 backdrop-blur-md z-20 select-none"
           onClick={handleClose}
         >
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
             transition={{
               duration: 0.05,
               ease: "easeInOut",
