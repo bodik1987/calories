@@ -12,6 +12,8 @@ export default function UserMeasurements({
   userMeasurements,
   handleUserMeasurementsChange,
 }: UserMeasurementsProps) {
+  const { age, weight } = userMeasurements;
+
   return (
     <div className="p-4">
       <h2>Возраст и вес</h2>
@@ -19,14 +21,14 @@ export default function UserMeasurements({
       <div className="mt-4 w-full flex gap-3">
         <input
           type="number"
-          value={userMeasurements.age}
+          value={age}
           onChange={(e) => handleUserMeasurementsChange("age", e.target.value)}
           placeholder="Возраст"
           className="text-center"
         />
         <input
           type="number"
-          value={userMeasurements.weight}
+          value={weight}
           onChange={(e) =>
             handleUserMeasurementsChange("weight", e.target.value)
           }

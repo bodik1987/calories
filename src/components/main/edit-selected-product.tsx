@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ISelectedProduct } from "../../types";
 import { DeleteIcon } from "../ui/icons";
 import Alert from "../ui/alert";
+import { calculateCalories } from "../../utils/calculateCalories";
 
 type EditSelectedProductProps = {
   selectedProduct: ISelectedProduct | null;
@@ -20,17 +21,12 @@ export default function EditSelectedProduct({
 }: EditSelectedProductProps) {
   const [showAlert, setShowAlert] = useState(false);
 
-  const getSelectedProductCalorits = useCallback(
-    (weight: string | undefined, itemCalories: string | undefined) => {
-      const result = ((Number(weight) / 100) * Number(itemCalories)).toFixed(0);
-      return result;
-    },
-    []
-  );
-
+  // Установка веса продукта при изменении выбранного продукта
   useEffect(() => {
-    selectedProduct && setSelectedProductWeight(selectedProduct.weight);
-  }, [selectedProduct]);
+    if (selectedProduct) {
+      setSelectedProductWeight(selectedProduct.weight);
+    }
+  }, [selectedProduct, setSelectedProductWeight]);
 
   return (
     <>
@@ -49,16 +45,15 @@ export default function EditSelectedProduct({
           <span>{selectedProduct?.product.calories} </span>
           <span className="text-sm">кКал / 100г</span>
 
-          {selectedProduct?.weight ? (
+          {selectedProduct?.weight && (
             <span className="font-medium">
               {" = "}
-              {getSelectedProductCalorits(
+              {calculateCalories(
                 selectedProduct.weight,
-                selectedProduct?.product.calories
+                selectedProduct.product.calories
               )}{" "}
+              кКал
             </span>
-          ) : (
-            ""
           )}
         </p>
 
@@ -66,6 +61,7 @@ export default function EditSelectedProduct({
           <button
             onClick={() => setShowAlert(true)}
             className="button rounded-button"
+            aria-label="Удалить продукт"
           >
             <DeleteIcon />
           </button>

@@ -1,5 +1,5 @@
-import { useCallback } from "react";
 import { Item } from "../../types";
+import { calculateCalories } from "../../utils/calculateCalories";
 import { DotsIcon } from "../ui/icons";
 
 type AddWeightProps = {
@@ -17,14 +17,6 @@ export default function AddWeight({
   setProductWeight,
   setContentKey,
 }: AddWeightProps) {
-  const getSelectedProductCalorits = useCallback(
-    (weight: string | undefined, itemCalories: string | undefined) => {
-      const result = ((Number(weight) / 100) * Number(itemCalories)).toFixed(0);
-      return result;
-    },
-    []
-  );
-
   return (
     <form onSubmit={handleSubmit} className="p-4">
       <div className="flex items-start justify-between gap-3">
@@ -34,21 +26,16 @@ export default function AddWeight({
             <span>{selectedItem?.calories} </span>
             <span className="text-sm">кКал / 100г</span>
 
-            {productWeight ? (
+            {productWeight && (
               <span className="font-medium">
                 {" = "}
-                {getSelectedProductCalorits(
-                  productWeight,
-                  selectedItem?.calories
-                )}{" "}
+                {calculateCalories(productWeight, selectedItem?.calories)} кКал
               </span>
-            ) : (
-              ""
             )}
           </p>
         </div>
 
-        <button onClick={() => setContentKey("editItem")}>
+        <button type="button" onClick={() => setContentKey("editItem")}>
           <DotsIcon />
         </button>
       </div>

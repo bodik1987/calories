@@ -17,13 +17,12 @@ export default function Header() {
   const isOnline = useCheckConnection();
 
   const [showAlert, setShowAlert] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [modalContentKey, setModalContentKey] = useState("userMeasurements");
 
-  const [open, setOpen] = useState(false);
-  const [contentKey, setContentKey] = useState("userMeasurements");
-
-  const handleClose = () => {
-    setOpen(false);
-    setContentKey("userMeasurements");
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setModalContentKey("userMeasurements");
   };
 
   const handleUserMeasurementsChange = (
@@ -49,6 +48,11 @@ export default function Header() {
     });
   };
 
+  const handleButtonClick = (key: string) => {
+    setModalContentKey(key);
+    setModalOpen(true);
+  };
+
   return (
     <>
       <Alert
@@ -60,30 +64,24 @@ export default function Header() {
         confirmButtonText="Очистить"
       />
       <Modal
-        open={open}
-        handleClose={handleClose}
+        open={isModalOpen}
+        handleClose={handleCloseModal}
         modalContent={modalContent}
-        contentKey={contentKey}
+        contentKey={modalContentKey}
       />
 
       <header className="sticky z-10 top-0 inset-x-0 bg-panel dark:bg-dark-panel px-4 py-3 select-none">
         <div className="container">
           <div className="flex items-center gap-3 text-accent">
             <button
-              onClick={() => {
-                setContentKey("userMeasurements");
-                setOpen(true);
-              }}
+              onClick={() => handleButtonClick("userMeasurements")}
               className="button rounded-button"
               aria-label="Замеры"
             >
               <MeasurementsIcon />
             </button>
             <button
-              onClick={() => {
-                setContentKey("sync");
-                setOpen(true);
-              }}
+              onClick={() => handleButtonClick("sync")}
               className="button rounded-button"
               aria-label="Синхронизация"
             >

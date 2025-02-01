@@ -1,4 +1,3 @@
-import { useCallback, useMemo } from "react";
 import { IDay, Item, IUserMeasurements } from "../../types";
 
 type TotalsProps = {
@@ -12,45 +11,45 @@ export default function Totals({
   day,
   selectedDay,
 }: TotalsProps) {
-  const calculateTotalCalories = useCallback(
-    (productsToEat: { product: Item; weight: string }[]) => {
-      return productsToEat.reduce((total, item) => {
-        const calories =
-          (Number(item.weight) / 100) * Number(item.product.calories);
-        return total + calories;
-      }, 0);
-    },
-    []
+  // Расчет общего количества калорий для выбранного дня
+  const calculateTotalCalories = (
+    productsToEat: { product: Item; weight: string }[]
+  ) => {
+    return productsToEat.reduce((total, item) => {
+      const calories =
+        (Number(item.weight) / 100) * Number(item.product.calories);
+      return total + calories;
+    }, 0);
+  };
+
+  // Фильтрация продуктов по выбранному дню
+  const filteredProducts = day.productsToEat.filter(
+    (el) => el.day === selectedDay
   );
 
-  const totalCalories = useMemo(
-    () =>
-      calculateTotalCalories(
-        day.productsToEat.filter((el) => el.day === selectedDay)
-      ),
-    [day.productsToEat, selectedDay, calculateTotalCalories]
-  );
+  // Расчет общего количества калорий
+  const totalCalories = calculateTotalCalories(filteredProducts);
 
-  const target = useMemo(
-    () =>
-      88 +
-      13 * Number(userMeasurements.weight) +
-      4.2 * 178 -
-      5.7 * Number(userMeasurements.age),
-    [userMeasurements.weight, userMeasurements.age]
-  );
+  // Расчет целевого количества калорий
+  const target =
+    88 +
+    13 * Number(userMeasurements.weight) +
+    4.2 * 178 -
+    5.7 * Number(userMeasurements.age);
 
-  const remainingCalories = useMemo(
-    () => Math.round(target - totalCalories),
-    [target, totalCalories]
-  );
+  // Расчет оставшихся калорий
+  const remainingCalories = Math.round(target - totalCalories);
+
+  // Форматирование текста в зависимости от оставшихся калорий
+  const caloriesText = remainingCalories > 0 ? "Осталось " : "Превышено ";
+  const caloriesClassName = remainingCalories < 0 ? "text-red-500" : "";
 
   return (
     <div className="mt-3 flex justify-between items-center text-accent dark:text-neutral-100">
       <span>{`${totalCalories.toFixed(0)} / ${target.toFixed(0)}`} ккал</span>
       <p>
-        {remainingCalories > 0 ? "Осталось " : "Превышено "}
-        <span className={`text-lg ${remainingCalories < 0 && "text-red-500"}`}>
+        {caloriesText}
+        <span className={`text-lg ${caloriesClassName}`}>
           {remainingCalories}
         </span>
       </p>
