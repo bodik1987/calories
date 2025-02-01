@@ -1,5 +1,10 @@
 import { ReactNode, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useDragControls,
+  useMotionValue,
+} from "framer-motion";
 
 type ModalProps = {
   open: boolean;
@@ -14,6 +19,9 @@ export default function Modal({
   modalContent,
   contentKey,
 }: ModalProps) {
+  const y = useMotionValue(0);
+  const controls = useDragControls();
+
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -56,8 +64,29 @@ export default function Modal({
               stiffness: 100,
             }}
             onClick={(e) => e.stopPropagation()}
+            style={{ y }}
+            drag="y"
+            dragListener={false}
+            dragControls={controls}
+            dragConstraints={{
+              top: 0,
+              bottom: 0,
+            }}
+            dragElastic={{ top: 0, bottom: 0.5 }}
+            onDragEnd={() => {
+              if (y.get() >= 50) {
+                handleClose();
+              }
+            }}
             className="fixed bottom-0 inset-x-0 max-w-md mx-auto bg-panel dark:bg-dark-panel rounded-t-2xl z-30"
           >
+            <div
+              onPointerDown={(e) => controls.start(e)}
+              className="z-10 flex justify-center cursor-grab active:cursor-grabbing bg-panel dark:bg-dark-panel rounded-t-2xl pt-3 touch-none"
+            >
+              <div className="h-2 w-14 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+            </div>
+
             {modalContent[contentKey]}
           </motion.div>
         </motion.div>
