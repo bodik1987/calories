@@ -66,7 +66,6 @@ export default function Modal({
             onClick={(e) => e.stopPropagation()}
             style={{ y }}
             drag="y"
-            dragListener={false}
             dragControls={controls}
             dragConstraints={{
               top: 0,
@@ -81,13 +80,14 @@ export default function Modal({
             className="fixed bottom-0 inset-x-0 max-w-md mx-auto bg-panel dark:bg-dark-panel rounded-t-2xl z-30"
           >
             <div
-              onPointerDown={(e) => controls.start(e)}
+              // onPointerDown={(e) => controls.start(e)}
               className="z-10 flex justify-center cursor-grab active:cursor-grabbing bg-panel dark:bg-dark-panel rounded-t-2xl pt-3 touch-none"
             >
               <div className="h-2 w-16 rounded-full bg-accent/20 dark:bg-[#5C5C5C]" />
             </div>
-
-            {modalContent[contentKey]}
+            <div onPointerDown={(e) => e.stopPropagation()}>
+              {modalContent[contentKey]}
+            </div>
           </motion.div>
         </motion.div>
       )}
