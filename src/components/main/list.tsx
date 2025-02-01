@@ -24,6 +24,7 @@ export default function List({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [maxHeight, setMaxHeight] = useState(true);
+
   return (
     <div className="p-3 pb-4">
       <div

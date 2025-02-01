@@ -40,7 +40,7 @@ export default function Modal({
             damping: 10,
             stiffness: 100,
           }}
-          className="fixed inset-0 bg-black/50 dark:bg-transparent z-20 select-none"
+          className="overlay"
           onClick={handleClose}
         >
           <motion.div

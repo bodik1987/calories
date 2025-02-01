@@ -54,7 +54,7 @@ export default function Alert({
             damping: 10,
             stiffness: 100,
           }}
-          className="fixed inset-0 flex items-center justify-center bg-black/20 z-20 select-none"
+          className="overlay flex items-center justify-center"
           onClick={handleClose}
         >
           <motion.div
@@ -84,7 +84,7 @@ export default function Alert({
               </button>
               <button
                 type="button"
-                className="button w-full border border-accent dark:border-neutral-50"
+                className="button w-full"
                 onClick={handleConfirm}
               >
                 {confirmButtonText}
