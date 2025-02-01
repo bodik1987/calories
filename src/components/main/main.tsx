@@ -110,7 +110,6 @@ export default function Main() {
 
   const handleDeleteSelectedProduct = useCallback(
     (id: string) => {
-      console.log("Deleting product with id:", id); // Debugging line
       setDay({
         ...day,
         productsToEat: day.productsToEat.filter((item) => item.id !== id),

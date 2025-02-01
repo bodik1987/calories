@@ -90,7 +90,8 @@ export default function Header() {
 
             <ThemeToggle />
 
-            {day.productsToEat.length > 0 && (
+            {day.productsToEat.filter((el) => el.day === selectedDay).length >
+              0 && (
               <button
                 onClick={() => setShowAlert(true)}
                 className="button px-5 ml-auto bg-white dark:bg-[#282828] dark:text-neutral-50"
