@@ -84,7 +84,7 @@ export default function Modal({
               onPointerDown={(e) => controls.start(e)}
               className="z-10 flex justify-center cursor-grab active:cursor-grabbing bg-panel dark:bg-dark-panel rounded-t-2xl pt-3 touch-none"
             >
-              <div className="h-2 w-14 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+              <div className="h-2 w-16 rounded-full bg-accent/20 dark:bg-[#5C5C5C]" />
             </div>
 
             {modalContent[contentKey]}
