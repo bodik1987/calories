@@ -12,7 +12,7 @@ export default function Footer({}: FooterProps) {
         <button
           onClick={() => setSelectedDay(1)}
           aria-label="День"
-          className={`w-1/3 !h-10 button ${
+          className={`w-1/3 button ${
             selectedDay === 1 &&
             location.pathname === "/" &&
             "bg-accent dark:bg-dark-accent text-white"
@@ -24,7 +24,7 @@ export default function Footer({}: FooterProps) {
         <button
           onClick={() => setSelectedDay(2)}
           aria-label="День"
-          className={`w-1/3 !h-10 button ${
+          className={`w-1/3 button ${
             selectedDay === 2 &&
             location.pathname === "/" &&
             "bg-accent dark:bg-dark-accent text-white"

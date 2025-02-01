@@ -2,6 +2,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* G-font */
 @font-face {
   font-family: "myFont";
   src: url("/fonts/font-regular.woff2") format("woff2");
@@ -16,12 +17,28 @@
   font-style: normal;
 }
 
+/* Roz-font */
+@font-face {
+  font-family: "myFont-roz";
+  src: url("/fonts/font-regular-roz.woff2") format("woff2");
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "myFont-roz";
+  src: url("/fonts/font-medium-roz.woff2") format("woff2");
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
 @theme {
   --color-accent: #79517f;
   --color-dark-accent: #114971;
   --color-panel: #f7eef7;
   --color-dark-panel: #161616;
   --font-myFont: "myFont", sans-serif;
+  --font-myFont-roz: "myFont-roz", sans-serif;
 }
 
 * {
@@ -40,7 +57,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 #root {
-  @apply font-myFont min-h-screen text-[#1B0C1B] dark:bg-[#282828] dark:text-neutral-50;
+  @apply min-h-screen text-[#1B0C1B] dark:bg-[#282828] dark:text-neutral-50;
 }
 
 button {

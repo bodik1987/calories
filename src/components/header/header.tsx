@@ -9,7 +9,7 @@ import Modal from "../ui/modal";
 import { useAppStore } from "../../store/useAppStore";
 import { useSelectedDayStore } from "../../store/selectedDayStore";
 import Alert from "../ui/alert";
-import ThemeToggle from "../ui/theme-toggle";
+import Settings from "./settings/settings";
 
 export default function Header() {
   const { day, setDay, userMeasurements, setUserMeasurements } = useAppStore();
@@ -90,7 +90,7 @@ export default function Header() {
               {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
             </button>
 
-            <ThemeToggle />
+            <Settings />
 
             {day.productsToEat.length > 0 && (
               <button

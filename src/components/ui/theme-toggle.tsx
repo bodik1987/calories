@@ -7,7 +7,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => handleClick()}
-      className="button rounded-button"
+      className="button primary-button"
       aria-label="Тема"
     >
       <ThemeIcon active={theme === "dark"} />
