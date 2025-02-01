@@ -4,9 +4,7 @@ import Footer from "./components/footer/footer";
 
 export default function App() {
   return (
-    <main
-      className={`${"font-myFont"} min-h-dvh grid grid-rows-[auto_1fr_auto]`}
-    >
+    <main className="antialiased min-h-dvh grid grid-rows-[auto_1fr_auto]">
       <Header />
       <Main />
       <Footer />
