@@ -74,7 +74,7 @@ export default function Alert({
           >
             <h2 className="p-1">{alertText}</h2>
 
-            <div className="mt-4 flex gap-3 ">
+            <div className="mt-6 flex gap-3 ">
               <button
                 type="button"
                 className="button w-full"
