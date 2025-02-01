@@ -40,7 +40,7 @@ export default function Modal({
             damping: 10,
             stiffness: 100,
           }}
-          className="fixed inset-0 backdrop-blur-md z-20 select-none"
+          className="fixed inset-0 backdrop-blur z-20 select-none"
           onClick={handleClose}
         >
           <motion.div
