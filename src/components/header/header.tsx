@@ -7,13 +7,13 @@ import Sync from "./sync/sync";
 import UserMeasurements from "./user-measurements";
 import Modal from "../ui/modal";
 import { useAppStore } from "../../store/useAppStore";
-import { useSelectedDayStore } from "../../store/selectedDayStore";
 import Alert from "../ui/alert";
 import ThemeToggle from "../ui/theme-toggle";
+import { useStore } from "../../store/selectedDayStore";
 
 export default function Header() {
   const { day, setDay, userMeasurements, setUserMeasurements } = useAppStore();
-  const { selectedDay } = useSelectedDayStore();
+  const { selectedDay } = useStore();
   const isOnline = useCheckConnection();
 
   const [showAlert, setShowAlert] = useState(false);

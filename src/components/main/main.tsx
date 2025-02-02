@@ -1,7 +1,6 @@
 import { ReactNode, useCallback, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { useSelectedDayStore } from "../../store/selectedDayStore";
 import { useAppStore } from "../../store/useAppStore";
 import { ISelectedProduct, Item } from "../../types";
 import { SEEDS } from "../../seeds";
@@ -11,12 +10,12 @@ import Product from "./product";
 import Modal from "../ui/modal";
 import EditSelectedProduct from "./edit-selected-product";
 import { NoDataIcon, PlusIcon } from "../ui/icons";
+import { useStore } from "../../store/selectedDayStore";
 
 export default function Main() {
   const { day, setDay } = useAppStore();
-  const { selectedDay } = useSelectedDayStore();
+  const { selectedDay, open, setOpen } = useStore();
 
-  const [open, setOpen] = useState(false);
   const [contentKey, setContentKey] = useState("list");
 
   // List
@@ -210,13 +209,6 @@ export default function Main() {
               </div>
             </div>
           ))}
-        <button
-          onClick={() => setOpen(true)}
-          className="fixed button w-14 !h-14 bottom-20 right-4 bg-accent dark:bg-dark-accent text-white z-10"
-          aria-label="Добавить"
-        >
-          <PlusIcon />
-        </button>
       </section>
     </>
   );

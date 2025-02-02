@@ -9,7 +9,7 @@ type ListProps = {
   showFavorites: boolean;
   setContentKey: React.Dispatch<React.SetStateAction<string>>;
   setSelectedItem: React.Dispatch<React.SetStateAction<Item | undefined>>;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: (value: boolean) => void;
 };
 
 export default function List({
