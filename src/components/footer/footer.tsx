@@ -9,7 +9,7 @@ export default function Footer() {
 
   return (
     <footer className="fixed bottom-0 inset-x-0 h-16 bg-panel dark:bg-dark-panel select-none">
-      <div className="container h-full flex items-center justify-around gap-4 px-4">
+      <div className="container h-full flex items-center justify-around gap-4 pl-4 pr-7">
         {[1, 2].map((day) => (
           <button
             key={day}
@@ -30,7 +30,7 @@ export default function Footer() {
         ))}
         <button
           onClick={() => setOpen(true)}
-          className="button w-12 aspect-square bg-accent dark:bg-dark-accent text-white z-10"
+          className="ml-5 button w-12 aspect-square bg-accent dark:bg-dark-accent text-white z-10"
           aria-label="Добавить"
         >
           <PlusIcon />
