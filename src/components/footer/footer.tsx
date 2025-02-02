@@ -30,7 +30,7 @@ export default function Footer() {
         ))}
         <button
           // onClick={() => setOpen(true)}
-          className="button w-11 bg-accent dark:bg-dark-accent text-white z-10"
+          className="button w-11 aspect-square bg-accent dark:bg-dark-accent text-white z-10"
           aria-label="Добавить"
         >
           <PlusIcon />
