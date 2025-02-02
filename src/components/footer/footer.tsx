@@ -1,4 +1,5 @@
 import { useSelectedDayStore } from "../../store/selectedDayStore";
+import { PlusIcon } from "../ui/icons";
 
 export default function Footer() {
   const today = new Date().getDate();
@@ -27,6 +28,13 @@ export default function Footer() {
               : "Сегодня"}
           </button>
         ))}
+        <button
+          // onClick={() => setOpen(true)}
+          className="button w-11 bg-accent dark:bg-dark-accent text-white z-10"
+          aria-label="Добавить"
+        >
+          <PlusIcon />
+        </button>
       </div>
     </footer>
   );
