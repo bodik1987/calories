@@ -9,7 +9,7 @@ import AddWeight from "./add-weight";
 import Product from "./product";
 import Modal from "../ui/modal";
 import EditSelectedProduct from "./edit-selected-product";
-import { NoDataIcon, PlusIcon } from "../ui/icons";
+import { NoDataIcon } from "../ui/icons";
 import { useStore } from "../../store/selectedDayStore";
 
 export default function Main() {
