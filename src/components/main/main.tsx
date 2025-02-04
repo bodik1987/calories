@@ -162,12 +162,6 @@ export default function Main() {
 
   return (
     <>
-      {/* <Modal
-        open={open}
-        handleClose={handleClose}
-        modalContent={modalContent}
-        contentKey={contentKey}
-      /> */}
       <VaulDrawer
         open={open}
         onClose={handleClose}
