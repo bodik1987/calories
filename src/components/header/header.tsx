@@ -5,11 +5,11 @@ import { MeasurementsIcon, NetworkOffIcon, NetworkOnIcon } from "../ui/icons";
 import Totals from "./totals";
 import Sync from "./sync/sync";
 import UserMeasurements from "./user-measurements";
-import Modal from "../ui/modal";
 import { useAppStore } from "../../store/useAppStore";
 import Alert from "../ui/alert";
 import ThemeToggle from "../ui/theme-toggle";
 import { useStore } from "../../store/selectedDayStore";
+import VaulDrawer from "../ui/vaul";
 
 export default function Header() {
   const { day, setDay, userMeasurements, setUserMeasurements } = useAppStore();
@@ -20,7 +20,7 @@ export default function Header() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalContentKey, setModalContentKey] = useState("userMeasurements");
 
-  const handleCloseModal = () => {
+  const handleClose = () => {
     setModalOpen(false);
     setModalContentKey("userMeasurements");
   };
@@ -63,9 +63,9 @@ export default function Header() {
         onCancel={() => setShowAlert(false)}
         confirmButtonText="Очистить"
       />
-      <Modal
+      <VaulDrawer
         open={isModalOpen}
-        handleClose={handleCloseModal}
+        onClose={handleClose}
         modalContent={modalContent}
         contentKey={modalContentKey}
       />
