@@ -7,10 +7,10 @@ import { SEEDS } from "../../seeds";
 import List from "./list";
 import AddWeight from "./add-weight";
 import Product from "./product";
-import Modal from "../ui/modal";
 import EditSelectedProduct from "./edit-selected-product";
 import { NoDataIcon } from "../ui/icons";
 import { useStore } from "../../store/selectedDayStore";
+import VaulDrawer from "../ui/vaul";
 
 export default function Main() {
   const { day, setDay } = useAppStore();
@@ -162,9 +162,15 @@ export default function Main() {
 
   return (
     <>
-      <Modal
+      {/* <Modal
         open={open}
         handleClose={handleClose}
+        modalContent={modalContent}
+        contentKey={contentKey}
+      /> */}
+      <VaulDrawer
+        open={open}
+        onClose={handleClose}
         modalContent={modalContent}
         contentKey={contentKey}
       />
