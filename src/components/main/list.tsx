@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Item } from "../../types";
 import { BackspaceIcon, DownIcon, FavoriteIcon, PlusIcon } from "../ui/icons";
 
@@ -23,15 +23,9 @@ export default function List({
 }: ListProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [maxHeight, setMaxHeight] = useState(true);
-
   return (
     <div className="p-3 pb-4">
-      <div
-        className={`${
-          maxHeight ? "max-h-[75vh]" : "max-h-[391px]"
-        } rounded-xl overflow-y-auto`}
-      >
+      <div className="max-h-[80vh] rounded-xl overflow-y-auto">
         {items
           .filter((item) =>
             item.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -68,7 +62,6 @@ export default function List({
             spellCheck="false"
             ref={inputRef}
             value={searchQuery}
-            onFocus={() => setMaxHeight(false)}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Поиск..."
             className="pl-5 pr-12"
