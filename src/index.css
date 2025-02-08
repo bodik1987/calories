@@ -20,7 +20,7 @@
   --color-accent: #014c76;
   /* --color-accent: #79517f; */
   --color-dark-accent: #114971;
-  /* --color-panel: #f7eef7;  */
+  /* --color-panel: #EFF1F5;  */
   --color-panel: #eff1f5;
   --color-dark-panel: #161616;
   --font-myFont: "myFont", sans-serif;
@@ -50,7 +50,7 @@ button {
 }
 
 input {
-  @apply rounded-full w-full px-5 h-12 text-xl outline-none  bg-[#D2D7E7] dark:bg-[#5C5C5C];
+  @apply rounded-full w-full px-5 h-12 text-xl outline-none bg-white dark:bg-[#5C5C5C];
 }
 
 .input-number {
