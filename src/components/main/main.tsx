@@ -170,7 +170,7 @@ export default function Main() {
       />
       <section
         key={JSON.stringify(day)}
-        className="container pb-[92px] w-full overflow-y-auto relative"
+        className="container pt-2 pb-[92px] w-full overflow-y-auto relative"
       >
         {day.productsToEat.filter((el) => el.day === selectedDay).length ===
           0 && (
