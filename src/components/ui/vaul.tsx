@@ -19,7 +19,7 @@ export default function VaulDrawer({
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40 z-30" />
 
-        <Drawer.Content className="!h-fit container bg-panel/80 backdrop-blur-md dark:bg-dark-panel text-[#1B0C1B] dark:text-neutral-50 font-myFont flex flex-col justify-end rounded-t-[10px] mt-24 fixed z-40 bottom-0 left-0 right-0 outline-none overflow-hidden">
+        <Drawer.Content className="!h-fit container bg-panel dark:bg-dark-panel text-[#1B0C1B] dark:text-neutral-50 font-myFont flex flex-col justify-end rounded-t-[10px] mt-24 fixed z-40 bottom-0 left-0 right-0 outline-none overflow-hidden">
           <div className="flex justify-center cursor-grab active:cursor-grabbing rounded-t-2xl pt-3 touch-none">
             <div className="h-1.5 w-12 rounded-full bg-accent/20 dark:bg-[#5C5C5C]" />
           </div>
