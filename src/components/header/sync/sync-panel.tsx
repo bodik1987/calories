@@ -7,6 +7,7 @@ import {
 import { IDay, Item, IUser } from "../../../types";
 import { SEEDS } from "../../../seeds";
 import useLocalStorage from "../../../hooks/useLocalStorage";
+import { useAppStore } from "../../../store/useAppStore";
 
 type Props = {
   user: IUser;
@@ -22,7 +23,7 @@ export default function SyncPanel({
   setError,
 }: Props) {
   const [items, setItems] = useLocalStorage<Item[]>("items", SEEDS);
-  const [day, setDay] = useLocalStorage<IDay>("day", { productsToEat: [] });
+  const { day, setDay } = useAppStore();
 
   const deleteLocalUser = () => {
     localStorage.clear();
@@ -71,6 +72,7 @@ export default function SyncPanel({
                 }
                 if (result.day) {
                   setDay(result.day);
+                  console.log(result.day);
                 }
                 setSuccess("Загружено");
                 window.location.reload();
