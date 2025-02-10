@@ -15,7 +15,7 @@ export default function Footer() {
             key={day}
             onClick={() => setSelectedDay(day)}
             aria-label="День"
-            className={`w-full button ${
+            className={`w-full button !h-11 ${
               selectedDay === day && "bg-accent dark:bg-dark-accent text-white"
             } text-accent dark:text-neutral-50`}
           >
