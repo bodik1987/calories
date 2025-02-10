@@ -78,7 +78,7 @@ h2 {
 }
 
 .list {
-  @apply h-14 px-4 flex items-center gap-4 text-lg md:text-base bg-white dark:bg-[#282828] dark:border-dark-panel border-b border-panel md:border-transparent last:border-b-0 select-none;
+  @apply h-14 px-4 flex items-center gap-4 text-lg sm:text-base bg-white dark:bg-[#282828] dark:border-dark-panel border-b border-panel md:border-transparent last:border-b-0 select-none;
 }
 
 .overlay {
