@@ -4,7 +4,7 @@ import "./index.css";
 
 // Функция для обновления метатега theme-color
 const updateThemeColor = (isDarkMode: boolean) => {
-  const themeColor = isDarkMode ? "#161616" : "#EFF1F5"; // Цвет для тёмной и светлой темы
+  const themeColor = isDarkMode ? "#161616" : "#F3F5F7"; // Цвет для тёмной и светлой темы
   const metaThemeColor = document.querySelector('meta[name="theme-color"]');
   if (metaThemeColor) {
     metaThemeColor.setAttribute("content", themeColor);
