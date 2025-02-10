@@ -70,9 +70,9 @@ export default function Header() {
         contentKey={modalContentKey}
       />
 
-      <header className="sticky z-10 top-0 inset-x-0 bg-panel dark:bg-dark-panel px-4 py-3 select-none">
+      <header className="sticky z-10 top-0 inset-x-0 bg-panel/80 backdrop-blur-sm dark:bg-dark-panel px-4 py-3 select-none">
         <div className="container">
-          <div className="flex items-center gap-3 text-accent">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => handleButtonClick("userMeasurements")}
               className="button rounded-button"

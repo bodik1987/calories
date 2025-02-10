@@ -8,7 +8,7 @@ export default function Footer() {
   const isTodayOdd = today % 2 !== 0;
 
   return (
-    <footer className="fixed bottom-0 inset-x-0 pt-3 pb-8 bg-panel dark:bg-dark-panel select-none">
+    <footer className="fixed bottom-0 inset-x-0 pt-3 pb-8 bg-panel/80 backdrop-blur-sm dark:bg-dark-panel select-none">
       <div className="container h-full flex items-center justify-around gap-4 pl-4 pr-7">
         {[1, 2].map((day) => (
           <button
