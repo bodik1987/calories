@@ -11,6 +11,7 @@ import EditSelectedProduct from "./edit-selected-product";
 import { NoDataIcon } from "../ui/icons";
 import { useStore } from "../../store/selectedDayStore";
 import VaulDrawer from "../ui/vaul";
+import Alert from "../ui/alert";
 
 export default function Main() {
   const { day, setDay } = useAppStore();
@@ -19,6 +20,7 @@ export default function Main() {
   const [contentKey, setContentKey] = useState("list");
 
   // List
+  const [showAlert, setShowAlert] = useState(false);
   const [items, setItems] = useLocalStorage<Item[]>("items", SEEDS);
   const [searchQuery, setSearchQuery] = useState("");
   const [showFavorites, setShowFavorites] = useState(false);
@@ -153,8 +155,11 @@ export default function Main() {
         selectedProduct={selectedProduct}
         selectedProductWeight={selectedProductWeight}
         setSelectedProductWeight={setSelectedProductWeight}
-        handleDeleteSelectedProduct={handleDeleteSelectedProduct}
         handleUpdateSelectedProduct={handleUpdateSelectedProduct}
+        setShowAlert={() => {
+          setOpen(false);
+          setShowAlert(true);
+        }}
       />
     ),
     addNewProduct: <Product onAddItem={handleAddItem} />,
@@ -166,6 +171,15 @@ export default function Main() {
 
   return (
     <>
+      <Alert
+        open={showAlert}
+        handleClose={() => setShowAlert(false)}
+        alertText="Удалить выбранный продукт?"
+        confirmButtonText="Удалить"
+        onConfirm={() => handleDeleteSelectedProduct(selectedProduct!.id)}
+        onCancel={() => setShowAlert(false)}
+      />
+
       <VaulDrawer
         open={open}
         onClose={handleClose}

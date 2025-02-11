@@ -1,26 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ISelectedProduct } from "../../types";
 import { DeleteIcon } from "../ui/icons";
-import Alert from "../ui/alert";
 import { calculateCalories } from "../../utils/calculateCalories";
 
 type EditSelectedProductProps = {
   selectedProduct: ISelectedProduct | null;
   selectedProductWeight: string;
   setSelectedProductWeight: React.Dispatch<React.SetStateAction<string>>;
-  handleDeleteSelectedProduct: (id: string) => void;
   handleUpdateSelectedProduct: () => void;
+  setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function EditSelectedProduct({
   selectedProduct,
   selectedProductWeight,
   setSelectedProductWeight,
-  handleDeleteSelectedProduct,
   handleUpdateSelectedProduct,
+  setShowAlert,
 }: EditSelectedProductProps) {
-  const [showAlert, setShowAlert] = useState(false);
-
   // Установка веса продукта при изменении выбранного продукта
   useEffect(() => {
     if (selectedProduct) {
@@ -30,15 +27,6 @@ export default function EditSelectedProduct({
 
   return (
     <>
-      <Alert
-        open={showAlert}
-        handleClose={() => setShowAlert(false)}
-        alertText="Удалить выбранный продукт?"
-        confirmButtonText="Удалить"
-        onConfirm={() => handleDeleteSelectedProduct(selectedProduct!.id)}
-        onCancel={() => setShowAlert(false)}
-      />
-
       <div className="p-4">
         <h2>{selectedProduct?.product.title}</h2>
         <p className="mt-1 text-base text-neutral-700 dark:text-[#5C5C5C]">

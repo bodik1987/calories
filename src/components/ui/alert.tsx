@@ -54,7 +54,7 @@ export default function Alert({
             damping: 10,
             stiffness: 100,
           }}
-          className="overlay flex items-center justify-center"
+          className="fixed inset-0 bg-black/50 dark:bg-black/80 z-50 select-none flex items-center justify-center"
           onClick={handleClose}
         >
           <motion.div
@@ -70,11 +70,11 @@ export default function Alert({
               stiffness: 100,
             }}
             onClick={(e) => e.stopPropagation()}
-            className="max-w-xs p-6 bg-panel dark:bg-dark-panel text-accent dark:text-neutral-50 rounded-4xl z-30"
+            className="max-w-xs p-6 bg-panel dark:bg-dark-panel text-accent dark:text-neutral-50 rounded-4xl z-[51]"
           >
             <h3 className="p-1 text-xl">{alertText}</h3>
 
-            <div className="mt-6 flex gap-3 ">
+            <div className="mt-6 flex gap-3">
               <button
                 type="button"
                 className="button w-full"
