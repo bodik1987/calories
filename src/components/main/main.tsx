@@ -160,6 +160,10 @@ export default function Main() {
     addNewProduct: <Product onAddItem={handleAddItem} />,
   };
 
+  const calculateCalories = (weight: string, calories: string) => {
+    return ((Number(weight) / 100) * Number(calories)).toFixed(0);
+  };
+
   return (
     <>
       <VaulDrawer
@@ -200,11 +204,14 @@ export default function Main() {
                 <span className="w-12 text-right whitespace-nowrap opacity-50">
                   {item.weight} г.
                 </span>
-                <span className="w-12 text-right whitespace-nowrap">
-                  {(
-                    (Number(item.weight) / 100) *
-                    Number(item.product.calories)
-                  ).toFixed(0)}
+                <span
+                  className={`${
+                    Number(
+                      calculateCalories(item.weight, item.product.calories)
+                    ) > 199 && "text-warning"
+                  } w-12 text-right whitespace-nowrap`}
+                >
+                  {calculateCalories(item.weight, item.product.calories)}
                 </span>
               </div>
             </div>

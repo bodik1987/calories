@@ -49,7 +49,11 @@ export default function List({
                 {item.isFavorite && <FavoriteIcon active />}
                 {item.title}
               </p>
-              <span>{item.calories}</span>
+              <span
+                className={`${Number(item.calories) > 199 && "text-warning"}`}
+              >
+                {item.calories}
+              </span>
             </div>
           ))}
       </div>

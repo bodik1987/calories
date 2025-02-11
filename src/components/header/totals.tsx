@@ -42,7 +42,7 @@ export default function Totals({
 
   // Форматирование текста в зависимости от оставшихся калорий
   const caloriesText = remainingCalories > 0 ? "Осталось " : "Превышено ";
-  const caloriesClassName = remainingCalories < 0 ? "text-red-500" : "";
+  const caloriesClassName = remainingCalories < 0 && "text-warning";
 
   return (
     <div className="mt-3 flex justify-between items-center dark:text-neutral-100">
