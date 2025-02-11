@@ -1,5 +1,5 @@
 import { useStore } from "../../store/selectedDayStore";
-import { ChewronUpIcon, PlusIcon } from "../ui/icons";
+import { ChewronUpIcon } from "../ui/icons";
 
 export default function Footer() {
   const today = new Date().getDate();
