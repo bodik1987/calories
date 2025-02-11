@@ -1,5 +1,5 @@
 import { useStore } from "../../store/selectedDayStore";
-import { PlusIcon } from "../ui/icons";
+import { ChewronUpIcon, PlusIcon } from "../ui/icons";
 
 export default function Footer() {
   const today = new Date().getDate();
@@ -33,7 +33,7 @@ export default function Footer() {
           className="ml-5 button w-12 aspect-square bg-accent dark:bg-dark-accent text-white z-10"
           aria-label="Добавить"
         >
-          <PlusIcon />
+          <ChewronUpIcon />
         </button>
       </div>
     </footer>
