@@ -97,6 +97,6 @@ export default function Alert({
         </motion.div>
       )}
     </AnimatePresence>,
-    alertPortal
+    alertPortal!
   );
 }
