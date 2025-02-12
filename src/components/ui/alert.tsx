@@ -42,27 +42,9 @@ export default function Alert({
 
   const alertPortal = document.getElementById("alert-portal");
 
-  if (!open || !alertPortal) {
-    return null;
-  }
-
   return createPortal(
     <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{
-          duration: 0.05,
-          ease: "easeInOut",
-          type: "spring",
-          mass: 0.2,
-          damping: 10,
-          stiffness: 100,
-        }}
-        className="fixed inset-0 bg-black/50 dark:bg-black/80 z-50 select-none flex items-center justify-center"
-        onClick={handleClose}
-      >
+      {open && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -75,29 +57,45 @@ export default function Alert({
             damping: 10,
             stiffness: 100,
           }}
-          onClick={(e) => e.stopPropagation()}
-          className="max-w-xs p-6 bg-panel dark:bg-dark-panel dark:text-neutral-50 rounded-4xl z-50"
+          className="fixed inset-0 bg-black/50 dark:bg-black/80 z-50 select-none flex items-center justify-center"
+          onClick={handleClose}
         >
-          <h3 className="p-1 text-lg">{alertText}</h3>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: 0.05,
+              ease: "easeInOut",
+              type: "spring",
+              mass: 0.2,
+              damping: 10,
+              stiffness: 100,
+            }}
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-xs p-6 bg-panel dark:bg-dark-panel dark:text-neutral-50 rounded-4xl z-50"
+          >
+            <h3 className="p-1 text-lg">{alertText}</h3>
 
-          <div className="mt-6 flex gap-3">
-            <button
-              type="button"
-              className="button w-full dark:text-neutral-400"
-              onClick={handleCancel}
-            >
-              Отмена
-            </button>
-            <button
-              type="button"
-              className="button w-full text-accent dark:text-neutral-50 bg-white/50 dark:bg-dark-accent/50"
-              onClick={handleConfirm}
-            >
-              {confirmButtonText}
-            </button>
-          </div>
+            <div className="mt-6 flex gap-3">
+              <button
+                type="button"
+                className="button w-full dark:text-neutral-400"
+                onClick={handleCancel}
+              >
+                Отмена
+              </button>
+              <button
+                type="button"
+                className="button w-full text-accent dark:text-neutral-50 bg-white/50 dark:bg-dark-accent/50"
+                onClick={handleConfirm}
+              >
+                {confirmButtonText}
+              </button>
+            </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
     </AnimatePresence>,
     alertPortal
   );
