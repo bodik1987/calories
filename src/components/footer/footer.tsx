@@ -3,7 +3,7 @@ import { ChewronUpIcon } from "../ui/icons";
 
 export default function Footer() {
   const today = new Date().getDate();
-  const { selectedDay, setSelectedDay, setOpen } = useStore();
+  const { selectedDay, setSelectedDay, setOpen, setContentKey } = useStore();
 
   const isTodayOdd = today % 2 !== 0;
 
@@ -29,7 +29,10 @@ export default function Footer() {
           </button>
         ))}
         <button
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            setOpen(true);
+            setContentKey("list");
+          }}
           className="ml-5 button w-12 aspect-square bg-accent dark:bg-dark-accent text-white z-10"
           aria-label="Добавить"
         >

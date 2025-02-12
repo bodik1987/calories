@@ -7,7 +7,7 @@ type AddWeightProps = {
   selectedItem: Item | undefined;
   productWeight: string;
   setProductWeight: React.Dispatch<React.SetStateAction<string>>;
-  setContentKey: React.Dispatch<React.SetStateAction<string>>;
+  setContentKey: (value: string) => void;
 };
 
 export default function AddWeight({

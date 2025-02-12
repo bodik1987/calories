@@ -7,7 +7,7 @@ type ListProps = {
   searchQuery: string;
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   showFavorites: boolean;
-  setContentKey: React.Dispatch<React.SetStateAction<string>>;
+  setContentKey: (value: string) => void;
   setSelectedItem: React.Dispatch<React.SetStateAction<Item | undefined>>;
   setOpen: (value: boolean) => void;
 };

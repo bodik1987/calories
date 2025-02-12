@@ -8,7 +8,7 @@ type EditSelectedProductProps = {
   selectedProductWeight: string;
   setSelectedProductWeight: React.Dispatch<React.SetStateAction<string>>;
   handleUpdateSelectedProduct: () => void;
-  setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowAlert: () => void;
 };
 
 export default function EditSelectedProduct({
@@ -47,7 +47,7 @@ export default function EditSelectedProduct({
 
         <div className="mt-4 flex gap-3">
           <button
-            onClick={() => setShowAlert(true)}
+            onClick={setShowAlert}
             className="button rounded-button"
             aria-label="Удалить продукт"
           >

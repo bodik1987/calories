@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 
 type AlertProps = {
   open: boolean;
@@ -39,7 +40,9 @@ export default function Alert({
     };
   }, [open]);
 
-  return (
+  if (typeof window === "undefined") return null;
+
+  return createPortal(
     <AnimatePresence>
       {open && (
         <motion.div
@@ -70,7 +73,7 @@ export default function Alert({
               stiffness: 100,
             }}
             onClick={(e) => e.stopPropagation()}
-            className="max-w-xs p-6 bg-panel dark:bg-dark-panel text-accent dark:text-neutral-50 rounded-4xl z-[51]"
+            className="max-w-xs p-6 bg-panel dark:bg-dark-panel text-accent dark:text-neutral-50 rounded-4xl z-50"
           >
             <h3 className="p-1 text-xl">{alertText}</h3>
 
@@ -93,6 +96,7 @@ export default function Alert({
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

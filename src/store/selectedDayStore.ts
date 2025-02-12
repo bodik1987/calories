@@ -4,7 +4,10 @@ type Store = {
   selectedDay: number;
   setSelectedDay: (day: number) => void;
   open: boolean;
+  // contentKey: "list";
+  contentKey: string;
   setOpen: (value: boolean) => void;
+  setContentKey: (value: string) => void;
 };
 
 // Функция для получения значения из localStorage с указанием значения по умолчанию
@@ -21,5 +24,7 @@ export const useStore = create<Store>((set) => ({
     set(() => ({ selectedDay: day })); // Обновление состояния
   },
   open: false,
+  contentKey: "",
   setOpen: (value) => set({ open: value }),
+  setContentKey: (value) => set({ contentKey: value }),
 }));

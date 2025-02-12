@@ -15,12 +15,11 @@ import Alert from "../ui/alert";
 
 export default function Main() {
   const { day, setDay } = useAppStore();
-  const { selectedDay, open, setOpen } = useStore();
-
-  const [contentKey, setContentKey] = useState("list");
+  const { selectedDay, open, setOpen, contentKey, setContentKey } = useStore();
 
   // List
   const [showAlert, setShowAlert] = useState(false);
+  const [showDeleteItemAlert, setShowDeleteItemAlert] = useState(false);
   const [items, setItems] = useLocalStorage<Item[]>("items", SEEDS);
   const [searchQuery, setSearchQuery] = useState("");
   const [showFavorites, setShowFavorites] = useState(false);
@@ -30,7 +29,6 @@ export default function Main() {
 
   const handleClose = () => {
     setOpen(false);
-    setContentKey("list");
     setSearchQuery("");
   };
 
@@ -93,6 +91,12 @@ export default function Main() {
   );
 
   // Edit selected product
+
+  const handleSetShowAlert = () => {
+    setOpen(false);
+    setShowDeleteItemAlert(true);
+  };
+
   const handleUpdateSelectedProduct = useCallback(() => {
     if (selectedProduct) {
       setDay({
@@ -116,7 +120,6 @@ export default function Main() {
         productsToEat: day.productsToEat.filter((item) => item.id !== id),
       });
 
-      handleClose();
       setSelectedProduct(null);
     },
     [setDay, day]
@@ -147,7 +150,7 @@ export default function Main() {
       <Product
         item={selectedItem}
         onUpdateItem={handleUpdateItem}
-        onDeleteItem={handleDeleteItem}
+        setShowAlert={handleSetShowAlert}
       />
     ),
     editSelectedProduct: (
@@ -156,10 +159,7 @@ export default function Main() {
         selectedProductWeight={selectedProductWeight}
         setSelectedProductWeight={setSelectedProductWeight}
         handleUpdateSelectedProduct={handleUpdateSelectedProduct}
-        setShowAlert={() => {
-          setOpen(false);
-          setShowAlert(true);
-        }}
+        setShowAlert={handleSetShowAlert}
       />
     ),
     addNewProduct: <Product onAddItem={handleAddItem} />,
@@ -177,6 +177,15 @@ export default function Main() {
         alertText="Удалить выбранный продукт?"
         confirmButtonText="Удалить"
         onConfirm={() => handleDeleteSelectedProduct(selectedProduct!.id)}
+        onCancel={() => setShowAlert(false)}
+      />
+
+      <Alert
+        open={showDeleteItemAlert}
+        handleClose={() => setShowDeleteItemAlert(false)}
+        alertText="Удалить из списка продуктов?"
+        confirmButtonText="Удалить"
+        onConfirm={() => handleDeleteItem(selectedItem!.id)}
         onCancel={() => setShowAlert(false)}
       />
 
