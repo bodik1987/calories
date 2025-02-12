@@ -1,7 +1,7 @@
 import { ReactNode, useCallback, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useDataStore, useUIStore } from "../../store/useStore";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { useAppStore } from "../../store/useAppStore";
 import { ISelectedProduct, Item } from "../../types";
 import { SEEDS } from "../../seeds";
 import List from "./list";
@@ -9,13 +9,14 @@ import AddWeight from "./add-weight";
 import Product from "./product";
 import EditSelectedProduct from "./edit-selected-product";
 import { NoDataIcon } from "../ui/icons";
-import { useStore } from "../../store/selectedDayStore";
-import VaulDrawer from "../ui/vaul";
+import BottomSheet from "../ui/bottom-sheet";
 import Alert from "../ui/alert";
+import { calculateCalories } from "../../utils/calculateCalories";
 
 export default function Main() {
-  const { day, setDay } = useAppStore();
-  const { selectedDay, open, setOpen, contentKey, setContentKey } = useStore();
+  const { day, setDay, selectedDay } = useDataStore();
+  const { openBottomSheet, setOpenBottomSheet, contentKey, setContentKey } =
+    useUIStore();
 
   // List
   const [showAlert, setShowAlert] = useState(false);
@@ -28,7 +29,7 @@ export default function Main() {
     useState<ISelectedProduct | null>(null);
 
   const handleClose = () => {
-    setOpen(false);
+    setOpenBottomSheet(false);
     setSearchQuery("");
   };
 
@@ -63,6 +64,11 @@ export default function Main() {
   };
 
   // Edit item
+  const handleSetShowAlert = () => {
+    setOpenBottomSheet(false);
+    setShowAlert(true);
+  };
+
   const handleUpdateItem = useCallback(
     (updatedItem: Item) => {
       setItems((prev) =>
@@ -91,9 +97,8 @@ export default function Main() {
   );
 
   // Edit selected product
-
-  const handleSetShowAlert = () => {
-    setOpen(false);
+  const handleSetShowDeleteItemAlert = () => {
+    setOpenBottomSheet(false);
     setShowDeleteItemAlert(true);
   };
 
@@ -134,7 +139,7 @@ export default function Main() {
         showFavorites={showFavorites}
         setContentKey={setContentKey}
         setSelectedItem={setSelectedItem}
-        setOpen={setOpen}
+        setOpenBottomSheet={setOpenBottomSheet}
       />
     ),
     addWeight: (
@@ -150,7 +155,7 @@ export default function Main() {
       <Product
         item={selectedItem}
         onUpdateItem={handleUpdateItem}
-        setShowAlert={handleSetShowAlert}
+        setShowAlert={handleSetShowDeleteItemAlert}
       />
     ),
     editSelectedProduct: (
@@ -163,10 +168,6 @@ export default function Main() {
       />
     ),
     addNewProduct: <Product onAddItem={handleAddItem} />,
-  };
-
-  const calculateCalories = (weight: string, calories: string) => {
-    return ((Number(weight) / 100) * Number(calories)).toFixed(0);
   };
 
   return (
@@ -186,11 +187,11 @@ export default function Main() {
         alertText="Удалить из списка продуктов?"
         confirmButtonText="Удалить"
         onConfirm={() => handleDeleteItem(selectedItem!.id)}
-        onCancel={() => setShowAlert(false)}
+        onCancel={() => setShowDeleteItemAlert(false)}
       />
 
-      <VaulDrawer
-        open={open}
+      <BottomSheet
+        open={openBottomSheet}
         onClose={handleClose}
         modalContent={modalContent}
         contentKey={contentKey}
@@ -217,7 +218,7 @@ export default function Main() {
               onClick={() => {
                 setContentKey("editSelectedProduct");
                 setSelectedProduct(item);
-                setOpen(true);
+                setOpenBottomSheet(true);
               }}
               className="list"
             >
@@ -227,13 +228,7 @@ export default function Main() {
                 <span className="w-12 text-right whitespace-nowrap opacity-50">
                   {item.weight} г.
                 </span>
-                <span
-                  className={`${
-                    Number(
-                      calculateCalories(item.weight, item.product.calories)
-                    ) > 199 && "text-warning"
-                  } w-12 text-right whitespace-nowrap`}
-                >
+                <span className="w-12 text-right whitespace-nowrap">
                   {calculateCalories(item.weight, item.product.calories)}
                 </span>
               </div>

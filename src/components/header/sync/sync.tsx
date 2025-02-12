@@ -1,6 +1,6 @@
 import { useState } from "react";
 import UserForm from "./user-form";
-import SyncPanel from "./sync-panel";
+import SyncCore from "./sync-core";
 import { IUser } from "../../../types";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 
@@ -26,7 +26,7 @@ export default function Sync() {
       </div>
 
       {user ? (
-        <SyncPanel
+        <SyncCore
           user={user}
           setLoading={setLoading}
           setSuccess={setSuccess}

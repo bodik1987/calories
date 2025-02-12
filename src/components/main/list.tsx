@@ -9,7 +9,7 @@ type ListProps = {
   showFavorites: boolean;
   setContentKey: (value: string) => void;
   setSelectedItem: React.Dispatch<React.SetStateAction<Item | undefined>>;
-  setOpen: (value: boolean) => void;
+  setOpenBottomSheet: (value: boolean) => void;
 };
 
 export default function List({
@@ -19,7 +19,7 @@ export default function List({
   setSearchQuery,
   setContentKey,
   setSelectedItem,
-  setOpen,
+  setOpenBottomSheet,
 }: ListProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -49,11 +49,7 @@ export default function List({
                 {item.isFavorite && <FavoriteIcon active />}
                 {item.title}
               </p>
-              <span
-                className={`${Number(item.calories) > 199 && "text-warning"}`}
-              >
-                {item.calories}
-              </span>
+              <span>{item.calories}</span>
             </div>
           ))}
       </div>
@@ -79,7 +75,7 @@ export default function List({
                   inputRef.current.focus();
                 }
               } else {
-                setOpen(false);
+                setOpenBottomSheet(false);
               }
             }}
             className="absolute right-2 top-1/2 -translate-y-1/2 text-accent dark:text-neutral-50 w-12 h-12 rounded-full flex items-center justify-center"

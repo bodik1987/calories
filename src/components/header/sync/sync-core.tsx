@@ -7,7 +7,7 @@ import {
 import { IDay, Item, IUser } from "../../../types";
 import { SEEDS } from "../../../seeds";
 import useLocalStorage from "../../../hooks/useLocalStorage";
-import { useAppStore } from "../../../store/useAppStore";
+import { useDataStore } from "../../../store/useStore";
 
 type Props = {
   user: IUser;
@@ -16,14 +16,14 @@ type Props = {
   setError: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export default function SyncPanel({
+export default function SyncCore({
   user,
   setLoading,
   setSuccess,
   setError,
 }: Props) {
   const [items, setItems] = useLocalStorage<Item[]>("items", SEEDS);
-  const { day, setDay } = useAppStore();
+  const { day, setDay } = useDataStore();
 
   const deleteLocalUser = () => {
     localStorage.clear();

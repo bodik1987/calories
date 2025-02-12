@@ -8,7 +8,7 @@ type VaulProps = {
   contentKey: string;
 };
 
-export default function VaulDrawer({
+export default function BottomSheet({
   open,
   onClose,
   modalContent,

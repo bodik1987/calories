@@ -1,11 +1,12 @@
-import { useStore } from "../../store/selectedDayStore";
+import { useDataStore, useUIStore } from "../../store/useStore";
 import { ChewronUpIcon } from "../ui/icons";
 
 export default function Footer() {
   const today = new Date().getDate();
-  const { selectedDay, setSelectedDay, setOpen, setContentKey } = useStore();
-
   const isTodayOdd = today % 2 !== 0;
+
+  const { selectedDay, setSelectedDay } = useDataStore();
+  const { setOpenBottomSheet, setContentKey } = useUIStore();
 
   return (
     <footer className="fixed bottom-0 inset-x-0 pt-3 pb-8 bg-panel/70 backdrop-blur-md dark:bg-dark-panel select-none border-t border-accent/5">
@@ -30,7 +31,7 @@ export default function Footer() {
         ))}
         <button
           onClick={() => {
-            setOpen(true);
+            setOpenBottomSheet(true);
             setContentKey("list");
           }}
           className="ml-5 button w-12 aspect-square bg-accent dark:bg-dark-accent text-white z-10"

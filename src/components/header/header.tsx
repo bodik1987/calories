@@ -5,16 +5,16 @@ import { MeasurementsIcon, NetworkOffIcon, NetworkOnIcon } from "../ui/icons";
 import Totals from "./totals";
 import Sync from "./sync/sync";
 import UserMeasurements from "./user-measurements";
-import { useAppStore } from "../../store/useAppStore";
 import Alert from "../ui/alert";
 import ThemeToggle from "../ui/theme-toggle";
-import { useStore } from "../../store/selectedDayStore";
-import VaulDrawer from "../ui/vaul";
+import BottomSheet from "../ui/bottom-sheet";
+import { useDataStore } from "../../store/useStore";
 
 export default function Header() {
-  const { day, setDay, userMeasurements, setUserMeasurements } = useAppStore();
-  const { selectedDay } = useStore();
   const isOnline = useCheckConnection();
+
+  const { day, setDay, selectedDay, userMeasurements, setUserMeasurements } =
+    useDataStore();
 
   const [showAlert, setShowAlert] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -63,7 +63,7 @@ export default function Header() {
         onCancel={() => setShowAlert(false)}
         confirmButtonText="Очистить"
       />
-      <VaulDrawer
+      <BottomSheet
         open={isModalOpen}
         onClose={handleClose}
         modalContent={modalContent}
