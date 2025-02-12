@@ -46,6 +46,10 @@ input[type="search"]::-webkit-search-results-decoration {
   @apply font-myFont min-h-screen text-[#1b1b1b] dark:bg-[#282828] dark:text-neutral-50;
 }
 
+#alert-portal {
+  @apply font-myFont;
+}
+
 button {
   @apply cursor-pointer;
 }
