@@ -34,7 +34,7 @@ export default function Footer() {
             setOpenBottomSheet(true);
             setContentKey("list");
           }}
-          className="px-6 button bg-accent dark:bg-dark-accent text-white z-10"
+          className="px-6 button !h-11 bg-accent dark:bg-dark-accent text-white z-10"
           aria-label="Добавить"
         >
           <ChewronUpIcon />
