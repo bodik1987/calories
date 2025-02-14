@@ -9,7 +9,7 @@ type EditSelectedProductProps = {
   setSelectedProductWeight: React.Dispatch<React.SetStateAction<string>>;
   handleUpdateSelectedProduct: () => void;
   setShowAlert: () => void;
-  setShowAdditionalWeightAlert: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowAdditionalWeightAlert: () => void;
 };
 
 export default function EditSelectedProduct({
@@ -68,7 +68,7 @@ export default function EditSelectedProduct({
           />
 
           <button
-            onClick={() => setShowAdditionalWeightAlert(true)}
+            onClick={setShowAdditionalWeightAlert}
             className="button rounded-button !pl-1 !pr-2 !rounded-l-none"
             aria-label="Удалить продукт"
           >

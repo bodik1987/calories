@@ -106,6 +106,11 @@ export default function Main() {
     setShowDeleteItemAlert(true);
   };
 
+  const handleSetShowAdditionalWeightAlert = () => {
+    setOpenBottomSheet(false);
+    setShowAdditionalWeightAlert(true);
+  };
+
   const handleUpdateSelectedProduct = useCallback(() => {
     if (selectedProduct) {
       setDay({
@@ -190,7 +195,7 @@ export default function Main() {
         setSelectedProductWeight={setSelectedProductWeight}
         handleUpdateSelectedProduct={handleUpdateSelectedProduct}
         setShowAlert={handleSetShowAlert}
-        setShowAdditionalWeightAlert={setShowAdditionalWeightAlert}
+        setShowAdditionalWeightAlert={handleSetShowAdditionalWeightAlert}
       />
     ),
     addNewProduct: <Product onAddItem={handleAddItem} />,
