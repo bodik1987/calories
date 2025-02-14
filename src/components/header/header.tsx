@@ -63,6 +63,7 @@ export default function Header() {
         onCancel={() => setShowAlert(false)}
         confirmButtonText="Очистить"
       />
+
       <BottomSheet
         open={isModalOpen}
         onClose={handleClose}

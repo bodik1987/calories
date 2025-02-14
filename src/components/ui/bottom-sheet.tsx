@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { Drawer } from "vaul";
 
 type VaulProps = {
@@ -14,7 +15,8 @@ export default function BottomSheet({
   modalContent,
   contentKey,
 }: VaulProps) {
-  return (
+  const bottomSheetPortal = document.getElementById("bottom-sheet-portal");
+  return createPortal(
     <Drawer.Root open={open} onClose={onClose}>
       <Drawer.Overlay className="fixed inset-0 bg-black/40 z-20" />
 
@@ -26,6 +28,7 @@ export default function BottomSheet({
         </div>
         {modalContent[contentKey]}
       </Drawer.Content>
-    </Drawer.Root>
+    </Drawer.Root>,
+    bottomSheetPortal!
   );
 }

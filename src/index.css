@@ -47,6 +47,11 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 #alert-portal {
+  @apply z-10;
+}
+
+#alert-portal,
+#bottom-sheet-portal {
   @apply font-myFont;
 }
 

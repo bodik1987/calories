@@ -9,6 +9,7 @@ type AlertProps = {
   onConfirm: () => void;
   onCancel: () => void;
   confirmButtonText: string;
+  content?: React.ReactNode;
 };
 
 export default function Alert({
@@ -18,6 +19,7 @@ export default function Alert({
   onConfirm,
   onCancel,
   confirmButtonText,
+  content,
 }: AlertProps) {
   const handleConfirm = () => {
     onConfirm();
@@ -31,11 +33,16 @@ export default function Alert({
 
   useEffect(() => {
     if (open) {
+      if (document.body.style.pointerEvents === "none") {
+        document.body.style.pointerEvents = "";
+      }
+      document.body.removeAttribute("data-scroll-locked");
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
     return () => {
+      document.body.removeAttribute("data-scroll-locked");
       document.body.style.overflow = "";
     };
   }, [open]);
@@ -76,6 +83,8 @@ export default function Alert({
             className="max-w-xs p-6 bg-panel dark:bg-dark-panel dark:text-neutral-50 rounded-4xl z-50"
           >
             <h3 className="p-1 text-lg">{alertText}</h3>
+
+            {content && <>{content}</>}
 
             <div className="mt-6 flex gap-3">
               <button

@@ -20,7 +20,10 @@ export default function Main() {
 
   // List
   const [showAlert, setShowAlert] = useState(false);
+  const [showAdditionalWeightAlert, setShowAdditionalWeightAlert] =
+    useState(false);
   const [showDeleteItemAlert, setShowDeleteItemAlert] = useState(false);
+
   const [items, setItems] = useLocalStorage<Item[]>("items", SEEDS);
   const [searchQuery, setSearchQuery] = useState("");
   const [showFavorites, setShowFavorites] = useState(false);
@@ -35,6 +38,7 @@ export default function Main() {
 
   // AddWeight
   const [productWeight, setProductWeight] = useState("");
+  const [additionalWeight, setAdditionalWeight] = useState("");
   const [selectedProductWeight, setSelectedProductWeight] = useState(
     selectedProduct ? selectedProduct.weight : ""
   );
@@ -118,6 +122,27 @@ export default function Main() {
     }
   }, [selectedProduct, selectedProductWeight, setDay, day]);
 
+  const handleAddAdditionalWeightToSelectedProduct = useCallback(() => {
+    if (selectedProduct) {
+      setDay({
+        ...day,
+        productsToEat: day.productsToEat.map((item) =>
+          item.id === selectedProduct.id
+            ? {
+                ...item,
+                weight: (
+                  Number(selectedProductWeight) + Number(additionalWeight)
+                ).toString(),
+              }
+            : item
+        ),
+      });
+
+      setAdditionalWeight("");
+      handleClose(); // Закрытие модального окна
+    }
+  }, [selectedProduct, selectedProductWeight, additionalWeight, setDay, day]);
+
   const handleDeleteSelectedProduct = useCallback(
     (id: string) => {
       setDay({
@@ -165,6 +190,7 @@ export default function Main() {
         setSelectedProductWeight={setSelectedProductWeight}
         handleUpdateSelectedProduct={handleUpdateSelectedProduct}
         setShowAlert={handleSetShowAlert}
+        setShowAdditionalWeightAlert={setShowAdditionalWeightAlert}
       />
     ),
     addNewProduct: <Product onAddItem={handleAddItem} />,
@@ -190,12 +216,36 @@ export default function Main() {
         onCancel={() => setShowDeleteItemAlert(false)}
       />
 
+      <Alert
+        open={showAdditionalWeightAlert}
+        handleClose={() => setShowAdditionalWeightAlert(false)}
+        alertText="Добавить вес к имеющемуся?"
+        confirmButtonText="Добавить"
+        onConfirm={() => handleAddAdditionalWeightToSelectedProduct()}
+        onCancel={() => setShowAdditionalWeightAlert(false)}
+        content={
+          <div>
+            <input
+              value={additionalWeight}
+              onChange={(e) => setAdditionalWeight(e.target.value)}
+              placeholder="Вес"
+              type="number"
+              className="input-number mt-6 !w-full"
+              autoComplete="off"
+              spellCheck="false"
+              autoFocus
+            />
+          </div>
+        }
+      />
+
       <BottomSheet
         open={openBottomSheet}
         onClose={handleClose}
         modalContent={modalContent}
         contentKey={contentKey}
       />
+
       <section
         key={JSON.stringify(day)}
         className="container pt-2 pb-[92px] w-full overflow-y-auto relative"
