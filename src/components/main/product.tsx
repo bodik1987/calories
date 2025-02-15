@@ -48,9 +48,13 @@ export default function Product({
 
   return (
     <div className="p-4">
-      <div className="flex justify-between px-2">
+      <div className="flex items-center justify-between pl-1">
         <h2>{item ? "Изменить" : "Добавить продукт"}</h2>
-        <button type="button" onClick={toggleFavorite}>
+        <button
+          type="button"
+          onClick={toggleFavorite}
+          className="button rounded-button"
+        >
           <FavoriteIcon active={isFavorite} />
         </button>
       </div>
@@ -63,7 +67,7 @@ export default function Product({
             placeholder="Название*"
             autoComplete="off"
             spellCheck="false"
-            className="px-5 !rounded-r-none"
+            className="px-5 !rounded-r-none !h-14"
             autoFocus
           />
           <input
@@ -71,7 +75,7 @@ export default function Product({
             onChange={(e) => setCalories(e.target.value)}
             placeholder="ккал*"
             autoComplete="off"
-            className="input-number !rounded-l-none"
+            className="input-number !rounded-l-none !h-14"
             spellCheck="false"
             type="number"
           />
