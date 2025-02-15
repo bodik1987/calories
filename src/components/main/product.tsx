@@ -48,14 +48,14 @@ export default function Product({
 
   return (
     <div className="p-4">
-      <div className="flex justify-between">
+      <div className="flex justify-between px-2">
         <h2>{item ? "Изменить" : "Добавить продукт"}</h2>
         <button type="button" onClick={toggleFavorite}>
           <FavoriteIcon active={isFavorite} />
         </button>
       </div>
 
-      <form className="mt-4" onSubmit={handleSubmit}>
+      <form className="mt-5" onSubmit={handleSubmit}>
         <div className="mt-2 flex gap-1">
           <input
             value={title}
