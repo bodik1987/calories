@@ -3,6 +3,7 @@ export interface Item {
   title: string;
   calories: string;
   isFavorite?: boolean;
+  description?: string;
 }
 
 type ProductToEat = {

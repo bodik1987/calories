@@ -21,6 +21,7 @@ export default function Product({
   const [title, setTitle] = useState(item?.title || "");
   const [calories, setCalories] = useState(item?.calories || "");
   const [isFavorite, setIsFavorite] = useState(item?.isFavorite || false);
+  const [description, setDescription] = useState(item?.description || "");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ export default function Product({
       title,
       calories,
       isFavorite,
+      description,
     };
 
     item ? onUpdateItem?.(newItem) : onAddItem?.(newItem);
@@ -36,6 +38,7 @@ export default function Product({
     setTitle("");
     setCalories("");
     setIsFavorite(false);
+    setDescription("");
     onComplete?.();
   };
 
@@ -57,7 +60,7 @@ export default function Product({
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Название"
+            placeholder="Название*"
             autoComplete="off"
             spellCheck="false"
             className="px-5 !rounded-r-none"
@@ -66,13 +69,22 @@ export default function Product({
           <input
             value={calories}
             onChange={(e) => setCalories(e.target.value)}
-            placeholder="ккал"
+            placeholder="ккал*"
             autoComplete="off"
             className="input-number !rounded-l-none"
             spellCheck="false"
             type="number"
           />
         </div>
+
+        <input
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Описание"
+          autoComplete="off"
+          spellCheck="false"
+          className="px-5 mt-2 !text-base"
+        />
 
         <div className="mt-6 flex gap-3">
           {item && (

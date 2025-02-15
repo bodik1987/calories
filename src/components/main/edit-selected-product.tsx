@@ -30,21 +30,29 @@ export default function EditSelectedProduct({
   return (
     <div className="p-4">
       <h2>{selectedProduct?.product.title}</h2>
-      <p className="mt-1 text-base text-neutral-700 dark:text-[#5C5C5C]">
-        <span>{selectedProduct?.product.calories} </span>
-        <span className="text-sm">кКал / 100г</span>
-
-        {selectedProduct?.weight && (
-          <span className="font-medium">
-            {" = "}
-            {calculateCalories(
-              selectedProduct.weight,
-              selectedProduct.product.calories
-            )}{" "}
-            кКал
-          </span>
+      <div className="mt-1 text-base text-neutral-700 dark:text-[#5C5C5C]">
+        {selectedProduct?.product.description && (
+          <p className="opacity-50 dark:opacity-80">
+            {selectedProduct?.product.description}
+          </p>
         )}
-      </p>
+
+        <div className="mt-2">
+          <span>{selectedProduct?.product.calories} </span>
+          <span className="text-sm">кКал / 100г</span>
+
+          {selectedProduct?.weight && (
+            <span className="font-medium">
+              {" = "}
+              {calculateCalories(
+                selectedProduct.weight,
+                selectedProduct.product.calories
+              )}{" "}
+              кКал
+            </span>
+          )}
+        </div>
+      </div>
 
       <div className="mt-4 flex gap-3">
         <button

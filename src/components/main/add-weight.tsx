@@ -22,7 +22,13 @@ export default function AddWeight({
       <div className="flex items-start justify-between gap-3">
         <div>
           <h2>{selectedItem?.title}</h2>
-          <p className="mt-1">
+          {selectedItem?.description && (
+            <p className="opacity-50 dark:opacity-80">
+              {selectedItem?.description}
+            </p>
+          )}
+
+          <p className="mt-2">
             <span>{selectedItem?.calories} </span>
             <span className="text-sm">кКал / 100г</span>
 
