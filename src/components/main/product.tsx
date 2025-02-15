@@ -83,7 +83,7 @@ export default function Product({
           placeholder="Описание"
           autoComplete="off"
           spellCheck="false"
-          className="px-5 mt-2 !text-base"
+          className="px-5 mt-2 !text-base opacity-80"
         />
 
         <div className="mt-6 flex gap-3">
