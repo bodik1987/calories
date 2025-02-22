@@ -9,6 +9,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "myFont";
+  src: url("/fonts/font-medium.woff2") format("woff2");
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
 @theme {
   --color-accent: #014c76;
   /* --color-accent: #79517f; */
