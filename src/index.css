@@ -72,7 +72,7 @@ h2 {
 }
 
 .button {
-  @apply rounded-full h-12 flex items-center justify-center text-lg;
+  @apply rounded-full h-12 flex items-center justify-center text-xl;
 }
 
 .primary-button {
