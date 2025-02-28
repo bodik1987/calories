@@ -2,29 +2,12 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@font-face {
-  font-family: "myFont";
-  src: url("/fonts/font-regular.woff2") format("woff2");
-  font-weight: 400; /* Regular */
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "myFont";
-  src: url("/fonts/font-medium.woff2") format("woff2");
-  font-weight: 500; /* Medium */
-  font-style: normal;
-}
-
 @theme {
   --color-accent: #014c76;
-  /* --color-accent: #79517f; */
   --color-dark-accent: #114971;
-  /* --color-panel: #EFF1F5;  */
   --color-panel: #eff1f5;
   --color-dark-panel: #161616;
   --color-warning: #f03a17;
-  --font-myFont: "myFont", sans-serif;
 }
 
 * {
@@ -43,12 +26,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 #root {
-  @apply font-myFont min-h-screen text-[#1b1b1b] dark:bg-[#282828] dark:text-neutral-50;
-}
-
-#alert-portal,
-#bottom-sheet-portal {
-  @apply font-myFont;
+  @apply min-h-screen text-[#1b1b1b] dark:bg-[#282828] dark:text-neutral-50;
 }
 
 button {
