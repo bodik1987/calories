@@ -12,6 +12,7 @@
 
 * {
   -webkit-tap-highlight-color: transparent;
+  font-weight: 500;
 }
 
 input[type="search"]::-webkit-search-decoration,
