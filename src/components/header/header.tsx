@@ -95,7 +95,7 @@ export default function Header() {
               0 && (
               <button
                 onClick={() => setShowAlert(true)}
-                className="button !text-lg px-5 ml-auto bg-white dark:bg-[#282828] dark:text-neutral-50"
+                className="button px-5 ml-auto bg-white dark:bg-[#282828] dark:text-neutral-50"
                 aria-label="Очистить"
               >
                 Очистить

@@ -51,7 +51,7 @@ h2 {
 }
 
 .button {
-  @apply rounded-full h-12 flex items-center justify-center text-xl font-medium;
+  @apply rounded-full h-12 flex items-center justify-center text-lg font-medium;
 }
 
 .primary-button {
