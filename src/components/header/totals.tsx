@@ -46,7 +46,9 @@ export default function Totals({
 
   return (
     <div className="px-1 mt-3 flex justify-between items-center dark:text-neutral-100">
-      <span>{`${totalCalories.toFixed(0)} / ${target.toFixed(0)}`} ккал</span>
+      <span className="opacity-70">
+        {`${totalCalories.toFixed(0)} / ${target.toFixed(0)}`} ккал
+      </span>
       <p>
         {caloriesText}
         <span className={`text-lg font-medium ${caloriesClassName}`}>
