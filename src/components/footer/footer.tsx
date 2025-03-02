@@ -1,12 +1,12 @@
 import { useDataStore, useUIStore } from "../../store/useStore";
-import { ChewronUpIcon } from "../ui/icons";
+import { ChewronUpIcon, NoteIcon } from "../ui/icons";
 
 export default function Footer() {
   const today = new Date().getDate();
   const isTodayOdd = today % 2 !== 0;
 
   const { selectedDay, setSelectedDay } = useDataStore();
-  const { setOpenBottomSheet, setContentKey } = useUIStore();
+  const { setOpenBottomSheet, setContentKey, setOpenNotesPage } = useUIStore();
 
   return (
     <footer className="fixed bottom-0 inset-x-0 pt-3 pb-8 bg-panel/70 backdrop-blur-md dark:bg-dark-panel select-none border-t border-accent/5">
@@ -15,7 +15,10 @@ export default function Footer() {
           {[1, 2].map((day) => (
             <button
               key={day}
-              onClick={() => setSelectedDay(day)}
+              onClick={() => {
+                setSelectedDay(day);
+                setOpenNotesPage(false);
+              }}
               aria-label="День"
               className={`w-full button !h-11 ${
                 selectedDay === day &&
@@ -32,6 +35,15 @@ export default function Footer() {
             </button>
           ))}
         </div>
+
+        <button
+          onClick={() => setOpenNotesPage(true)}
+          className="button !w-14 aspect-square !h-14 bg-accent dark:bg-dark-accent text-white z-10"
+          aria-label="Notes"
+        >
+          <NoteIcon />
+        </button>
+
         <button
           onClick={() => {
             setOpenBottomSheet(true);

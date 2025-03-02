@@ -12,11 +12,17 @@ import { NoDataIcon } from "../ui/icons";
 import BottomSheet from "../ui/bottom-sheet";
 import Alert from "../ui/alert";
 import { calculateCalories } from "../../utils/calculateCalories";
+import Editor from "../editor/Editor";
 
 export default function Main() {
   const { day, setDay, selectedDay } = useDataStore();
-  const { openBottomSheet, setOpenBottomSheet, contentKey, setContentKey } =
-    useUIStore();
+  const {
+    openBottomSheet,
+    setOpenBottomSheet,
+    contentKey,
+    setContentKey,
+    openNotesPage,
+  } = useUIStore();
 
   // List
   const [showAlert, setShowAlert] = useState(false);
@@ -253,42 +259,50 @@ export default function Main() {
 
       <section
         key={JSON.stringify(day)}
-        className="container pt-2 pb-[92px] w-full overflow-y-auto relative"
+        className="container pt-2 pb-[110px] w-full overflow-y-auto relative"
       >
-        {day.productsToEat.filter((el) => el.day === selectedDay).length ===
-          0 && (
-          <div className="flex flex-col justify-center items-center h-full">
-            <NoDataIcon />
-            <p className="mt-6 text-accent dark:text-neutral-50">
-              Здесь пока ничего нет
-            </p>
+        {openNotesPage ? (
+          <div className="px-4 py-2">
+            <Editor />
           </div>
-        )}
-
-        {day.productsToEat
-          .filter((el) => el.day === selectedDay)
-          .map((item) => (
-            <div
-              key={item.id}
-              onClick={() => {
-                setContentKey("editSelectedProduct");
-                setSelectedProduct(item);
-                setOpenBottomSheet(true);
-              }}
-              className="list"
-            >
-              <p className="w-full">{item.product.title}</p>
-
-              <div className="flex gap-2">
-                <span className="w-12 text-right whitespace-nowrap opacity-50">
-                  {item.weight} г.
-                </span>
-                <span className="w-12 text-right whitespace-nowrap">
-                  {calculateCalories(item.weight, item.product.calories)}
-                </span>
+        ) : (
+          <>
+            {day.productsToEat.filter((el) => el.day === selectedDay).length ===
+              0 && (
+              <div className="flex flex-col justify-center items-center h-full">
+                <NoDataIcon />
+                <p className="mt-6 text-accent dark:text-neutral-50">
+                  Здесь пока ничего нет
+                </p>
               </div>
-            </div>
-          ))}
+            )}
+
+            {day.productsToEat
+              .filter((el) => el.day === selectedDay)
+              .map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => {
+                    setContentKey("editSelectedProduct");
+                    setSelectedProduct(item);
+                    setOpenBottomSheet(true);
+                  }}
+                  className="list"
+                >
+                  <p className="w-full">{item.product.title}</p>
+
+                  <div className="flex gap-2">
+                    <span className="w-12 text-right whitespace-nowrap opacity-50">
+                      {item.weight} г.
+                    </span>
+                    <span className="w-12 text-right whitespace-nowrap">
+                      {calculateCalories(item.weight, item.product.calories)}
+                    </span>
+                  </div>
+                </div>
+              ))}
+          </>
+        )}
       </section>
     </>
   );
