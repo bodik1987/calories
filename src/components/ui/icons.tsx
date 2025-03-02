@@ -110,6 +110,23 @@ export function NoteIcon() {
   );
 }
 
+export function BulletListIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13" />
+    </svg>
+  );
+}
+
 export function FavoriteIcon({ active }: { active: boolean }) {
   return (
     <svg

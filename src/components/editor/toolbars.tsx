@@ -1,19 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { $createHeadingNode } from "@lexical/rich-text";
+import { $createHeadingNode, $isHeadingNode } from "@lexical/rich-text";
 import { $setBlocksType } from "@lexical/selection";
 import {
   $getSelection,
   $isRangeSelection,
+  $createParagraphNode,
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
-  FORMAT_TEXT_COMMAND,
+  // FORMAT_TEXT_COMMAND,
   REDO_COMMAND,
   UNDO_COMMAND,
 } from "lexical";
 import { mergeRegister } from "@lexical/utils";
 import { useDebouncedCallback } from "use-debounce";
-import { BoldIcon, H1Icon, RedoIcon, UndoIcon } from "../ui/icons";
+import { H1Icon, RedoIcon, UndoIcon } from "../ui/icons";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 export default function Toolbars() {
@@ -77,24 +78,27 @@ export default function Toolbars() {
     editor.update(() => {
       const selection = $getSelection();
       if ($isRangeSelection(selection)) {
-        $setBlocksType(selection, () => $createHeadingNode("h1"));
+        const anchorNode = selection.anchor.getNode();
+        const element = anchorNode.getTopLevelElementOrThrow();
+        if ($isHeadingNode(element)) {
+          $setBlocksType(selection, () => $createParagraphNode());
+        } else {
+          $setBlocksType(selection, () => $createHeadingNode("h1"));
+        }
       }
     });
   };
 
   return (
     <div className="flex gap-4 pb-5 items-center">
-      <button
+      {/* <button
         onClick={() => {
           editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
         }}
         className={`rounded-md p-1 ${isBold ? "bg-gray-200" : ""}`}
       >
         <BoldIcon />
-      </button>
-      <button onClick={handleHeading} className={`rounded-md`}>
-        <H1Icon />
-      </button>
+      </button> */}
       <button
         disabled={!canUndo}
         onClick={() => {
@@ -114,6 +118,9 @@ export default function Toolbars() {
         aria-label="Redo"
       >
         <RedoIcon />
+      </button>
+      <button onClick={handleHeading} className={`ml-2 rounded-md mt-[2px]`}>
+        <H1Icon />
       </button>
     </div>
   );

@@ -67,7 +67,7 @@ const exampleTheme = {
   image: "editor-image",
   link: "editor-link",
   text: {
-    bold: "font-black",
+    bold: "font-bold",
     code: "editor-textCode",
     italic: "italic",
     strikethrough: "editor-textStrikethrough",
