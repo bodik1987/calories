@@ -12,7 +12,7 @@ import { NoDataIcon } from "../ui/icons";
 import BottomSheet from "../ui/bottom-sheet";
 import Alert from "../ui/alert";
 import { calculateCalories } from "../../utils/calculateCalories";
-import Editor from "../editor/Editor";
+import Editor from "../editor/editor";
 
 export default function Main() {
   const { day, setDay, selectedDay } = useDataStore();

@@ -7,9 +7,9 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 import { HeadingNode } from "@lexical/rich-text";
-import Toolbars from "./Toolbars";
 import LoadState from "./loadState";
 import { CheckListPlugin } from "@lexical/react/LexicalCheckListPlugin";
+import Toolbars from "./toolbars";
 
 function onError(error: any) {
   console.error(error);
