@@ -1,20 +1,26 @@
 import { ReactNode, useState } from "react";
 import useCheckConnection from "../../hooks/useCheckConnection";
 import { IUserMeasurements } from "../../types";
-import { MeasurementsIcon, NetworkOffIcon, NetworkOnIcon } from "../ui/icons";
+import {
+  MeasurementsIcon,
+  NetworkOffIcon,
+  NetworkOnIcon,
+  NoteIcon,
+} from "../ui/icons";
 import Totals from "./totals";
 import Sync from "./sync/sync";
 import UserMeasurements from "./user-measurements";
 import Alert from "../ui/alert";
 import ThemeToggle from "../ui/theme-toggle";
 import BottomSheet from "../ui/bottom-sheet";
-import { useDataStore } from "../../store/useStore";
+import { useDataStore, useUIStore } from "../../store/useStore";
 
 export default function Header() {
   const isOnline = useCheckConnection();
 
   const { day, setDay, selectedDay, userMeasurements, setUserMeasurements } =
     useDataStore();
+  const { setOpenNotesPage } = useUIStore();
 
   const [showAlert, setShowAlert] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -87,6 +93,13 @@ export default function Header() {
               aria-label="Синхронизация"
             >
               {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
+            </button>
+            <button
+              onClick={() => setOpenNotesPage(true)}
+              className="button rounded-button"
+              aria-label="Note"
+            >
+              <NoteIcon />
             </button>
 
             <ThemeToggle />

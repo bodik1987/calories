@@ -1,5 +1,5 @@
 import { useDataStore, useUIStore } from "../../store/useStore";
-import { ChewronUpIcon, NoteIcon } from "../ui/icons";
+import { ChewronUpIcon } from "../ui/icons";
 
 export default function Footer() {
   const today = new Date().getDate();
@@ -35,14 +35,6 @@ export default function Footer() {
             </button>
           ))}
         </div>
-
-        <button
-          onClick={() => setOpenNotesPage(true)}
-          className="button !w-14 aspect-square !h-14 bg-accent dark:bg-dark-accent text-white z-10"
-          aria-label="Notes"
-        >
-          <NoteIcon />
-        </button>
 
         <button
           onClick={() => {
