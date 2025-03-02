@@ -77,14 +77,13 @@ export default function Toolbars() {
     editor.update(() => {
       const selection = $getSelection();
       if ($isRangeSelection(selection)) {
-        // Update text format
         $setBlocksType(selection, () => $createHeadingNode("h1"));
       }
     });
   };
 
   return (
-    <div className="flex gap-4 pb-5">
+    <div className="flex gap-4 pb-5 items-center">
       <button
         onClick={() => {
           editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
@@ -93,14 +92,6 @@ export default function Toolbars() {
       >
         <BoldIcon />
       </button>
-      {/* <button
-        onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
-        }}
-        className={`rounded-md italic ${isItalic ? "bg-gray-200" : ""}`}
-      >
-        i
-      </button> */}
       <button onClick={handleHeading} className={`rounded-md`}>
         <H1Icon />
       </button>
@@ -109,7 +100,7 @@ export default function Toolbars() {
         onClick={() => {
           editor.dispatchCommand(UNDO_COMMAND, undefined);
         }}
-        className="toolbar-item spaced disabled:text-gray-500"
+        className="toolbar-item spaced disabled:opacity-50"
         aria-label="Undo"
       >
         <UndoIcon />
@@ -119,8 +110,8 @@ export default function Toolbars() {
         onClick={() => {
           editor.dispatchCommand(REDO_COMMAND, undefined);
         }}
-        className="toolbar-item spaced disabled:text-gray-500"
-        aria-label="Undo"
+        className="toolbar-item spaced disabled:opacity-50"
+        aria-label="Redo"
       >
         <RedoIcon />
       </button>
