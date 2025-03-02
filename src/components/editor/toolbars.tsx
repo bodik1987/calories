@@ -74,7 +74,7 @@ export default function Toolbars() {
   };
 
   return (
-    <div className="absolute bottom-[116px] right-4 flex gap-4 items-center">
+    <div className="absolute bottom-[116px] right-4 flex gap-4 items-center bg-panel/50 dark:bg-dark-panel/50 backdrop-blur-md p-4 rounded-full">
       <button
         disabled={!canUndo}
         onClick={() => {
