@@ -1,4 +1,4 @@
-import { $getRoot, $getSelection } from "lexical";
+// import { $getRoot, $getSelection } from "lexical";
 
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
