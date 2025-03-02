@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $createHeadingNode, $isHeadingNode } from "@lexical/rich-text";
 import { $setBlocksType } from "@lexical/selection";
@@ -8,7 +8,6 @@ import {
   $createParagraphNode,
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
-  // FORMAT_TEXT_COMMAND,
   REDO_COMMAND,
   UNDO_COMMAND,
 } from "lexical";
@@ -23,22 +22,10 @@ export default function Toolbars() {
     `{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}`
   );
   const [editor] = useLexicalComposerContext();
-  const [isBold, setIsBold] = useState(false);
-  // const [isItalic, setIsItalic] = useState(false);
   const [canUndo, setCanUndo] = useState(false);
   const [canRedo, setCanRedo] = useState(false);
 
-  const $updateToolbar = useCallback(() => {
-    const selection = $getSelection();
-    if ($isRangeSelection(selection)) {
-      // Update text format
-      setIsBold(selection.hasFormat("bold"));
-      // setIsItalic(selection.hasFormat("italic"));
-    }
-  }, []);
-
   const handleSave = useDebouncedCallback((content) => {
-    // console.log(content);
     setNote(content);
   }, 500);
 
@@ -46,9 +33,6 @@ export default function Toolbars() {
     mergeRegister(
       editor.registerUpdateListener(
         ({ editorState, dirtyElements, dirtyLeaves }) => {
-          editorState.read(() => {
-            $updateToolbar();
-          });
           if (dirtyElements.size === 0 && dirtyLeaves.size === 0) {
             return;
           }
@@ -72,7 +56,7 @@ export default function Toolbars() {
         1
       )
     );
-  }, [editor, $updateToolbar]);
+  }, [editor]);
 
   const handleHeading = () => {
     editor.update(() => {
@@ -90,15 +74,7 @@ export default function Toolbars() {
   };
 
   return (
-    <div className="flex gap-4 pb-5 items-center">
-      {/* <button
-        onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
-        }}
-        className={`rounded-md p-1 ${isBold ? "bg-gray-200" : ""}`}
-      >
-        <BoldIcon />
-      </button> */}
+    <div className="absolute bottom-[116px] right-4 flex gap-4 items-center">
       <button
         disabled={!canUndo}
         onClick={() => {
@@ -119,7 +95,7 @@ export default function Toolbars() {
       >
         <RedoIcon />
       </button>
-      <button onClick={handleHeading} className={`ml-2 rounded-md mt-[2px]`}>
+      <button onClick={handleHeading} className={`rounded-md`}>
         <H1Icon />
       </button>
     </div>
