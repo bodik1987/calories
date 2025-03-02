@@ -104,8 +104,7 @@ export function NoteIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z" />
-      <path d="M15 3v4a2 2 0 0 0 2 2h4" />
+      <path d="M15 12h6M15 6h6M3 13l3.553-7.724a.5.5 0 0 1 .894 0L11 13M3 18h18M4 11h6" />
     </svg>
   );
 }
