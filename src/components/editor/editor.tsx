@@ -29,7 +29,9 @@ export default function Editor() {
       <LoadState />
       <Toolbars />
       <RichTextPlugin
-        contentEditable={<ContentEditable className="focus:outline-none" />}
+        contentEditable={
+          <ContentEditable spellCheck={false} className="focus:outline-none" />
+        }
         placeholder={<div>Заметка...</div>}
         ErrorBoundary={LexicalErrorBoundary}
       />

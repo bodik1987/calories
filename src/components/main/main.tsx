@@ -262,7 +262,7 @@ export default function Main() {
         className="container pt-2 pb-[110px] w-full overflow-y-auto relative"
       >
         {openNotesPage ? (
-          <div className="px-4 py-2">
+          <div className="px-4 pt-2 pb-[70px]">
             <Editor />
           </div>
         ) : (
