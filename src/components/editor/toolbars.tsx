@@ -14,7 +14,7 @@ import {
 } from "lexical";
 import { mergeRegister } from "@lexical/utils";
 import { useDebouncedCallback } from "use-debounce";
-import { H1Icon, RedoIcon, UndoIcon } from "../ui/icons";
+import { H1Icon, RedoIcon, UndoIcon, BoldIcon } from "../ui/icons";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 export default function Toolbars() {
@@ -99,7 +99,9 @@ export default function Toolbars() {
       <button onClick={handleHeading} className={`rounded-md`}>
         <H1Icon />
       </button>
-      <button onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold")} aria-label="Bold">B</button>
+      <button onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold")} aria-label="Bold">
+      <BoldIcon />
+      </button>
     </div>
   );
 }
