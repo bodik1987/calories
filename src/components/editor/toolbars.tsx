@@ -10,6 +10,7 @@ import {
   CAN_UNDO_COMMAND,
   REDO_COMMAND,
   UNDO_COMMAND,
+  FORMAT_TEXT_COMMAND
 } from "lexical";
 import { mergeRegister } from "@lexical/utils";
 import { useDebouncedCallback } from "use-debounce";
@@ -98,6 +99,7 @@ export default function Toolbars() {
       <button onClick={handleHeading} className={`rounded-md`}>
         <H1Icon />
       </button>
+      <button onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold")} aria-label="Bold">B</button>
     </div>
   );
 }
