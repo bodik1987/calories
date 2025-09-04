@@ -45,13 +45,13 @@ export default function Totals({
   const caloriesClassName = remainingCalories < 0 && "text-warning";
 
   return (
-    <div className="px-1 mt-2 flex justify-between items-center dark:text-neutral-100">
+    <div className="px-1 mt-3 flex justify-between items-center dark:text-neutral-100">
       <span className="opacity-70">Вес {userMeasurements.weight} кг</span>
       <p>
         {`${totalCalories.toFixed(0)} из ${target.toFixed(0)}`} {" / "}
         {caloriesText}
         <span className={`text-lg font-medium ${caloriesClassName}`}>
-          {remainingCalories} ккал
+          {remainingCalories} <small>ккал</small>
         </span>
       </p>
     </div>
