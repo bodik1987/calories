@@ -62,7 +62,7 @@ h2 {
 }
 
 .container {
-  @apply max-w-md mx-auto;
+  @apply font-myFont max-w-md mx-auto;
 }
 
 .button {
