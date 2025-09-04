@@ -2,17 +2,32 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@font-face {
+  font-family: "myFont";
+  src: url("/fonts/font-medium.woff2") format("woff2");
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "myFont";
+  src: url("/fonts/font-bold.woff2") format("woff2");
+  font-weight: 600; /* Bold */
+  font-style: normal;
+}
+
 @theme {
   --color-accent: #014c76;
   --color-dark-accent: #114971;
   --color-panel: #eff1f5;
   --color-dark-panel: #161616;
   --color-warning: #f03a17;
+  --font-myFont: "myFont", sans-serif;
+  --font-myFont-Bold: "myFont-Bold", sans-serif;
 }
 
 * {
   -webkit-tap-highlight-color: transparent;
-  /* font-weight: 400; */
 }
 
 input[type="search"]::-webkit-search-decoration,
@@ -27,7 +42,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 #root {
-  @apply min-h-screen text-[#1b1b1b] dark:bg-[#282828] dark:text-neutral-50;
+  @apply font-myFont min-h-screen text-[#1b1b1b] dark:bg-[#282828] dark:text-neutral-50;
 }
 
 button {
