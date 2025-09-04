@@ -20,7 +20,7 @@ export default function Header() {
 
   const { day, setDay, selectedDay, userMeasurements, setUserMeasurements } =
     useDataStore();
-  const { setOpenNotesPage } = useUIStore();
+  const { openNotesPage, setOpenNotesPage } = useUIStore();
 
   const [showAlert, setShowAlert] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -95,8 +95,8 @@ export default function Header() {
               {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
             </button>
             <button
-              onClick={() => setOpenNotesPage(true)}
-              className="button rounded-button"
+              onClick={() => setOpenNotesPage(!openNotesPage)}
+              className={`${openNotesPage && "border-2"} button rounded-button`}
               aria-label="Note"
             >
               <NoteIcon />
