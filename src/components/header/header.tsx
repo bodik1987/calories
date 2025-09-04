@@ -104,21 +104,16 @@ export default function Header() {
 
             <ThemeToggle />
 
-            <div className="ml-auto flex flex-col gap-1 items-end">
-              {day.productsToEat.filter((el) => el.day === selectedDay).length >
-                0 && (
-                <button
-                  onClick={() => setShowAlert(true)}
-                  className="button px-5 bg-white dark:bg-[#282828] dark:text-neutral-50"
-                  aria-label="Очистить"
-                >
-                  Очистить
-                </button>
-              )}
-              <div className="opacity-70 mr-1.5">
-                Вес {userMeasurements.weight} кг
-              </div>
-            </div>
+            {day.productsToEat.filter((el) => el.day === selectedDay).length >
+              0 && (
+              <button
+                onClick={() => setShowAlert(true)}
+                className="button ml-auto px-5 bg-white dark:bg-[#282828] dark:text-neutral-50"
+                aria-label="Очистить"
+              >
+                Очистить
+              </button>
+            )}
           </div>
 
           <Totals

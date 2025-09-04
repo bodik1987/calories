@@ -41,18 +41,17 @@ export default function Totals({
   const remainingCalories = Math.round(target - totalCalories);
 
   // Форматирование текста в зависимости от оставшихся калорий
-  const caloriesText = remainingCalories > 0 ? "Осталось " : "Превышено ";
+  const caloriesText = remainingCalories > 0 ? "Ост. " : "Превыш. ";
   const caloriesClassName = remainingCalories < 0 && "text-warning";
 
   return (
     <div className="px-1 mt-2 flex justify-between items-center dark:text-neutral-100">
-      <span className="opacity-70">
-        {`${totalCalories.toFixed(0)} / ${target.toFixed(0)}`} ккал
-      </span>
+      <span className="opacity-70">Вес {userMeasurements.weight} кг</span>
       <p>
+        {`${totalCalories.toFixed(0)} из ${target.toFixed(0)}`} {" / "}
         {caloriesText}
         <span className={`text-lg font-medium ${caloriesClassName}`}>
-          {remainingCalories}
+          {remainingCalories} ккал
         </span>
       </p>
     </div>
