@@ -79,41 +79,46 @@ export default function Header() {
 
       <header className="sticky z-10 top-0 inset-x-0 bg-gradient-to-b from-panel to-panel/70 backdrop-blur-md dark:bg-gradient-to-b dark:from-dark-panel dark:to-dark-panel p-3 select-none shadow-lg">
         <div className="container">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => handleButtonClick("userMeasurements")}
-              className="button rounded-button"
-              aria-label="Замеры"
-            >
-              <MeasurementsIcon />
-            </button>
-            <button
-              onClick={() => handleButtonClick("sync")}
-              className="button rounded-button"
-              aria-label="Синхронизация"
-            >
-              {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
-            </button>
-            <button
-              onClick={() => setOpenNotesPage(!openNotesPage)}
-              className={`${openNotesPage && "border-2"} button rounded-button`}
-              aria-label="Note"
-            >
-              <NoteIcon />
-            </button>
-
-            <ThemeToggle />
-
-            {day.productsToEat.filter((el) => el.day === selectedDay).length >
-              0 && (
+          <div className="flex justify-between">
+            <div className="flex items-center gap-3">
               <button
-                onClick={() => setShowAlert(true)}
-                className="button px-5 ml-auto bg-white dark:bg-[#282828] dark:text-neutral-50"
-                aria-label="Очистить"
+                onClick={() => handleButtonClick("userMeasurements")}
+                className="button rounded-button"
+                aria-label="Замеры"
               >
-                Очистить
+                <MeasurementsIcon />
               </button>
-            )}
+              <button
+                onClick={() => handleButtonClick("sync")}
+                className="button rounded-button"
+                aria-label="Синхронизация"
+              >
+                {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
+              </button>
+              <button
+                onClick={() => setOpenNotesPage(!openNotesPage)}
+                className={`${
+                  openNotesPage && "border-2"
+                } button rounded-button`}
+                aria-label="Note"
+              >
+                <NoteIcon />
+              </button>
+
+              <ThemeToggle />
+
+              {day.productsToEat.filter((el) => el.day === selectedDay).length >
+                0 && (
+                <button
+                  onClick={() => setShowAlert(true)}
+                  className="button px-5 ml-auto bg-white dark:bg-[#282828] dark:text-neutral-50"
+                  aria-label="Очистить"
+                >
+                  Очистить
+                </button>
+              )}
+            </div>
+            <div className="opacity-70">Вес {userMeasurements.weight} кг</div>
           </div>
 
           <Totals
