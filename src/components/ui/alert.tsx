@@ -64,7 +64,7 @@ export default function Alert({
             damping: 10,
             stiffness: 100,
           }}
-          className="fixed inset-0 bg-black/50 dark:bg-black/80 z-50 select-none flex items-center justify-center"
+          className="font-myFont fixed inset-0 bg-black/50 dark:bg-black/80 z-50 select-none flex items-center justify-center"
           onClick={handleClose}
         >
           <motion.div
