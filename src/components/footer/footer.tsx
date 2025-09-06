@@ -11,7 +11,16 @@ export default function Footer() {
   return (
     <footer className="fixed bottom-0 inset-x-0 pt-3 pb-8 bg-panel/70 backdrop-blur-md dark:bg-dark-panel select-none border-t border-accent/5">
       <div className="container h-full flex items-center justify-around gap-4 px-3">
-        <div className="w-full bg-white dark:bg-white/5 rounded-full p-2 flex">
+        <div className="relative w-full h-12 bg-white dark:bg-white/5 rounded-full flex items-center">
+          {/* Ползунок фона */}
+          <div
+            className={`absolute w-1/2 h-12 rounded-full bg-accent dark:bg-dark-accent transition-transform duration-300`}
+            style={{
+              transform:
+                selectedDay === 1 ? "translateX(0%)" : "translateX(100%)",
+            }}
+          />
+
           {[1, 2].map((day) => (
             <button
               key={day}
@@ -20,10 +29,9 @@ export default function Footer() {
                 setOpenNotesPage(false);
               }}
               aria-label="День"
-              className={`w-full button !h-11 ${
-                selectedDay === day &&
-                "bg-accent dark:bg-dark-accent !text-white"
-              } text-accent dark:text-neutral-400`}
+              className={`relative z-10 w-full button !h-11 dark:text-neutral-400 transition-all ${
+                selectedDay === day ? "!text-white" : "text-accent"
+              }`}
             >
               {day === 1
                 ? isTodayOdd
