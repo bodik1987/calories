@@ -5,6 +5,7 @@ export function NoDataIcon() {
       width="128"
       height="87.105"
       fill="none"
+      className="ml-3"
     >
       <path
         fill="#014c76"
