@@ -54,7 +54,7 @@ export default function Footer() {
                   isActive
                     ? label === "Завтра"
                       ? "text-accent dark:text-white"
-                      : "!text-white"
+                      : "!text-white !text-xl"
                     : "text-accent dark:text-neutral-400"
                 }`}
               >
