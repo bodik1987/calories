@@ -69,7 +69,7 @@ export default function Footer() {
             setOpenBottomSheet(true);
             setContentKey("list");
           }}
-          className="button !w-14 active:scale-95 transition-all aspect-square !h-14 bg-accent dark:bg-dark-accent text-white z-10"
+          className="button !w-12 !h-12 ring-[3px] dark:ring-white/10 active:scale-95 transition-transform aspect-square bg-accent dark:bg-dark-accent text-white z-10"
           aria-label="Добавить"
         >
           <ChewronUpIcon />
