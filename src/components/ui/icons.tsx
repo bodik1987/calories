@@ -136,7 +136,7 @@ export function FavoriteIcon({ active }: { active: boolean }) {
       viewBox="0 0 24 24"
       fill="none"
       className={`${
-        active ? "fill-yellow-400" : "fill-transparent stroke-yellow-400"
+        active ? "fill-warning" : "fill-transparent stroke-warning"
       }`}
       strokeWidth="2"
       strokeLinecap="round"
