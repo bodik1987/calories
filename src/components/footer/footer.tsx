@@ -25,7 +25,7 @@ export default function Footer() {
         <div className="relative w-full bg-white dark:bg-white/5 rounded-full flex items-center py-2">
           {/* Абсолютный ползунок */}
           <div
-            className="absolute rounded-full transition-all duration-300"
+            className="absolute rounded-full transition-all"
             style={{
               width: `calc(50% - 0.5rem)`, // ширина минус padding
               height: "calc(100% - 0.5rem)", // высота минус padding
