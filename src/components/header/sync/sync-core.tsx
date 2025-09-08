@@ -129,7 +129,7 @@ export default function SyncCore({
       <div className="flex gap-3">
         <button
           onClick={deleteUser}
-          className="button disabled:bg-accent/50 text-white w-full bg-red-500"
+          className="button disabled:bg-accent/50 text-white w-full bg-warning"
         >
           Удалить все
         </button>

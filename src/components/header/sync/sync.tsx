@@ -21,7 +21,7 @@ export default function Sync() {
 
           {success && <div>{success}</div>}
 
-          {error && <div className="text-red-500">{error}</div>}
+          {error && <div className="text-warning">{error}</div>}
         </div>
       </div>
 
