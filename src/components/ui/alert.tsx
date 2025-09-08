@@ -96,7 +96,7 @@ export default function Alert({
               </button>
               <button
                 type="button"
-                className="button w-full text-accent dark:text-neutral-50 bg-white/50 dark:bg-dark-accent/50"
+                className="button w-full text-accent dark:text-neutral-50 bg-white/50 dark:bg-accent"
                 onClick={handleConfirm}
               >
                 {confirmButtonText}
