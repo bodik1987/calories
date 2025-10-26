@@ -1,5 +1,8 @@
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import { BrowserRouter, Routes, Route } from "react-router";
+import Layout from "./layout.tsx";
+import Root from "./components/main/root.tsx";
+import Editor from "./components/editor/editor.tsx";
 import "./index.css";
 
 // Функция для обновления метатега theme-color
@@ -27,4 +30,13 @@ const observeThemeChanges = () => {
 // Запускаем наблюдатель за изменением темы
 observeThemeChanges();
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+  <BrowserRouter>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Root />} />
+        <Route path="/notes" element={<Editor />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
+);

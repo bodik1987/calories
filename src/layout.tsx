@@ -1,9 +1,9 @@
 import { useEffect } from "react";
+import { Outlet } from "react-router";
 import Header from "./components/header/header";
-import Main from "./components/main/main";
 import Footer from "./components/footer/footer";
 
-export default function App() {
+export default function Layout() {
   useEffect(() => {
     const setViewportHeight = () => {
       document.documentElement.style.setProperty(
@@ -28,7 +28,9 @@ export default function App() {
       style={{ height: `calc(var(--vh, 1vh) * 100)` }}
     >
       <Header />
-      <Main />
+      <section className="flex-1 overflow-y-auto">
+        <Outlet />
+      </section>
       <Footer />
     </main>
   );

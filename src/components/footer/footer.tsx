@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router";
 import { useDataStore, useUIStore } from "../../store/useStore";
 import { ChewronUpIcon } from "../ui/icons";
 
 export default function Footer() {
+  const navigate = useNavigate();
   const today = new Date().getDate();
   const isTodayOdd = today % 2 !== 0;
 
@@ -48,6 +50,7 @@ export default function Footer() {
                 onClick={() => {
                   setSelectedDay(day);
                   setOpenNotesPage(false);
+                  navigate("/");
                 }}
                 aria-label="День"
                 className={`relative z-10 w-full button h-10! transition-all ${

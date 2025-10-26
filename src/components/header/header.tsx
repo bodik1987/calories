@@ -1,4 +1,5 @@
 import { ReactNode, useState } from "react";
+import { NavLink } from "react-router";
 import useCheckConnection from "../../hooks/useCheckConnection";
 import { IUserMeasurements } from "../../types";
 import {
@@ -13,14 +14,16 @@ import UserMeasurements from "./user-measurements";
 import Alert from "../ui/alert";
 import ThemeToggle from "../ui/theme-toggle";
 import BottomSheet from "../ui/bottom-sheet";
-import { useDataStore, useUIStore } from "../../store/useStore";
+import { useDataStore } from "../../store/useStore";
 
 export default function Header() {
   const isOnline = useCheckConnection();
 
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `button rounded-button ${isActive && "border-2"}`;
+
   const { day, setDay, selectedDay, userMeasurements, setUserMeasurements } =
     useDataStore();
-  const { openNotesPage, setOpenNotesPage } = useUIStore();
 
   const [showAlert, setShowAlert] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -94,13 +97,9 @@ export default function Header() {
             >
               {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
             </button>
-            <button
-              onClick={() => setOpenNotesPage(!openNotesPage)}
-              className={`${openNotesPage && "border-2"} button rounded-button`}
-              aria-label="Note"
-            >
+            <NavLink to={"/notes"} className={getLinkClass}>
               <NoteIcon />
-            </button>
+            </NavLink>
 
             <ThemeToggle />
 
