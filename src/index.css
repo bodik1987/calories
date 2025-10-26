@@ -40,8 +40,12 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
+:root {
+  --vh: 1vh;
+}
+
 #root {
-  @apply font-myFont min-h-screen text-[#1b1b1b] dark:bg-[#282828] dark:text-neutral-50;
+  @apply font-myFont text-[#1b1b1b] dark:bg-[#282828] dark:text-neutral-50;
 }
 
 button {
