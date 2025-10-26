@@ -63,13 +63,13 @@ export default function EditSelectedProduct({
           <DeleteIcon />
         </button>
 
-        <div className="flex gap-[2px]">
+        <div className="flex gap-0.5">
           <input
             value={selectedProductWeight}
             onChange={(e) => setSelectedProductWeight(e.target.value)}
             placeholder="Вес"
             type="number"
-            className="input-number !rounded-r-none"
+            className="input-number rounded-r-none!"
             autoComplete="off"
             spellCheck="false"
             autoFocus
@@ -77,7 +77,7 @@ export default function EditSelectedProduct({
 
           <button
             onClick={setShowAdditionalWeightAlert}
-            className="button rounded-button !pl-1 !pr-2 !rounded-l-none"
+            className="button rounded-button pl-1! pr-2! rounded-l-none!"
             aria-label="Удалить продукт"
           >
             <PlusIcon />

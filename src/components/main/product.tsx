@@ -67,7 +67,7 @@ export default function Product({
             placeholder="Название*"
             autoComplete="off"
             spellCheck="false"
-            className="px-5 !rounded-r-none !h-14"
+            className="px-5 rounded-r-none! h-14!"
             autoFocus
           />
           <input
@@ -75,7 +75,7 @@ export default function Product({
             onChange={(e) => setCalories(e.target.value)}
             placeholder="ккал*"
             autoComplete="off"
-            className="input-number !rounded-l-none !h-14"
+            className="input-number rounded-l-none! h-14!"
             spellCheck="false"
             type="number"
           />
@@ -87,7 +87,7 @@ export default function Product({
           placeholder="Описание"
           autoComplete="off"
           spellCheck="false"
-          className="px-5 mt-2 !text-base opacity-80"
+          className="px-5 mt-2 text-base! opacity-80"
         />
 
         <div className="mt-6 flex gap-3">

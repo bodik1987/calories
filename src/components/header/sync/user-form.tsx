@@ -81,7 +81,7 @@ export default function UserForm({
           placeholder="Логин"
           autoComplete="off"
           spellCheck={"false"}
-          className="pl-5 !rounded-r-none"
+          className="pl-5 rounded-r-none!"
           autoFocus
         />
         <input
@@ -90,7 +90,7 @@ export default function UserForm({
           placeholder="Пароль"
           autoComplete="off"
           spellCheck={"false"}
-          className="pl-5 !rounded-l-none"
+          className="pl-5 rounded-l-none!"
         />
       </div>
 

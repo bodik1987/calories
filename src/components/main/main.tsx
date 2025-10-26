@@ -241,7 +241,7 @@ export default function Main() {
               onChange={(e) => setAdditionalWeight(e.target.value)}
               placeholder="Вес"
               type="number"
-              className="input-number mt-6 !w-full"
+              className="input-number mt-6 w-full!"
               autoComplete="off"
               spellCheck="false"
               autoFocus
@@ -259,7 +259,7 @@ export default function Main() {
 
       <section
         key={JSON.stringify(day)}
-        className="flex-1 container pt-2 w-full overflow-y-auto relative"
+        className="flex-1 container w-full overflow-y-auto relative"
       >
         {openNotesPage ? (
           <div className="px-4 pt-2 pb-[70px]">

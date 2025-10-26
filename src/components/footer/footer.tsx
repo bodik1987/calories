@@ -50,11 +50,11 @@ export default function Footer() {
                   setOpenNotesPage(false);
                 }}
                 aria-label="День"
-                className={`relative z-10 w-full button !h-10 transition-all ${
+                className={`relative z-10 w-full button h-10! transition-all ${
                   isActive
                     ? label === "Завтра"
                       ? "text-accent dark:text-white"
-                      : "!text-white !text-xl"
+                      : "text-white! text-xl!"
                     : "text-accent dark:text-neutral-400"
                 }`}
               >
@@ -69,7 +69,7 @@ export default function Footer() {
             setOpenBottomSheet(true);
             setContentKey("list");
           }}
-          className="button !w-12 !h-12 active:scale-95 transition-transform aspect-square bg-accent text-white z-10"
+          className="button w-12! h-12! active:scale-95 transition-transform aspect-square bg-accent text-white z-10"
           aria-label="Добавить"
         >
           <ChewronUpIcon />
