@@ -36,7 +36,7 @@ export default function Editor() {
               className="focus:outline-none"
             />
           }
-          placeholder={<div>Заметка...</div>}
+          placeholder={<div>Введите текст...</div>}
           ErrorBoundary={LexicalErrorBoundary}
         />
         <HistoryPlugin />
