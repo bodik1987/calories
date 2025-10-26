@@ -77,7 +77,7 @@ export default function Header() {
         contentKey={modalContentKey}
       />
 
-      <header className="sticky z-10 top-0 inset-x-0 bg-[#F3F4FA] backdrop-blur-md dark:bg-gradient-to-b dark:from-dark-panel dark:to-dark-panel p-3 select-none shadow-lg">
+      <header className="sticky z-10 top-0 inset-x-0 bg-[#F3F4FA] backdrop-blur-md dark:bg-linear-to-b dark:from-dark-panel dark:to-dark-panel p-3 select-none shadow-lg">
         <div className="container">
           <div className="flex gap-3">
             <button

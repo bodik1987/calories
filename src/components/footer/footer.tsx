@@ -19,8 +19,8 @@ export default function Footer() {
   const activeLabel = getLabel(selectedDay);
 
   return (
-    <footer className="fixed bottom-0 inset-x-0 pt-3 pb-8 bg-panel/70 backdrop-blur-md dark:bg-dark-panel select-none border-t border-accent/5">
-      <div className="container h-full flex items-center justify-around gap-4 px-3">
+    <footer className="h-24 bg-panel/70 backdrop-blur-md dark:bg-dark-panel select-none border-t border-accent/5">
+      <div className="container pt-3 pb-8 h-full flex items-center justify-around gap-4 px-3">
         {/* Контейнер табов с padding */}
         <div className="relative w-full bg-white dark:bg-white/5 rounded-full flex items-center py-2">
           {/* Абсолютный ползунок */}

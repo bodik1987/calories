@@ -24,7 +24,7 @@ export default function App() {
 
   return (
     <main
-      className="antialiased min-h-dvh grid grid-rows-[auto_1fr_auto]"
+      className="antialiased flex flex-col"
       style={{ height: `calc(var(--vh, 1vh) * 100)` }}
     >
       <Header />

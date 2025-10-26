@@ -259,7 +259,7 @@ export default function Main() {
 
       <section
         key={JSON.stringify(day)}
-        className="container pt-2 pb-[110px] w-full overflow-y-auto relative"
+        className="flex-1 container pt-2 w-full overflow-y-auto relative"
       >
         {openNotesPage ? (
           <div className="px-4 pt-2 pb-[70px]">
