@@ -25,20 +25,25 @@ export default function Editor() {
   };
 
   return (
-    <LexicalComposer initialConfig={initialConfig}>
-      <LoadState />
-      <Toolbars />
-      <RichTextPlugin
-        contentEditable={
-          <ContentEditable spellCheck={false} className="focus:outline-none" />
-        }
-        placeholder={<div>Заметка...</div>}
-        ErrorBoundary={LexicalErrorBoundary}
-      />
-      <HistoryPlugin />
-      <CheckListPlugin />
-      <AutoFocusPlugin />
-    </LexicalComposer>
+    <div className="p-4">
+      <LexicalComposer initialConfig={initialConfig}>
+        <LoadState />
+        <Toolbars />
+        <RichTextPlugin
+          contentEditable={
+            <ContentEditable
+              spellCheck={false}
+              className="focus:outline-none"
+            />
+          }
+          placeholder={<div>Заметка...</div>}
+          ErrorBoundary={LexicalErrorBoundary}
+        />
+        <HistoryPlugin />
+        <CheckListPlugin />
+        <AutoFocusPlugin />
+      </LexicalComposer>
+    </div>
   );
 }
 
