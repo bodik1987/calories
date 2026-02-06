@@ -28,7 +28,7 @@ export default function List({
       <div className="max-h-[80vh] rounded-xl overflow-y-auto">
         {items
           .filter((item) =>
-            item.title.toLowerCase().includes(searchQuery.toLowerCase())
+            item.title.toLowerCase().includes(searchQuery.toLowerCase()),
           )
           .filter((item) => (showFavorites ? item.isFavorite : true))
           .sort((a, b) => {
@@ -64,7 +64,7 @@ export default function List({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Поиск..."
-            className="pl-5 pr-12"
+            className="pl-5 pr-12 text-lg! border-2 border-transparent focus:border-accent transition-all"
           />
 
           <button
