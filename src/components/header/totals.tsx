@@ -58,12 +58,16 @@ export default function Totals({
           </span>
         </p>
       </div>
-
-      <div className="mt-2.5 bg-white dark:bg-neutral-700 h-2 w-full rounded-full overflow-hidden">
-        <div
-          className="bg-accent h-full rounded-full transition-all duration-500 ease-out"
-          style={{ width: `${progressPercentage}%` }}
-        />
+      <div className="flex gap-3 items-center">
+        <div className="mt-2.5 bg-white dark:bg-neutral-700 h-2 w-full rounded-full overflow-hidden">
+          <div
+            className="bg-accent h-full rounded-full transition-all duration-500 ease-out"
+            style={{ width: `${progressPercentage}%` }}
+          />
+        </div>
+        <span className="leading-none pt-1.5 opacity-50 text-sm">
+          {progressPercentage.toFixed(0)}%
+        </span>
       </div>
     </>
   );
