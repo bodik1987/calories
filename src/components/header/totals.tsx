@@ -13,7 +13,7 @@ export default function Totals({
 }: TotalsProps) {
   // Расчет общего количества калорий для выбранного дня
   const calculateTotalCalories = (
-    productsToEat: { product: Item; weight: string }[]
+    productsToEat: { product: Item; weight: string }[],
   ) => {
     return productsToEat.reduce((total, item) => {
       const calories =
@@ -24,7 +24,7 @@ export default function Totals({
 
   // Фильтрация продуктов по выбранному дню
   const filteredProducts = day.productsToEat.filter(
-    (el) => el.day === selectedDay
+    (el) => el.day === selectedDay,
   );
 
   // Расчет общего количества калорий
@@ -44,16 +44,27 @@ export default function Totals({
   const caloriesText = remainingCalories > 0 ? "Ост. " : "Превыш. ";
   const caloriesClassName = remainingCalories < 0 && "text-warning";
 
+  const progressPercentage = Math.min((totalCalories / target) * 100, 100);
+
   return (
-    <div className="px-1 mt-3 flex justify-between items-center dark:text-neutral-100">
-      <span className="opacity-70">Вес {userMeasurements.weight} кг</span>
-      <p>
-        {`${totalCalories.toFixed(0)} из ${target.toFixed(0)}`} {" / "}
-        {caloriesText}
-        <span className={`text-lg font-medium ${caloriesClassName}`}>
-          {remainingCalories} <small>ккал</small>
-        </span>
-      </p>
-    </div>
+    <>
+      <div className="px-1 mt-3 flex justify-between items-center dark:text-neutral-100">
+        <span className="opacity-70">Вес {userMeasurements.weight} кг</span>
+        <p>
+          {`${totalCalories.toFixed(0)} из ${target.toFixed(0)}`} {" / "}
+          {caloriesText}
+          <span className={`text-lg font-medium ${caloriesClassName}`}>
+            {remainingCalories} <small>ккал</small>
+          </span>
+        </p>
+      </div>
+
+      <div className="mt-2.5 bg-white dark:bg-neutral-700 h-2 w-full rounded-full overflow-hidden">
+        <div
+          className="bg-accent h-full rounded-full transition-all duration-500 ease-out"
+          style={{ width: `${progressPercentage}%` }}
+        />
+      </div>
+    </>
   );
 }
