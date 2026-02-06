@@ -21,9 +21,6 @@ export default function Footer() {
 
   const activeLabel = getLabel(selectedDay);
 
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    `${isActive && "border-2"}`;
-
   const isShoppingList = pathname === "/shopping-list";
 
   return (
