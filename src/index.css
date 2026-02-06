@@ -73,7 +73,7 @@ h2 {
 }
 
 .primary-button {
-  @apply bg-accent dark:bg-accent disabled:bg-accent/30  dark:disabled:bg-accent/30 text-white w-full;
+  @apply bg-accent dark:bg-accent disabled:bg-accent/30 dark:disabled:bg-accent/30 text-white w-full;
 }
 
 .rounded-button {

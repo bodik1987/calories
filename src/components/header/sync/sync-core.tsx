@@ -126,12 +126,19 @@ export default function SyncCore({
 
   return (
     <div className="mt-4 w-full flex flex-col justify-center gap-2">
-      <div className="flex gap-3">
+      <div className="flex gap-2">
         <button
           onClick={deleteUser}
           className="button disabled:bg-accent/50 text-white w-full bg-warning"
         >
-          Удалить все
+          Удалить
+        </button>
+
+        <button
+          onClick={downloadFromDatabase}
+          className="button border-primary border-2 w-fit px-4"
+        >
+          Восстановить
         </button>
 
         <button onClick={deleteLocalUser} className="button primary-button">
@@ -140,13 +147,9 @@ export default function SyncCore({
       </div>
 
       <button
-        onClick={downloadFromDatabase}
-        className="mt-4 button primary-button"
+        onClick={uploadToDatabase}
+        className="mt-4 button primary-button h-16!"
       >
-        Восстановить
-      </button>
-
-      <button onClick={uploadToDatabase} className="mt-4 button primary-button">
         Сделать резервную копию
       </button>
     </div>
