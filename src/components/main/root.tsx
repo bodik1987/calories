@@ -40,7 +40,7 @@ export default function Root() {
   const [productWeight, setProductWeight] = useState("");
   const [additionalWeight, setAdditionalWeight] = useState("");
   const [selectedProductWeight, setSelectedProductWeight] = useState(
-    selectedProduct ? selectedProduct.weight : ""
+    selectedProduct ? selectedProduct.weight : "",
   );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -76,11 +76,11 @@ export default function Root() {
   const handleUpdateItem = useCallback(
     (updatedItem: Item) => {
       setItems((prev) =>
-        prev.map((item) => (item.id === updatedItem.id ? updatedItem : item))
+        prev.map((item) => (item.id === updatedItem.id ? updatedItem : item)),
       );
       handleClose();
     },
-    [setItems]
+    [setItems],
   );
 
   const handleDeleteItem = useCallback(
@@ -88,7 +88,7 @@ export default function Root() {
       setItems((prev) => prev.filter((item) => item.id !== id));
       handleClose();
     },
-    [setItems]
+    [setItems],
   );
 
   const handleAddItem = useCallback(
@@ -97,7 +97,7 @@ export default function Root() {
       setSearchQuery(newItem.title);
       handleClose();
     },
-    [setItems]
+    [setItems],
   );
 
   // Edit selected product
@@ -118,7 +118,7 @@ export default function Root() {
         productsToEat: day.productsToEat.map((item) =>
           item.id === selectedProduct.id
             ? { ...item, weight: selectedProductWeight } // Обновление веса только для редактируемого продукта
-            : item
+            : item,
         ),
       });
 
@@ -139,7 +139,7 @@ export default function Root() {
                   Number(selectedProductWeight) + Number(additionalWeight)
                 ).toString(),
               }
-            : item
+            : item,
         ),
       });
 
@@ -157,7 +157,7 @@ export default function Root() {
 
       setSelectedProduct(null);
     },
-    [setDay, day]
+    [setDay, day],
   );
 
   const modalContent: Record<string, ReactNode> = {
@@ -198,7 +198,9 @@ export default function Root() {
         setShowAdditionalWeightAlert={handleSetShowAdditionalWeightAlert}
       />
     ),
-    addNewProduct: <Product onAddItem={handleAddItem} />,
+    addNewProduct: (
+      <Product onAddItem={handleAddItem} searchQuery={searchQuery} />
+    ),
   };
 
   return (

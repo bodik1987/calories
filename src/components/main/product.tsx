@@ -9,6 +9,7 @@ type Props = {
   onAddItem?: (newItem: Item) => void;
   onUpdateItem?: (updatedItem: Item) => void;
   setShowAlert?: () => void;
+  searchQuery?: string;
 };
 
 export default function Product({
@@ -17,8 +18,11 @@ export default function Product({
   onAddItem,
   onUpdateItem,
   setShowAlert,
+  searchQuery,
 }: Props) {
-  const [title, setTitle] = useState(item?.title || "");
+  const [title, setTitle] = useState(
+    searchQuery ? searchQuery : item?.title || "",
+  );
   const [calories, setCalories] = useState(item?.calories || "");
   const [isFavorite, setIsFavorite] = useState(item?.isFavorite || false);
   const [description, setDescription] = useState(item?.description || "");
