@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import useCheckConnection from "../../hooks/useCheckConnection";
 import { IUserMeasurements } from "../../types";
 import {
@@ -17,6 +17,7 @@ import BottomSheet from "../ui/bottom-sheet";
 import { useDataStore } from "../../store/useStore";
 
 export default function Header() {
+  const { pathname } = useLocation();
   const isOnline = useCheckConnection();
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -36,7 +37,7 @@ export default function Header() {
 
   const handleUserMeasurementsChange = (
     field: keyof IUserMeasurements,
-    value: string
+    value: string,
   ) => {
     setUserMeasurements({ ...userMeasurements, [field]: value });
   };
@@ -103,16 +104,18 @@ export default function Header() {
 
             <ThemeToggle />
 
-            {day.productsToEat.filter((el) => el.day === selectedDay).length >
-              0 && (
-              <button
-                onClick={() => setShowAlert(true)}
-                className="button ml-auto px-5 bg-white dark:bg-[#282828] dark:text-neutral-50"
-                aria-label="Очистить"
-              >
-                Очистить
-              </button>
-            )}
+            <div className={`${pathname === "/notes" ? "hidden" : ""} ml-auto`}>
+              {day.productsToEat.filter((el) => el.day === selectedDay).length >
+                0 && (
+                <button
+                  onClick={() => setShowAlert(true)}
+                  className="button  px-5 bg-white dark:bg-[#282828] dark:text-neutral-50"
+                  aria-label="Очистить"
+                >
+                  Очистить
+                </button>
+              )}
+            </div>
           </div>
 
           <Totals

@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useDataStore, useUIStore } from "../../store/useStore";
 import { ChewronUpIcon } from "../ui/icons";
 
 export default function Footer() {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const today = new Date().getDate();
   const isTodayOdd = today % 2 !== 0;
 
@@ -21,7 +22,9 @@ export default function Footer() {
   const activeLabel = getLabel(selectedDay);
 
   return (
-    <footer className="h-24 bg-panel/70 backdrop-blur-md dark:bg-dark-panel select-none border-t border-accent/5">
+    <footer
+      className={`${pathname === "/notes" && "hidden"} h-24 bg-panel/70 backdrop-blur-md dark:bg-dark-panel select-none border-t border-accent/5`}
+    >
       <div className="container pt-3 pb-8 h-full flex items-center justify-around gap-4 px-3">
         {/* Контейнер табов с padding */}
         <div className="relative w-full bg-white dark:bg-white/5 rounded-full flex items-center py-2">

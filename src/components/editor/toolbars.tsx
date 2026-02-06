@@ -10,17 +10,24 @@ import {
   CAN_UNDO_COMMAND,
   REDO_COMMAND,
   UNDO_COMMAND,
-  FORMAT_TEXT_COMMAND
+  FORMAT_TEXT_COMMAND,
 } from "lexical";
 import { mergeRegister } from "@lexical/utils";
 import { useDebouncedCallback } from "use-debounce";
-import { H1Icon, RedoIcon, UndoIcon, BoldIcon } from "../ui/icons";
+import {
+  H1Icon,
+  RedoIcon,
+  UndoIcon,
+  BoldIcon,
+  ChewronUpIcon,
+} from "../ui/icons";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { NavLink } from "react-router";
 
 export default function Toolbars() {
   const [_, setNote] = useLocalStorage(
     "note",
-    `{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}`
+    `{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}`,
   );
   const [editor] = useLexicalComposerContext();
   const [canUndo, setCanUndo] = useState(false);
@@ -38,7 +45,7 @@ export default function Toolbars() {
             return;
           }
           handleSave(JSON.stringify(editorState));
-        }
+        },
       ),
       editor.registerCommand(
         CAN_UNDO_COMMAND,
@@ -46,7 +53,7 @@ export default function Toolbars() {
           setCanUndo(payload);
           return false;
         },
-        1
+        1,
       ),
       editor.registerCommand(
         CAN_REDO_COMMAND,
@@ -54,8 +61,8 @@ export default function Toolbars() {
           setCanRedo(payload);
           return false;
         },
-        1
-      )
+        1,
+      ),
     );
   }, [editor]);
 
@@ -75,33 +82,43 @@ export default function Toolbars() {
   };
 
   return (
-    <div className="fixed bottom-[116px] right-4 flex gap-4 items-center bg-panel dark:bg-dark-panel backdrop-blur-md p-4 rounded-full">
-      <button
-        disabled={!canUndo}
-        onClick={() => {
-          editor.dispatchCommand(UNDO_COMMAND, undefined);
-        }}
-        className="toolbar-item spaced disabled:opacity-50"
-        aria-label="Undo"
-      >
-        <UndoIcon />
-      </button>
-      <button
-        disabled={!canRedo}
-        onClick={() => {
-          editor.dispatchCommand(REDO_COMMAND, undefined);
-        }}
-        className="toolbar-item spaced disabled:opacity-50"
-        aria-label="Redo"
-      >
-        <RedoIcon />
-      </button>
-      <button onClick={handleHeading} className={`rounded-md`}>
-        <H1Icon />
-      </button>
-      <button onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold")} aria-label="Bold">
-      <BoldIcon />
-      </button>
+    <div className="fixed bottom-4 inset-x-4 flex justify-between items-center">
+      <div className="flex gap-4 items-center bg-panel dark:bg-dark-panel backdrop-blur-md p-4 rounded-full">
+        <NavLink to={"/"} className="-rotate-90">
+          <ChewronUpIcon />
+        </NavLink>
+      </div>
+      <div className="flex gap-4 items-center bg-panel dark:bg-dark-panel backdrop-blur-md p-4 rounded-full">
+        <button
+          disabled={!canUndo}
+          onClick={() => {
+            editor.dispatchCommand(UNDO_COMMAND, undefined);
+          }}
+          className="toolbar-item spaced disabled:opacity-50"
+          aria-label="Undo"
+        >
+          <UndoIcon />
+        </button>
+        <button
+          disabled={!canRedo}
+          onClick={() => {
+            editor.dispatchCommand(REDO_COMMAND, undefined);
+          }}
+          className="toolbar-item spaced disabled:opacity-50"
+          aria-label="Redo"
+        >
+          <RedoIcon />
+        </button>
+        <button onClick={handleHeading} className={`rounded-md`}>
+          <H1Icon />
+        </button>
+        <button
+          onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold")}
+          aria-label="Bold"
+        >
+          <BoldIcon />
+        </button>
+      </div>
     </div>
   );
 }
