@@ -36,7 +36,11 @@ createRoot(document.getElementById("root")!).render(
       <Route element={<Layout />}>
         <Route index element={<Root />} />
         <Route path="/notes" element={<Editor />} />
+        <Route
+          path="/shopping-list"
+          element={<section className="p-4">Shopping-list</section>}
+        />
       </Route>
     </Routes>
-  </BrowserRouter>
+  </BrowserRouter>,
 );

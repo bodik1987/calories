@@ -1,6 +1,6 @@
-import { useLocation, useNavigate } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { useDataStore, useUIStore } from "../../store/useStore";
-import { ChewronUpIcon } from "../ui/icons";
+import { ChewronUpIcon, ShopingListIcon } from "../ui/icons";
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -21,13 +21,32 @@ export default function Footer() {
 
   const activeLabel = getLabel(selectedDay);
 
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `${isActive && "border-2"}`;
+
+  const isShoppingList = pathname === "/shopping-list";
+
   return (
     <footer
       className={`${pathname === "/notes" && "hidden"} h-24 bg-panel/70 backdrop-blur-md dark:bg-dark-panel select-none border-t border-accent/5`}
     >
       <div className="container pt-3 pb-8 h-full flex items-center justify-around gap-4 px-3">
         {/* Контейнер табов с padding */}
-        <div className="relative w-full bg-white dark:bg-white/5 rounded-full flex items-center py-2">
+
+        <div className="flex gap-4 items-center mr-auto">
+          <NavLink
+            to={isShoppingList ? "/" : "/shopping-list"}
+            className={`button w-12! h-12! aspect-square bg-accent text-white z-10 active:scale-95 transition-transform flex items-center justify-center ${
+              isShoppingList ? "-rotate-90" : ""
+            }`}
+          >
+            {isShoppingList ? <ChewronUpIcon /> : <ShopingListIcon />}
+          </NavLink>
+        </div>
+
+        <div
+          className={`${pathname === "/shopping-list" && "hidden"} relative w-full bg-white dark:bg-white/5 rounded-full flex items-center py-2`}
+        >
           {/* Абсолютный ползунок */}
           <div
             className="absolute rounded-full transition-all"
@@ -75,7 +94,7 @@ export default function Footer() {
             setOpenBottomSheet(true);
             setContentKey("list");
           }}
-          className="button w-12! h-12! active:scale-95 transition-transform aspect-square bg-accent text-white z-10"
+          className={`${pathname === "/shopping-list" && "hidden!"} button w-12! h-12! active:scale-95 transition-transform aspect-square bg-accent text-white z-10`}
           aria-label="Добавить"
         >
           <ChewronUpIcon />

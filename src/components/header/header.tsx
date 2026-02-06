@@ -98,18 +98,21 @@ export default function Header() {
             >
               {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
             </button>
+
             <NavLink to={"/notes"} className={getLinkClass}>
               <NoteIcon />
             </NavLink>
 
             <ThemeToggle />
 
-            <div className={`${pathname === "/notes" ? "hidden" : ""} ml-auto`}>
+            <div
+              className={`${["/notes", "/shopping-list"].includes(pathname) ? "hidden" : ""} ml-auto`}
+            >
               {day.productsToEat.filter((el) => el.day === selectedDay).length >
                 0 && (
                 <button
                   onClick={() => setShowAlert(true)}
-                  className="button  px-5 bg-white dark:bg-[#282828] dark:text-neutral-50"
+                  className="button px-5 bg-white dark:bg-[#282828] dark:text-neutral-50"
                   aria-label="Очистить"
                 >
                   Очистить

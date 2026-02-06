@@ -25,7 +25,7 @@ export default function Editor() {
   };
 
   return (
-    <div className="p-4">
+    <section className="p-4">
       <LexicalComposer initialConfig={initialConfig}>
         <LoadState />
         <Toolbars />
@@ -43,7 +43,7 @@ export default function Editor() {
         <CheckListPlugin />
         <AutoFocusPlugin />
       </LexicalComposer>
-    </div>
+    </section>
   );
 }
 
