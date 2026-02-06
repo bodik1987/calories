@@ -45,6 +45,12 @@ export default function Totals({
   const caloriesClassName = remainingCalories < 0 && "text-warning";
 
   const progressPercentage = Math.min((totalCalories / target) * 100, 100);
+  const progressBarColor =
+    progressPercentage > 80
+      ? "bg-warning"
+      : progressPercentage > 70
+        ? "bg-orange-500"
+        : "bg-accent";
 
   return (
     <>
@@ -61,7 +67,7 @@ export default function Totals({
       <div className="flex gap-3 items-center">
         <div className="mt-2.5 bg-white dark:bg-neutral-700 h-2 w-full rounded-full overflow-hidden">
           <div
-            className="bg-accent h-full rounded-full transition-all duration-500 ease-out"
+            className={`${progressBarColor} h-full rounded-full transition-all duration-500 ease-out`}
             style={{ width: `${progressPercentage}%` }}
           />
         </div>
