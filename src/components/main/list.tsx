@@ -27,9 +27,14 @@ export default function List({
     <div className="p-3 pb-4">
       <div className="max-h-[80vh] rounded-xl overflow-y-auto">
         {items
-          .filter((item) =>
-            item.title.toLowerCase().includes(searchQuery.toLowerCase()),
-          )
+          .filter((item) => {
+            const query = searchQuery.toLowerCase();
+            return (
+              item.title.toLowerCase().includes(query) ||
+              (item.description &&
+                item.description.toLowerCase().includes(query))
+            );
+          })
           .filter((item) => (showFavorites ? item.isFavorite : true))
           .sort((a, b) => {
             if (a.isFavorite && !b.isFavorite) return -1;
@@ -43,12 +48,19 @@ export default function List({
                 setContentKey("addWeight");
               }}
               key={item.id}
-              className="list"
+              className={`${item.description ? "h-16!" : ""} list`}
             >
-              <p className="w-full flex items-center gap-3">
-                {item.isFavorite && <FavoriteIcon active />}
-                {item.title}
-              </p>
+              <div className="w-full flex items-center gap-3">
+                <div>
+                  <p className="w-full flex items-center gap-3">
+                    {item.isFavorite && <FavoriteIcon active />}
+                    {item.title}
+                  </p>
+                  <p className="mt-0.5 text-xs opacity-50">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
               <span>{item.calories}</span>
             </div>
           ))}
