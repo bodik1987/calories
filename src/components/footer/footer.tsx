@@ -23,6 +23,19 @@ export default function Footer() {
 
   const isShoppingList = pathname === "/shopping-list";
 
+  if (isShoppingList) {
+    return (
+      <div className="fixed bottom-[34px] left-3 z-50">
+        <NavLink
+          to="/"
+          className="button w-12 h-12 aspect-square bg-accent text-white active:scale-95 transition-transform flex items-center justify-center -rotate-90"
+        >
+          <ChewronUpIcon />
+        </NavLink>
+      </div>
+    );
+  }
+
   return (
     <footer
       className={`${pathname === "/notes" && "hidden"} h-24 bg-panel/70 backdrop-blur-md dark:bg-dark-panel select-none border-t border-accent/5`}

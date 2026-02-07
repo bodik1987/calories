@@ -8,7 +8,7 @@ export default function Layout() {
     const setViewportHeight = () => {
       document.documentElement.style.setProperty(
         "--vh",
-        `${window.innerHeight * 0.01}px`
+        `${window.innerHeight * 0.01}px`,
       );
     };
 
@@ -28,7 +28,7 @@ export default function Layout() {
       style={{ height: `calc(var(--vh, 1vh) * 100)` }}
     >
       <Header />
-      <section className="flex-1 overflow-y-auto">
+      <section className="flex-1 overflow-y-auto pb-24">
         <Outlet />
       </section>
       <Footer />
