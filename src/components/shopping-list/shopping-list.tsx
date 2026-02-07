@@ -96,13 +96,13 @@ export default function ShoppingList() {
         </h1>
 
         {/* добавление */}
-        <div className="px-3 mb-4 flex gap-2">
+        <div className="px-3 mb-4 flex gap-3">
           <input
             type="text"
             value={newItemName}
             onChange={(e) => setNewItemName(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && addItem()}
-            placeholder="Новый продукт"
+            placeholder="Добавить..."
             className="bg-[#F3F4FA]! dark:bg-dark-panel! px-2 py-1 flex-1"
           />
 

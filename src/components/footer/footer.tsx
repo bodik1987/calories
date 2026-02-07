@@ -13,9 +13,9 @@ export default function Footer() {
 
   const getLabel = (day: number) => {
     if (day === 1) {
-      return isTodayOdd ? "Сегодня" : "Завтра";
+      return isTodayOdd ? "Сегодня" : "---";
     } else {
-      return isTodayOdd ? "Завтра" : "Сегодня";
+      return isTodayOdd ? "---" : "Сегодня";
     }
   };
 
@@ -44,13 +44,8 @@ export default function Footer() {
         {/* Контейнер табов с padding */}
 
         <div className="flex gap-4 items-center mr-auto">
-          <NavLink
-            to={isShoppingList ? "/" : "/shopping-list"}
-            className={`button w-12! h-12! aspect-square bg-accent text-white z-10 active:scale-95 transition-transform flex items-center justify-center ${
-              isShoppingList ? "-rotate-90" : ""
-            }`}
-          >
-            {isShoppingList ? <ChewronUpIcon /> : <ShopingListIcon />}
+          <NavLink to={"/shopping-list"} className="button rounded-button">
+            <ShopingListIcon />
           </NavLink>
         </div>
 
@@ -66,9 +61,7 @@ export default function Footer() {
               top: "0.25rem", // центрирование по вертикали
               left: selectedDay === 1 ? "0.25rem" : "calc(50% + 0.25rem)", // центрирование с учётом padding
               backgroundColor:
-                activeLabel === "Завтра"
-                  ? "transparent"
-                  : "var(--color-accent)",
+                activeLabel === "---" ? "transparent" : "var(--color-accent)",
               border: "2px solid var(--color-accent)",
             }}
           />
@@ -87,7 +80,7 @@ export default function Footer() {
                 aria-label="День"
                 className={`relative z-10 w-full button h-10! transition-all ${
                   isActive
-                    ? label === "Завтра"
+                    ? label === "---"
                       ? "text-accent dark:text-white"
                       : "text-white! text-xl!"
                     : "text-accent dark:text-neutral-400"
