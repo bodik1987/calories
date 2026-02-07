@@ -21,6 +21,51 @@ export function ShopingListIcon() {
     </svg>
   );
 }
+
+export function CheckedIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path d="M0 0h24v24H0z" />
+      <circle cx="12" cy="12" r="12" className="fill-accent dark:fill-white" />
+      <path
+        className="stroke-white dark:stroke-dark-panel"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="m7.198 12.06 3.161 3.162 6.443-6.444"
+      />
+    </svg>
+  );
+}
+
+export function UncheckedIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path d="M0 0h24v24H0z" />
+      <circle cx="12" cy="12" r="12" fill="none" />
+      <circle
+        cx="12"
+        cy="12"
+        r="11"
+        className="stroke-accent dark:stroke-white"
+        stroke-width="2"
+      />
+    </svg>
+  );
+}
+
 export function NoDataIcon() {
   return (
     <svg
@@ -223,37 +268,6 @@ export function PlusIcon() {
     >
       <path d="M5 12h14" />
       <path d="M12 5v14" />
-    </svg>
-  );
-}
-
-export function SettingsIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" />
-      <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
-      <path d="M12 2v2" />
-      <path d="M12 22v-2" />
-      <path d="m17 20.66-1-1.73" />
-      <path d="M11 10.27 7 3.34" />
-      <path d="m20.66 17-1.73-1" />
-      <path d="m3.34 7 1.73 1" />
-      <path d="M14 12h8" />
-      <path d="M2 12h2" />
-      <path d="m20.66 7-1.73 1" />
-      <path d="m3.34 17 1.73-1" />
-      <path d="m17 3.34-1 1.73" />
-      <path d="m11 13.73-4 6.93" />
     </svg>
   );
 }

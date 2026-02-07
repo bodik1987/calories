@@ -312,3 +312,32 @@ export const SEEDS: Item[] = [
     title: "Котлета",
   },
 ];
+
+export const productsList = [
+  { id: 1, checked: false, name: "Йогурт" },
+  { id: 2, checked: false, name: "Йогурт греческий" },
+  { id: 3, checked: false, name: "Кефир" },
+  { id: 4, checked: false, name: "Молоко" },
+  { id: 5, checked: false, name: "Творог" },
+  { id: 6, checked: false, name: "Мюсли" },
+  { id: 7, checked: false, name: "Гранола" },
+  { id: 8, checked: false, name: "Уксус" },
+  { id: 9, checked: false, name: "Тунец" },
+  { id: 10, checked: false, name: "Огурцы соленые" },
+  { id: 11, checked: false, name: "Капуста" },
+  { id: 12, checked: false, name: "Капуста квашенная" },
+  { id: 13, checked: false, name: "Яйца" },
+  { id: 14, checked: false, name: "Хлеб сонячниковый" },
+  { id: 15, checked: false, name: "Желе" },
+  { id: 16, checked: true, name: "Шарики шоколадные" },
+  { id: 17, checked: false, name: "Лаваш" },
+  { id: 18, checked: true, name: "Корейская морковь" },
+  { id: 19, checked: true, name: "Уши копченые" },
+  { id: 20, checked: true, name: "Чашка для кофе" },
+  {
+    id: 21,
+    checked: false,
+    name: "Шток переднего амортизатора Ninebot G2 max",
+  },
+  { id: 22, checked: false, name: "Чечевица" },
+];

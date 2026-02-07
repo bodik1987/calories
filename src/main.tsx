@@ -4,6 +4,7 @@ import Layout from "./layout.tsx";
 import Root from "./components/main/root.tsx";
 import Editor from "./components/editor/editor.tsx";
 import "./index.css";
+import ShoppingList from "./components/shopping-list/shopping-list.tsx";
 
 // Функция для обновления метатега theme-color
 const updateThemeColor = (isDarkMode: boolean) => {
@@ -36,10 +37,7 @@ createRoot(document.getElementById("root")!).render(
       <Route element={<Layout />}>
         <Route index element={<Root />} />
         <Route path="/notes" element={<Editor />} />
-        <Route
-          path="/shopping-list"
-          element={<section className="p-4">Shopping-list</section>}
-        />
+        <Route path="/shopping-list" element={<ShoppingList />} />
       </Route>
     </Routes>
   </BrowserRouter>,
