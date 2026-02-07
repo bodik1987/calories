@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { productsList } from "../../seeds";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { CheckedIcon, DotsIcon, PlusIcon, UncheckedIcon } from "../ui/icons";
+import {
+  CheckedIcon,
+  DotsIcon,
+  PlusIcon,
+  ShopingListIcon,
+  UncheckedIcon,
+} from "../ui/icons";
 import Alert from "../ui/alert";
 
 type Product = {
@@ -34,7 +40,7 @@ export default function ShoppingList() {
     const name = newItemName.trim();
     if (!name) return;
 
-    setItems((prev) => [...prev, { id: Date.now(), name, checked: false }]);
+    setItems((prev) => [...prev, { id: Date.now(), name, checked: true }]);
     setNewItemName("");
   };
 
@@ -86,17 +92,15 @@ export default function ShoppingList() {
         onCancel={() => setShowResetAlert(false)}
       />
 
-      <section>
-        <h1
-          className="text-xl mb-4 px-4 mt-4 cursor-pointer select-none"
-          onClick={resetList}
-          title="Восстановить исходный список"
-        >
-          Список покупок
-        </h1>
-
-        {/* добавление */}
+      <section className="mt-4">
         <div className="px-3 mb-4 flex gap-3">
+          <button
+            onClick={resetList}
+            className="button rounded-button bg-[#F3F4FA]! dark:bg-dark-panel!"
+          >
+            <ShopingListIcon />
+          </button>
+
           <input
             type="text"
             value={newItemName}
