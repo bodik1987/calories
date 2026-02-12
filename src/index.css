@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: "myFont";
+  src: url("/fonts/font-medium.woff2") format("woff2");
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "myFont";
+  src: url("/fonts/font-bold.woff2") format("woff2");
+  font-weight: 600; /* Bold */
+  font-style: normal;
+}
+
+@theme {
+  --color-accent: #014c76;
+  --color-panel: #eff1f5;
+  --color-dark-panel: #161616;
+  --color-warning: #ff5252;
+  --font-myFont: "myFont", sans-serif;
+  --font-myFont-Bold: "myFont-Bold", sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  --vh: 1vh;
+}
+
+#root {
+  @apply font-myFont text-[#1b1b1b] dark:bg-[#282828] dark:text-neutral-50;
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+input {
+  @apply rounded-full w-full px-5 h-12 text-xl outline-none bg-white dark:bg-[#5C5C5C];
+}
+
+.input-number {
+  @apply !w-24 text-center;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+.container {
+  @apply font-myFont max-w-md mx-auto;
+}
+
+.button {
+  @apply rounded-full h-12 flex items-center justify-center text-lg font-medium;
+}
+
+.primary-button {
+  @apply bg-accent dark:bg-accent disabled:bg-accent/30 dark:disabled:bg-accent/30 text-white w-full;
+}
+
+.rounded-button {
+  @apply bg-white dark:bg-[#282828] w-12 aspect-square text-accent dark:text-neutral-50;
+}
+
+.list {
+  @apply py-3.5 px-4 flex items-center gap-4 text-lg sm:text-base bg-white dark:bg-[#282828] dark:border-dark-panel border-b border-panel md:border-transparent last:border-b-0 select-none;
+}
+
+.overlay {
+  @apply fixed inset-0 bg-black/50 dark:bg-black/80 z-20 select-none;
+}
