@@ -152,7 +152,7 @@ export default function Header() {
               </span>
             </p>
           </div>
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-3 items-center px-2">
             <div className="mt-2 bg-panel dark:bg-neutral-700 h-1.5 w-full rounded-full overflow-hidden">
               <div
                 className={`${progressBarColor} h-full rounded-full transition-all duration-500 ease-out`}

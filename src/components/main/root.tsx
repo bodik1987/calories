@@ -221,18 +221,16 @@ export default function Root() {
         onConfirm={() => handleAddAdditionalWeightToSelectedProduct()}
         onCancel={() => setShowAdditionalWeightAlert(false)}
         content={
-          <div>
-            <input
-              value={additionalWeight}
-              onChange={(e) => setAdditionalWeight(e.target.value)}
-              placeholder="Вес"
-              type="number"
-              className="input-number mt-6 w-full!"
-              autoComplete="off"
-              spellCheck="false"
-              autoFocus
-            />
-          </div>
+          <input
+            value={additionalWeight}
+            onChange={(e) => setAdditionalWeight(e.target.value)}
+            placeholder="Вес"
+            type="number"
+            className="input-number mt-6 w-full!"
+            autoComplete="off"
+            spellCheck="false"
+            autoFocus
+          />
         }
       />
 

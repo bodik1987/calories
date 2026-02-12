@@ -77,6 +77,7 @@ export default function List({
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Поиск..."
             className="pl-5 pr-12 text-lg! border-2 border-transparent focus:border-accent transition-all"
+            autoFocus
           />
 
           <button
