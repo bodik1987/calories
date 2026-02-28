@@ -64,7 +64,7 @@ export default function Alert({
             damping: 10,
             stiffness: 100,
           }}
-          className="font-myFont fixed inset-0 bg-black/50 dark:bg-black/80 z-50 select-none flex items-center justify-center"
+          className="font-myFont fixed inset-0 bg-black/50 z-50 select-none flex items-center justify-center"
           onClick={handleClose}
         >
           <motion.div
@@ -80,7 +80,7 @@ export default function Alert({
               stiffness: 100,
             }}
             onClick={(e) => e.stopPropagation()}
-            className="max-w-xs p-6 bg-panel dark:bg-dark-panel dark:text-neutral-50 rounded-4xl z-50"
+            className="max-w-xs p-6 bg-panel rounded-4xl z-50"
           >
             <h3 className="p-1 text-lg">{alertText}</h3>
 
@@ -89,14 +89,14 @@ export default function Alert({
             <div className="mt-6 flex gap-3">
               <button
                 type="button"
-                className="button w-full dark:text-neutral-400"
+                className="button w-full"
                 onClick={handleCancel}
               >
                 Отмена
               </button>
               <button
                 type="button"
-                className="button w-full text-accent dark:text-neutral-50 bg-white/50 dark:bg-accent"
+                className="button w-full text-accent bg-white/50"
                 onClick={handleConfirm}
               >
                 {confirmButtonText}
@@ -106,6 +106,6 @@ export default function Alert({
         </motion.div>
       )}
     </AnimatePresence>,
-    alertPortal!
+    alertPortal!,
   );
 }

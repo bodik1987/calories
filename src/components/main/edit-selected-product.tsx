@@ -30,11 +30,9 @@ export default function EditSelectedProduct({
   return (
     <div className="p-4">
       <h2>{selectedProduct?.product.title}</h2>
-      <div className="mt-1 text-base text-neutral-700 dark:text-[#5C5C5C]">
+      <div className="mt-1 text-base text-neutral-700">
         {selectedProduct?.product.description && (
-          <p className="opacity-50 dark:opacity-80">
-            {selectedProduct?.product.description}
-          </p>
+          <p className="opacity-50">{selectedProduct?.product.description}</p>
         )}
 
         <div className="mt-2">
@@ -46,7 +44,7 @@ export default function EditSelectedProduct({
               {" = "}
               {calculateCalories(
                 selectedProduct.weight,
-                selectedProduct.product.calories
+                selectedProduct.product.calories,
               )}{" "}
               кКал
             </span>

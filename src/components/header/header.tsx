@@ -4,7 +4,6 @@ import { Item, IUserMeasurements } from "../../types";
 import Alert from "../ui/alert";
 import BottomSheet from "../ui/bottom-sheet";
 import { MeasurementsIcon, NetworkOffIcon, NetworkOnIcon } from "../ui/icons";
-import ThemeToggle from "../ui/theme-toggle";
 import Sync from "./sync/sync";
 import useCheckConnection from "../../hooks/useCheckConnection";
 
@@ -91,7 +90,6 @@ export default function Header() {
               className="text-center mt-1"
             />
           </div>
-          <ThemeToggle />
 
           <button
             onClick={() => setModalContentKey("sync")}
@@ -106,7 +104,7 @@ export default function Header() {
           {day.length !== 0 && (
             <button
               onClick={() => setShowAlert(true)}
-              className="button px-5 bg-white dark:bg-[#282828] dark:text-neutral-50"
+              className="button px-5 bg-white"
               aria-label="Очистить"
             >
               Очистить день
@@ -141,9 +139,9 @@ export default function Header() {
         modalContent={modalContent}
         contentKey={modalContentKey}
       />
-      <header className="sticky top-2 inset-x-0 w-fit mx-auto flex justify-around items-center gap-2 bg-white/50 backdrop-blur-lg dark:bg-dark-panel/70 dark:border-transparent pl-4 pr-3 py-1.5 border border-gray-200 font-bold rounded-full select-none shadow z-10 mb-2">
+      <header className="sticky top-2 inset-x-0 w-fit mx-auto flex justify-around items-center gap-2 bg-white/50 backdrop-blur-lg pl-4 pr-3 py-1.5 border border-gray-200 font-bold rounded-full select-none shadow z-10 mb-2">
         <div className="flex flex-col">
-          <div className="px-1 flex justify-between items-center dark:text-neutral-100">
+          <div className="px-1 flex justify-between items-center">
             <p>
               {`${totalCalories.toFixed(0)} из ${target.toFixed(0)}`} {" / "}
               {caloriesText}
@@ -153,7 +151,7 @@ export default function Header() {
             </p>
           </div>
           <div className="flex gap-3 items-center px-2">
-            <div className="mt-2 bg-panel dark:bg-neutral-700 h-1.5 w-full rounded-full overflow-hidden">
+            <div className="mt-2 bg-panel h-1.5 w-full rounded-full overflow-hidden">
               <div
                 className={`${progressBarColor} h-full rounded-full transition-all duration-500 ease-out`}
                 style={{ width: `${progressPercentage}%` }}
@@ -163,12 +161,12 @@ export default function Header() {
         </div>
         <button
           onClick={() => handleButtonClick("userMeasurements")}
-          className="text-accent dark:text-white"
+          className="text-accent"
         >
           <MeasurementsIcon />
         </button>
       </header>
-      <div className="fixed z-5 top-0 inset-x-0 bg-linear-to-b from-white dark:from-dark-panel/70 to-transparent h-18" />
+      <div className="fixed z-5 top-0 inset-x-0 bg-linear-to-b from-white to-transparent h-18" />
     </>
   );
 }

@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @font-face {
   font-family: "myFont";
   src: url("/fonts/font-medium.woff2") format("woff2");
@@ -19,7 +17,6 @@
 @theme {
   --color-accent: #014c76;
   --color-panel: #eff1f5;
-  --color-dark-panel: #161616;
   --color-warning: #ff5252;
   --font-myFont: "myFont", sans-serif;
   --font-myFont-Bold: "myFont-Bold", sans-serif;
@@ -45,7 +42,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 #root {
-  @apply font-myFont text-[#1b1b1b] dark:bg-[#282828] dark:text-neutral-50;
+  @apply font-myFont text-[#1b1b1b];
 }
 
 button {
@@ -53,7 +50,7 @@ button {
 }
 
 input {
-  @apply rounded-full w-full px-5 h-12 text-xl outline-none bg-white dark:bg-[#5C5C5C];
+  @apply rounded-full w-full px-5 h-12 text-xl outline-none bg-white;
 }
 
 .input-number {
@@ -73,17 +70,17 @@ h2 {
 }
 
 .primary-button {
-  @apply bg-accent dark:bg-accent disabled:bg-accent/30 dark:disabled:bg-accent/30 text-white w-full;
+  @apply bg-accent disabled:bg-accent/30 text-white w-full;
 }
 
 .rounded-button {
-  @apply bg-white dark:bg-[#282828] w-12 aspect-square text-accent dark:text-neutral-50;
+  @apply bg-white w-12 aspect-square text-accent;
 }
 
 .list {
-  @apply py-3.5 px-4 flex items-center gap-4 text-lg sm:text-base bg-white dark:bg-[#282828] dark:border-dark-panel border-b border-panel md:border-transparent last:border-b-0 select-none;
+  @apply py-3.5 px-4 flex items-center gap-4 text-lg sm:text-base bg-white border-b border-panel md:border-transparent last:border-b-0 select-none;
 }
 
 .overlay {
-  @apply fixed inset-0 bg-black/50 dark:bg-black/80 z-20 select-none;
+  @apply fixed inset-0 bg-black/50 z-20 select-none;
 }

@@ -8,7 +8,7 @@ import List from "./list";
 import AddWeight from "./add-weight";
 import Product from "./product";
 import EditSelectedProduct from "./edit-selected-product";
-import { NoDataIcon } from "../ui/icons";
+import { ChewronUpIcon, NoDataIcon } from "../ui/icons";
 import BottomSheet from "../ui/bottom-sheet";
 import Alert from "../ui/alert";
 import { calculateCalories } from "../../utils/calculateCalories";
@@ -194,7 +194,7 @@ export default function Root() {
   };
 
   return (
-    <div className="pb-18 dark:bg-[#282828]">
+    <div className="pb-18">
       <Alert
         open={showAlert}
         handleClose={() => setShowAlert(false)}
@@ -245,9 +245,7 @@ export default function Root() {
         {day.length === 0 && (
           <div className="fixed top-1/2 inset-x-0 flex flex-col justify-center items-center -translate-y-1/2">
             <NoDataIcon />
-            <p className="mt-6 text-accent dark:text-neutral-50">
-              Здесь пока ничего нет
-            </p>
+            <p className="mt-6 text-accent">Здесь пока ничего нет</p>
           </div>
         )}
 
@@ -274,6 +272,17 @@ export default function Root() {
           </div>
         ))}
       </div>
+
+      <button
+        onClick={() => {
+          setOpenBottomSheet(true);
+          setContentKey("list");
+        }}
+        className={`fixed bottom-6 right-4 button w-12! h-12! active:scale-95 transition-transform aspect-square bg-accent text-white shadow z-10`}
+        aria-label="Добавить"
+      >
+        <ChewronUpIcon />
+      </button>
     </div>
   );
 }

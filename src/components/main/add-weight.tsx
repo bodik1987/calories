@@ -23,9 +23,7 @@ export default function AddWeight({
         <div>
           <h2>{selectedItem?.title}</h2>
           {selectedItem?.description && (
-            <p className="opacity-50 dark:opacity-80">
-              {selectedItem?.description}
-            </p>
+            <p className="opacity-50">{selectedItem?.description}</p>
           )}
 
           <p className="mt-2">
