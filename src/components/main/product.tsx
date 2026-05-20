@@ -52,23 +52,23 @@ export default function Product({
 
   return (
     <div className="p-4">
-      <div className="flex items-center justify-between pl-1">
-        <h2>{item ? "Изменить" : "Добавить продукт"}</h2>
+      <div className="flex justify-between items-center pl-1">
+        <h2>{item ? "Edytuj" : "Dodaj produkt"}</h2>
         <button
           type="button"
           onClick={toggleFavorite}
-          className="button rounded-button"
+          className="rounded-button button"
         >
           <FavoriteIcon active={isFavorite} />
         </button>
       </div>
 
       <form className="mt-5" onSubmit={handleSubmit}>
-        <div className="mt-2 flex gap-1">
+        <div className="flex gap-1 mt-2">
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Название*"
+            placeholder="Nazwa*"
             autoComplete="off"
             spellCheck="false"
             className="px-5 rounded-r-none! h-14!"
@@ -77,9 +77,9 @@ export default function Product({
           <input
             value={calories}
             onChange={(e) => setCalories(e.target.value)}
-            placeholder="ккал*"
+            placeholder="kcal*"
             autoComplete="off"
-            className="input-number rounded-l-none! h-14!"
+            className="rounded-l-none! h-14! input-number"
             spellCheck="false"
             type="number"
           />
@@ -88,18 +88,18 @@ export default function Product({
         <input
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          placeholder="Описание"
+          placeholder="Opis"
           autoComplete="off"
           spellCheck="false"
-          className="px-5 mt-2 text-base! opacity-80"
+          className="opacity-80 mt-2 px-5 text-base!"
         />
 
-        <div className="mt-6 flex gap-3">
+        <div className="flex gap-3 mt-6">
           {item && (
             <button
               type="button"
               onClick={setShowAlert}
-              className="button rounded-button"
+              className="rounded-button button"
             >
               <DeleteIcon />
             </button>
@@ -110,7 +110,7 @@ export default function Product({
             disabled={!title || !calories}
             className="button primary-button"
           >
-            Сохранить
+            Zapisz
           </button>
         </div>
       </form>

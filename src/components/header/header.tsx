@@ -31,7 +31,7 @@ export default function Header() {
   const remainingCalories = Math.round(target - totalCalories);
 
   // Форматирование текста в зависимости от оставшихся калорий
-  const caloriesText = remainingCalories > 0 ? "Ост. " : "Превыш. ";
+  const caloriesText = remainingCalories > 0 ? "Ost. " : "Przewyższenie ";
   const caloriesClassName = remainingCalories < 0 && "text-warning";
 
   const progressPercentage = Math.min((totalCalories / target) * 100, 100);
@@ -63,38 +63,38 @@ export default function Header() {
   const modalContent: Record<string, ReactNode> = {
     userMeasurements: (
       <div className="p-4">
-        <h2>Настройки профиля</h2>
+        <h2>Ustawienia profilu</h2>
 
-        <div className="mt-4 w-full flex items-end gap-3">
+        <div className="flex items-end gap-3 mt-4 w-full">
           <div className="flex flex-col">
-            <label className="ml-3">Возраст</label>
+            <label className="ml-3">Wiek</label>
             <input
               type="number"
               value={age}
               onChange={(e) =>
                 handleUserMeasurementsChange("age", e.target.value)
               }
-              placeholder="Возраст"
-              className="text-center mt-1"
+              placeholder="Wiek"
+              className="mt-1 text-center"
             />
           </div>
           <div className="flex flex-col">
-            <label className="ml-3">Вес</label>
+            <label className="ml-3">Waga</label>
             <input
               type="number"
               value={weight}
               onChange={(e) =>
                 handleUserMeasurementsChange("weight", e.target.value)
               }
-              placeholder="Вес (кг)"
-              className="text-center mt-1"
+              placeholder="Waga (kg)"
+              className="mt-1 text-center"
             />
           </div>
 
           <button
             onClick={() => setModalContentKey("sync")}
-            className="button rounded-button"
-            aria-label="Синхронизация"
+            className="rounded-button button"
+            aria-label="Synchronizacja"
           >
             {isOnline ? <NetworkOnIcon /> : <NetworkOffIcon />}
           </button>
@@ -104,10 +104,10 @@ export default function Header() {
           {day.length !== 0 && (
             <button
               onClick={() => setShowAlert(true)}
-              className="button px-5 bg-white"
-              aria-label="Очистить"
+              className="bg-white px-5 button"
+              aria-label="Resetuj"
             >
-              Очистить день
+              Resetuj dzień
             </button>
           )}
         </div>
@@ -128,10 +128,10 @@ export default function Header() {
       <Alert
         open={showAlert}
         handleClose={() => setShowAlert(false)}
-        alertText="Очистить список продуктов в этот день?"
+        alertText="Czy na pewno chcesz wyczyścić listę produktów na ten dzień?"
         onConfirm={cleanDay}
         onCancel={() => setShowAlert(false)}
-        confirmButtonText="Очистить"
+        confirmButtonText="Wyczyść"
       />
       <BottomSheet
         open={isModalOpen}
@@ -139,19 +139,19 @@ export default function Header() {
         modalContent={modalContent}
         contentKey={modalContentKey}
       />
-      <header className="sticky top-2 inset-x-0 w-fit mx-auto flex justify-around items-center gap-2 bg-white/50 backdrop-blur-lg pl-4 pr-3 py-1.5 border border-gray-200 font-bold rounded-full select-none shadow z-10 mb-2">
+      <header className="top-2 z-10 sticky inset-x-0 flex justify-around items-center gap-2 bg-white/50 shadow backdrop-blur-lg mx-auto mb-2 py-1.5 pr-3 pl-4 border border-gray-200 rounded-full w-fit font-bold select-none">
         <div className="flex flex-col">
-          <div className="px-1 flex justify-between items-center">
+          <div className="flex justify-between items-center px-1">
             <p>
-              {`${totalCalories.toFixed(0)} из ${target.toFixed(0)}`} {" / "}
+              {`${totalCalories.toFixed(0)} z ${target.toFixed(0)}`} {" / "}
               {caloriesText}
               <span className={`${caloriesClassName}`}>
-                {remainingCalories} <small>ккал</small>
+                {remainingCalories} <small>kcal</small>
               </span>
             </p>
           </div>
-          <div className="flex gap-3 items-center px-2">
-            <div className="mt-2 bg-panel h-1.5 w-full rounded-full overflow-hidden">
+          <div className="flex items-center gap-3 px-2">
+            <div className="bg-panel mt-2 rounded-full w-full h-1.5 overflow-hidden">
               <div
                 className={`${progressBarColor} h-full rounded-full transition-all duration-500 ease-out`}
                 style={{ width: `${progressPercentage}%` }}
@@ -166,7 +166,7 @@ export default function Header() {
           <MeasurementsIcon />
         </button>
       </header>
-      <div className="fixed z-5 top-0 inset-x-0 bg-linear-to-b from-white to-transparent h-18" />
+      <div className="top-0 z-5 fixed inset-x-0 bg-linear-to-b from-white to-transparent h-18" />
     </>
   );
 }

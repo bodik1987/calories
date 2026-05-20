@@ -25,7 +25,7 @@ export default function List({
 
   return (
     <div className="p-3 pb-4">
-      <div className="max-h-[80vh] rounded-xl overflow-y-auto">
+      <div className="rounded-xl max-h-[80vh] overflow-y-auto">
         {items
           .filter((item) => {
             const query = searchQuery.toLowerCase();
@@ -50,13 +50,13 @@ export default function List({
               key={item.id}
               className={`${item.description ? "h-16!" : ""} list`}
             >
-              <div className="w-full flex items-center gap-3">
+              <div className="flex items-center gap-3 w-full">
                 <div>
-                  <p className="w-full flex items-center gap-3">
+                  <p className="flex items-center gap-3 w-full">
                     {item.isFavorite && <FavoriteIcon active />}
                     {item.title}
                   </p>
-                  <p className="mt-0.5 text-xs opacity-50">
+                  <p className="opacity-50 mt-0.5 text-xs">
                     {item.description}
                   </p>
                 </div>
@@ -66,7 +66,7 @@ export default function List({
           ))}
       </div>
 
-      <div className="mt-4 flex gap-3">
+      <div className="flex gap-3 mt-4">
         <div className="relative w-full">
           <input
             type="search"
@@ -75,8 +75,8 @@ export default function List({
             ref={inputRef}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Поиск..."
-            className="pl-5 pr-12 text-lg! border-2 border-transparent focus:border-accent transition-all"
+            placeholder="Szukaj..."
+            className="pr-12 pl-5 border-2 border-transparent focus:border-accent text-lg! transition-all"
             autoFocus
           />
 
@@ -91,14 +91,14 @@ export default function List({
                 setOpenBottomSheet(false);
               }
             }}
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-accentw-12 h-12 rounded-full flex items-center justify-center"
+            className="top-1/2 right-2 absolute flex justify-center items-center rounded-full h-12 text-accentw-12 -translate-y-1/2"
           >
             {searchQuery.length > 0 ? <BackspaceIcon /> : <DownIcon />}
           </button>
         </div>
         <button
           onClick={() => setContentKey("addNewProduct")}
-          className="button rounded-button"
+          className="rounded-button button"
         >
           <PlusIcon />
         </button>

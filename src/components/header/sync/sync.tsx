@@ -15,9 +15,9 @@ export default function Sync() {
   return (
     <div className="p-4">
       <div className="flex justify-between gap-3">
-        <h2>{user ? user.name : "Нет пользователя"}</h2>
+        <h2>{user ? user.name : "Brak użytkownika"}</h2>
         <div className="flex gap-3">
-          {loading && <div>Загрузка...</div>}
+          {loading && <div>Ładowanie...</div>}
 
           {success && <div>{success}</div>}
 
@@ -47,7 +47,7 @@ export default function Sync() {
                 onClick={() => setUserForm(true)}
                 className="mt-4 button primary-button"
               >
-                Войти
+                Zaloguj się
               </button>
             </>
           )}

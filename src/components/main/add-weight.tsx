@@ -19,7 +19,7 @@ export default function AddWeight({
 }: AddWeightProps) {
   return (
     <form onSubmit={handleSubmit} className="p-4">
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex justify-between items-start gap-3">
         <div>
           <h2>{selectedItem?.title}</h2>
           {selectedItem?.description && (
@@ -28,12 +28,12 @@ export default function AddWeight({
 
           <p className="mt-2">
             <span>{selectedItem?.calories} </span>
-            <span className="text-sm">кКал / 100г</span>
+            <span className="text-sm">kcal / 100 g</span>
 
             {productWeight && (
               <span className="font-medium">
                 {" = "}
-                {calculateCalories(productWeight, selectedItem?.calories)} кКал
+                {calculateCalories(productWeight, selectedItem?.calories)} kcal
               </span>
             )}
           </p>
@@ -44,11 +44,11 @@ export default function AddWeight({
         </button>
       </div>
 
-      <div className="mt-4 flex gap-3">
+      <div className="flex gap-3 mt-4">
         <input
           value={productWeight}
           onChange={(e) => setProductWeight(e.target.value)}
-          placeholder="Вес"
+          placeholder="Waga"
           type="number"
           autoComplete="off"
           spellCheck="false"
@@ -60,7 +60,7 @@ export default function AddWeight({
           disabled={!productWeight}
           className="button primary-button"
         >
-          Добавить
+          Dodaj
         </button>
       </div>
     </form>

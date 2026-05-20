@@ -42,7 +42,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 #root {
-  @apply font-myFont text-[#1b1b1b];
+  @apply mx-auto px-4 max-w-xl font-myFont text-[#1b1b1b];
 }
 
 button {
@@ -50,7 +50,7 @@ button {
 }
 
 input {
-  @apply rounded-full w-full px-5 h-12 text-xl outline-none bg-white;
+  @apply bg-white px-5 rounded-full outline-none w-full h-12 text-xl;
 }
 
 .input-number {
@@ -62,11 +62,11 @@ h2 {
 }
 
 .container {
-  @apply font-myFont max-w-md mx-auto;
+  @apply mx-auto max-w-md font-myFont;
 }
 
 .button {
-  @apply rounded-full h-12 flex items-center justify-center text-lg font-medium;
+  @apply flex justify-center items-center rounded-full h-12 font-medium text-lg;
 }
 
 .primary-button {
@@ -78,7 +78,7 @@ h2 {
 }
 
 .list {
-  @apply py-3.5 px-4 flex items-center gap-4 text-lg sm:text-base bg-white border-b border-panel md:border-transparent last:border-b-0 select-none;
+  @apply flex items-center gap-4 bg-white px-4 py-3.5 border-panel md:border-transparent border-b last:border-b-0 sm:text-base text-lg select-none;
 }
 
 .overlay {

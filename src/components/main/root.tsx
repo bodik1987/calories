@@ -198,8 +198,8 @@ export default function Root() {
       <Alert
         open={showAlert}
         handleClose={() => setShowAlert(false)}
-        alertText="Удалить выбранный продукт?"
-        confirmButtonText="Удалить"
+        alertText="Usunąć wybrany produkt?"
+        confirmButtonText="Usunąć"
         onConfirm={() => handleDeleteSelectedProduct(selectedProduct!.id)}
         onCancel={() => setShowAlert(false)}
       />
@@ -207,8 +207,8 @@ export default function Root() {
       <Alert
         open={showDeleteItemAlert}
         handleClose={() => setShowDeleteItemAlert(false)}
-        alertText="Удалить из списка продуктов?"
-        confirmButtonText="Удалить"
+        alertText="Usunąć z listy produktów?"
+        confirmButtonText="Usunąć"
         onConfirm={() => handleDeleteItem(selectedItem!.id)}
         onCancel={() => setShowDeleteItemAlert(false)}
       />
@@ -216,17 +216,17 @@ export default function Root() {
       <Alert
         open={showAdditionalWeightAlert}
         handleClose={() => setShowAdditionalWeightAlert(false)}
-        alertText="Добавить вес к имеющемуся?"
-        confirmButtonText="Добавить"
+        alertText="Dodać wagę do istniejącej?"
+        confirmButtonText="Dodaj"
         onConfirm={() => handleAddAdditionalWeightToSelectedProduct()}
         onCancel={() => setShowAdditionalWeightAlert(false)}
         content={
           <input
             value={additionalWeight}
             onChange={(e) => setAdditionalWeight(e.target.value)}
-            placeholder="Вес"
+            placeholder="Waga"
             type="number"
-            className="input-number mt-6 w-full!"
+            className="mt-6 w-full! input-number"
             autoComplete="off"
             spellCheck="false"
             autoFocus
@@ -241,11 +241,11 @@ export default function Root() {
         contentKey={contentKey}
       />
 
-      <div key={JSON.stringify(day)} className="h-full relative">
+      <div key={JSON.stringify(day)} className="relative h-full">
         {day.length === 0 && (
-          <div className="fixed top-1/2 inset-x-0 flex flex-col justify-center items-center -translate-y-1/2">
+          <div className="top-1/2 fixed inset-x-0 flex flex-col justify-center items-center -translate-y-1/2">
             <NoDataIcon />
-            <p className="mt-6 text-accent">Здесь пока ничего нет</p>
+            <p className="mt-6 text-accent">Tutaj jeszcze nic nie ma</p>
           </div>
         )}
 
@@ -262,7 +262,7 @@ export default function Root() {
             <p className="w-full">{item.product.title}</p>
 
             <div className="flex gap-2">
-              <span className="w-12 text-right whitespace-nowrap opacity-50">
+              <span className="opacity-50 w-12 text-right whitespace-nowrap">
                 {item.weight} г.
               </span>
               <span className="w-12 text-right whitespace-nowrap">
@@ -279,7 +279,7 @@ export default function Root() {
           setContentKey("list");
         }}
         className={`fixed bottom-6 right-4 button w-12! h-12! active:scale-95 transition-transform aspect-square bg-accent text-white shadow z-10`}
-        aria-label="Добавить"
+        aria-label="Dodaj"
       >
         <ChewronUpIcon />
       </button>

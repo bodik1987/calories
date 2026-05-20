@@ -30,14 +30,14 @@ export default function EditSelectedProduct({
   return (
     <div className="p-4">
       <h2>{selectedProduct?.product.title}</h2>
-      <div className="mt-1 text-base text-neutral-700">
+      <div className="mt-1 text-neutral-700 text-base">
         {selectedProduct?.product.description && (
           <p className="opacity-50">{selectedProduct?.product.description}</p>
         )}
 
         <div className="mt-2">
           <span>{selectedProduct?.product.calories} </span>
-          <span className="text-sm">кКал / 100г</span>
+          <span className="text-sm">kcal / 100 g</span>
 
           {selectedProduct?.weight && (
             <span className="font-medium">
@@ -46,17 +46,17 @@ export default function EditSelectedProduct({
                 selectedProduct.weight,
                 selectedProduct.product.calories,
               )}{" "}
-              кКал
+              kcal
             </span>
           )}
         </div>
       </div>
 
-      <div className="mt-4 flex gap-3">
+      <div className="flex gap-3 mt-4">
         <button
           onClick={setShowAlert}
-          className="button rounded-button"
-          aria-label="Удалить продукт"
+          className="rounded-button button"
+          aria-label="Usunąć produkt"
         >
           <DeleteIcon />
         </button>
@@ -65,9 +65,9 @@ export default function EditSelectedProduct({
           <input
             value={selectedProductWeight}
             onChange={(e) => setSelectedProductWeight(e.target.value)}
-            placeholder="Вес"
+            placeholder="Waga"
             type="number"
-            className="input-number rounded-r-none!"
+            className="rounded-r-none! input-number"
             autoComplete="off"
             spellCheck="false"
             autoFocus
@@ -75,8 +75,8 @@ export default function EditSelectedProduct({
 
           <button
             onClick={setShowAdditionalWeightAlert}
-            className="button rounded-button pl-1! pr-2! rounded-l-none!"
-            aria-label="Удалить продукт"
+            className="pr-2! pl-1! rounded-button rounded-l-none! button"
+            aria-label="Dodać wagę"
           >
             <PlusIcon />
           </button>
@@ -87,7 +87,7 @@ export default function EditSelectedProduct({
           disabled={!selectedProductWeight}
           className="button primary-button"
         >
-          Обновить
+          Aktualizować
         </button>
       </div>
     </div>

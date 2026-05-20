@@ -39,22 +39,22 @@ export default function UserForm({
             if (localUser.password === existedUserPassword) {
               setLoading(false);
               saveUser(localUser);
-              setSuccess("Успешно");
+              setSuccess("Sukces");
             } else {
               setLoading(false);
-              setError("Неправильный пароль");
+              setError("Niepoprawne hasło");
               return;
             }
           } else {
             // "Creating NEW user in Database"
             set(ref(DATABASE, RD_PROJECT_USERS + name.trim()), localUser)
               .then(() => {
-                setSuccess("Новый пользователь создан");
+                setSuccess("Nowy użytkownik utworzony");
                 saveUser(localUser);
                 setLoading(false);
               })
               .catch(() => {
-                setError("Ошибка");
+                setError("Błąd");
                 setLoading(false);
               });
           }
@@ -67,7 +67,7 @@ export default function UserForm({
         });
     } else {
       setLoading(false);
-      setError("Введите корректные данные");
+      setError("Wprowadź poprawne dane");
       return;
     }
   };
@@ -78,7 +78,7 @@ export default function UserForm({
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Логин"
+          placeholder="Login"
           autoComplete="off"
           spellCheck={"false"}
           className="pl-5 rounded-r-none!"
@@ -87,7 +87,7 @@ export default function UserForm({
         <input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Пароль"
+          placeholder="Hasło"
           autoComplete="off"
           spellCheck={"false"}
           className="pl-5 rounded-l-none!"
@@ -99,7 +99,7 @@ export default function UserForm({
         disabled={!name || !password}
         className="mt-4 button primary-button"
       >
-        Войти
+        Zaloguj się
       </button>
     </form>
   );

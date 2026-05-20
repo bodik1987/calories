@@ -3,13 +3,13 @@ import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: "bodik-75ffc.firebaseapp.com",
+  authDomain: "calories-3c537.firebaseapp.com",
   databaseURL:
-    "https://bodik-75ffc-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "bodik-75ffc",
-  storageBucket: "bodik-75ffc.appspot.com",
-  messagingSenderId: "904451021821",
-  appId: "1:904451021821:web:b1b6606a4d38a6c1941794",
+    "https://calories-3c537-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "calories-3c537",
+  storageBucket: "calories-3c537.firebasestorage.app",
+  messagingSenderId: "725975435147",
+  appId: "1:725975435147:web:baf5d46acbe185ceb9d18e",
 };
 
 // Initialize Firebase

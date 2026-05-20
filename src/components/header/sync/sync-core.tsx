@@ -43,7 +43,7 @@ export default function SyncCore({
         }).then(() => {
           setLoading(false);
         });
-        setSuccess("Выгружено");
+        setSuccess("Wysłano");
       }
     } catch (error) {
       console.log(error);
@@ -53,7 +53,7 @@ export default function SyncCore({
 
   // DOWNLOAD
   const downloadFromDatabase = () => {
-    if (confirm("Восстановить? Текущие данные будут удалены!") === true) {
+    if (confirm("Przywrócić? Bieżące dane zostaną usunięte!") === true) {
       setSuccess("");
       setError("");
       setLoading(true);
@@ -73,7 +73,7 @@ export default function SyncCore({
                 if (result.day) {
                   setDay(result.day);
                 }
-                setSuccess("Загружено");
+                setSuccess("Wysłano");
                 window.location.reload();
               } else {
                 setError("No data available");
@@ -97,7 +97,7 @@ export default function SyncCore({
     setError("");
     setLoading(true);
     if (user) {
-      if (confirm(`Удалить?`) === true) {
+      if (confirm(`Usunąć?`) === true) {
         remove(ref(DATABASE, RD_PROJECT_ITEMS + user.name))
           .then(() => {
             setLoading(false);
@@ -124,32 +124,32 @@ export default function SyncCore({
   };
 
   return (
-    <div className="mt-4 w-full flex flex-col justify-center gap-2">
+    <div className="flex flex-col justify-center gap-2 mt-4 w-full">
       <div className="flex gap-2">
         <button
           onClick={deleteUser}
-          className="button disabled:bg-accent/50 text-white w-full bg-warning"
+          className="bg-warning disabled:bg-accent/50 w-full text-white button"
         >
-          Удалить
+          Usuń
         </button>
 
         <button
           onClick={downloadFromDatabase}
-          className="button border-primary border-2 w-fit px-4"
+          className="px-4 border-2 border-primary w-fit button"
         >
-          Восстановить
+          Przywróć
         </button>
 
         <button onClick={deleteLocalUser} className="button primary-button">
-          Выйти
+          Wyloguj się
         </button>
       </div>
 
       <button
         onClick={uploadToDatabase}
-        className="mt-4 button primary-button h-16!"
+        className="mt-4 h-16! button primary-button"
       >
-        Сделать резервную копию
+        Stwórz kopię zapasową
       </button>
     </div>
   );
