@@ -263,7 +263,7 @@ export default function Root() {
 
             <div className="flex gap-2">
               <span className="opacity-50 w-12 text-right whitespace-nowrap">
-                {item.weight} г.
+                {item.weight} g
               </span>
               <span className="w-12 text-right whitespace-nowrap">
                 {calculateCalories(item.weight, item.product.calories)}
