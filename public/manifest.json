@@ -1,7 +1,7 @@
 {
-  "name": "Калории",
-  "short_name": "Калории",
-  "description": "Калории",
+  "name": "Kalorie",
+  "short_name": "Kalorie",
+  "description": "Kalorie",
   "theme_color": "#fff",
   "background_color": "#EFF1F5",
   "display": "standalone",

@@ -10,9 +10,9 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
-        name: "Калории",
-        short_name: "Калории",
-        description: "Калории",
+        name: "Kalorie",
+        short_name: "Kalorie",
+        description: "Kalorie",
         theme_color: "#fffs",
         orientation: "portrait",
         icons: [
