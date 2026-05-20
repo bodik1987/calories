@@ -31,7 +31,7 @@ export default function Header() {
   const remainingCalories = Math.round(target - totalCalories);
 
   // Форматирование текста в зависимости от оставшихся калорий
-  const caloriesText = remainingCalories > 0 ? "Ost. " : "Przewyższenie ";
+  const caloriesText = remainingCalories > 0 ? "Pozostało " : "Przewyższenie ";
   const caloriesClassName = remainingCalories < 0 && "text-warning";
 
   const progressPercentage = Math.min((totalCalories / target) * 100, 100);
