@@ -28,7 +28,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 #root {
-  @apply mx-auto px-4 max-w-2xl text-[#1b1b1b];
+  @apply mx-auto max-w-xl text-[#1b1b1b];
 }
 
 button {
@@ -48,7 +48,7 @@ h2 {
 }
 
 .container {
-  @apply mx-auto max-w-md;
+  @apply mx-auto max-w-xl;
 }
 
 .button {
